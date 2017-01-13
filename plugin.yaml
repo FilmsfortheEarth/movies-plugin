@@ -1,0 +1,11 @@
+plugin:
+    name: Movies
+    description: 'Movies Plugin'
+    author: Ffte
+    icon: oc-icon-adjust
+    homepage: ''
+navigation:
+    main-menu-item:
+        label: Movies
+        url: ffte/movies/movies
+        icon: icon-film

@@ -1,0 +1,9 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields: 
+    title:
+        label: title
+    slug:
+        label: slug
