@@ -23,7 +23,7 @@ class Import extends Command
      */
     protected $description = 'No description provided yet...';
 
-    protected $signature = 'movies:import {url=http://filmefuerdieerde.ch/de/api/movies}';
+    protected $signature = 'movies:import {url=http://filmefuerdieerde.ch/api/movies}';
 
     /**
      * Execute the console command.
@@ -49,10 +49,15 @@ class Import extends Command
         }
 
         foreach($categories as $category) {
-            Category::updateOrCreate(['id' => $category['id']], [
+            $cat = Category::updateOrCreate(['id' => $category['id']], [
                 'name' => $category['name'],
                 'slug' => slugify($category['name'])
             ]);
+
+            update($cat, $category, 'name');
+            $cat->lang('en')->slug = slugify($category['name_en']);
+            $cat->lang('fr')->slug = slugify($category['name_fr']);
+            $cat->save();
         }
 
         foreach($movies as $movie) {
@@ -70,10 +75,25 @@ class Import extends Command
                 'links' => $movie['links'],
                 'seo_title' => $movie['seo_title'],
                 'seo_description' => $movie['seo_description'],
-                'seo_keywords' => implode(',', $movie['seo_keywords']),
+                'seo_keywords' => $movie['seo_keywords'],
                 'updated_at' => $movie['updated_at'],
                 'created_at' => $movie['created_at'],
             ]);
+
+            update($model, $movie, 'title');
+            $model->slug = slugify($movie['title_en']);
+            $model->slug = slugify($movie['title_fr']);
+            update($model, $movie, 'subtitle');
+            update($model, $movie, 'description');
+            update($model, $movie, 'notes');
+            update($model, $movie, 'jury_rating');
+            update($model, $movie, 'other_rating');
+            update($model, $movie, 'technical_info');
+            update($model, $movie, 'links');
+            update($model, $movie, 'seo_title');
+            update($model, $movie, 'seo_description');
+            update($model, $movie, 'seo_keywords');
+
 
             $model->tags = array_column($movie['tags'], 'id');
             $model->categories = array_column([$movie['category']], 'id');
@@ -188,4 +208,9 @@ function slugify($text)
   }
 
   return $text;
+}
+
+function update($model, $movie, $name) {
+    $model->setAttributeTranslated($name, $movie[$name.'_en'], 'en');
+    $model->setAttributeTranslated($name, $movie[$name.'_fr'], 'fr');
 }

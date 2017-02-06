@@ -12,7 +12,11 @@ class Movie extends Model
         'RainLab.Translate.Behaviors.TranslatableModel'
     ];
 
-    public $translatable = ['title', 'slug', 'subtitle', 'description', 'notes'];
+    public $translatable = [
+        'title', 'slug', 'subtitle', 'description', 'notes',
+        'jury_rating', 'other_rating', 'technical_info', 'links',
+        'seo_title', 'seo_description', 'seo_keywords'
+    ];
     
     /**
      * @var string The database table used by the model.
@@ -44,7 +48,7 @@ class Movie extends Model
     public $morphMany = [];
 
     public $attachOne = [
-        'cover' => File::class
+        'cover' => [File::class, 'delete' => true]
     ];
 
     public $attachMany = [

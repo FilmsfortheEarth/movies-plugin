@@ -21,6 +21,7 @@ class Plugin extends PluginBase
     public function register()
     {
         $this->registerConsoleCommand('ffte.import', 'Ffte\Movies\Console\Import');
+        $this->registerConsoleCommand('ffte.clear', 'Ffte\Movies\Console\Clear');
     }
 
     /**
