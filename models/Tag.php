@@ -36,10 +36,7 @@ class Tag extends Model
     public $belongsTo = [];
 
     public $belongsToMany = [
-        'movies' => [
-            Movie::class,
-            'table' => 'ffte_movies_movie_tag'
-        ]
+        'movies' => [ Movie::class, 'table' => 'ffte_movies_movie_tag'],
     ];
 
     public $morphTo = [];

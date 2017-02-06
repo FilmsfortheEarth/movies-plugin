@@ -7,6 +7,12 @@ use Model;
  */
 class Medium extends Model
 {
+    public $implement = [
+        'RainLab.Translate.Behaviors.TranslatableModel'
+    ];
+
+    public $translatable = ['title', 'url'];
+
     /**
      * @var string The database table used by the model.
      */

@@ -18,3 +18,7 @@ navigation:
                 label: Tags
                 url: ffte/movies/tags
                 icon: icon-tags
+            side-menu-categories:
+                label: Categories
+                url: ffte/movies/categories
+                icon: icon-sitemap

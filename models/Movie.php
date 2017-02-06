@@ -12,7 +12,7 @@ class Movie extends Model
         'RainLab.Translate.Behaviors.TranslatableModel'
     ];
 
-    public $translatable = ['title', 'slug', 'subtitle'];
+    public $translatable = ['title', 'slug', 'subtitle', 'description', 'notes'];
     
     /**
      * @var string The database table used by the model.
@@ -35,7 +35,8 @@ class Movie extends Model
     public $belongsTo = [];
 
     public $belongsToMany = [
-        'tags' => [Tag::class, 'table' => 'ffte_movies_movie_tag']
+        'tags' => [Tag::class, 'table' => 'ffte_movies_movie_tag'],
+        'categories' => [Category::class, 'table' => 'ffte_movies_category_movie'],
     ];
 
     public $morphTo = [];
@@ -47,8 +48,8 @@ class Movie extends Model
     ];
 
     public $attachMany = [
-        'backgrounds' => File::class,
-        'images' => File::class
+        'backgrounds' => [File::class, 'delete' => true],
+        'images' => [File::class, 'delete' => true]
     ];
 
 }

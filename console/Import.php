@@ -1,6 +1,7 @@
 <?php namespace Ffte\Movies\Console;
 
 use Exception;
+use Ffte\Movies\Models\Category;
 use Ffte\Movies\Models\Medium;
 use Ffte\Movies\Models\Tag;
 use Illuminate\Console\Command;
@@ -33,8 +34,11 @@ class Import extends Command
         $url = $this->argument('url');
         $movies = json_decode(file_get_contents($url), true);
         $tags = [];
+        $categories = [];
+
         foreach($movies as $movie) {
             $tags = array_merge($tags, $movie['tags']);
+            array_push($categories, $movie['category']);
         }
 
         foreach($tags as $tag) {
@@ -44,8 +48,14 @@ class Import extends Command
             ]);
         }
 
+        foreach($categories as $category) {
+            Category::updateOrCreate(['id' => $category['id']], [
+                'name' => $category['name'],
+                'slug' => slugify($category['name'])
+            ]);
+        }
+
         foreach($movies as $movie) {
-            $tags = array_merge($tags, $movie['tags']);
 
             $model = Movie::updateOrCreate(['id' => $movie['id']], [
                 'id' => $movie['id'],
@@ -66,6 +76,7 @@ class Import extends Command
             ]);
 
             $model->tags = array_column($movie['tags'], 'id');
+            $model->categories = array_column([$movie['category']], 'id');
 
             $cover = getFile($movie['cover']);
             if($cover != null) {
@@ -101,7 +112,7 @@ class Import extends Command
 
             $model->save();
 
-            $this->info($model->id.' '.$model->title);
+            echo $model->id.' '.$model->title."\n";
         }
     }
 
@@ -125,7 +136,11 @@ class Import extends Command
 
 }
 
-function getFile($url) {
+function getFile($img) {
+    $url = $img['name'];
+    if(empty($url)) {
+        return null;
+    }
     $local_url = base_path().'\\data\\'.$url;
 
     // if file doesn't exists, download
@@ -142,6 +157,9 @@ function getFile($url) {
     // create file from local data
     $file = new File;
     $file->fromFile($local_url);
+    $file->title = $img['title'];
+    $file->description = $img['description_de'];
+
     return $file;
 }
 

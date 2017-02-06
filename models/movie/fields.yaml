@@ -1,96 +1,116 @@
 tabs:
-  defaultTab: Details
-  fields:
-      is_active:
-          label: Active
-          type: switch
-      title:
-          label: Title
-          required: true
-          type: text
-      slug:
-          label: Slug
-          required: true
-          type: text
-      subtitle:
-          label: Subtitle
-          type: text
-      media:
-          label: Media
-          type: partial
-          path: field_media
-          tab: Media
-      description:
-          label: Description
-          type: textarea
-      notes:
-          label: Notes
-          type: textarea
-      jury_rating:
-          label: 'Jury Rating'
-          type: textarea
-      other_rating:
-          label: 'Other Rating'
-          type: textarea
-      technical_info:
-          label: 'Technical Info'
-          type: textarea
-      links:
-          label: Links
-          type: textarea
-      seo_title:
-          label: 'SEO Title'
-          type: text
-          tab: SEO
-      seo_description:
-          label: 'SEO Description'
-          type: textarea
-          tab: SEO
-      seo_keywords:
-          label: 'SEO Keywords'
-          type: textarea
-          tab: SEO
-      cover:
-          label: Cover
-          mode: image
-          useCaption: true
-          thumbOptions:
-              mode: auto
-              extension: auto
-          oc.commentPosition: ''
-          span: left
-          imageWidth: '100'
-          imageHeight: '100'
-          type: fileupload
-          tab: Media
-      backgrounds:
-          label: Backgrounds
-          mode: image
-          useCaption: true
-          thumbOptions:
-              mode: crop
-              extension: auto
-          oc.commentPosition: ''
-          span: full
-          imageWidth: '100'
-          imageHeight: '100'
-          type: fileupload
-          tab: Media
-      images:
-          label: Images
-          mode: image
-          useCaption: true
-          thumbOptions:
-              mode: crop
-              extension: auto
-          oc.commentPosition: ''
-          span: full
-          imageWidth: '100'
-          imageHeight: '100'
-          type: fileupload
-          tab: Media
-      tags:
-          label: Tags
-          type: taglist
-          mode: relation
-          customTags: false
+    fields:
+        is_active:
+            label: Active
+            type: switch
+            tab: Details
+        title:
+            label: Title
+            oc.commentPosition: ''
+            span: left
+            required: true
+            type: text
+            tab: Details
+        slug:
+            label: Slug
+            required: true
+            oc.commentPosition: ''
+            span: right
+            type: text
+            tab: Details
+        subtitle:
+            label: Subtitle
+            type: text
+            tab: Details
+        description:
+            label: Description
+            type: textarea
+            tab: Details
+        notes:
+            label: Notes
+            type: textarea
+            tab: Details
+        jury_rating:
+            label: 'Jury Rating'
+            type: textarea
+            tab: Details
+        other_rating:
+            label: 'Other Rating'
+            type: textarea
+            tab: Details
+        technical_info:
+            label: 'Technical Info'
+            type: textarea
+            tab: Details
+        links:
+            label: Links
+            type: textarea
+            tab: Details
+        tags:
+            label: Tags
+            type: taglist
+            mode: relation
+            customTags: false
+            tab: Details
+        categories:
+            label: Categories
+            type: taglist
+            mode: relation
+            customTags: false
+            tab: Details
+        media:
+            label: Media
+            type: partial
+            path: field_media
+            tab: Media
+        cover:
+            label: Cover
+            mode: image
+            useCaption: true
+            thumbOptions:
+                mode: auto
+                extension: auto
+            oc.commentPosition: ''
+            span: left
+            imageWidth: '100'
+            imageHeight: '100'
+            type: fileupload
+            tab: Media
+        backgrounds:
+            label: Backgrounds
+            mode: image
+            useCaption: true
+            thumbOptions:
+                mode: auto
+                extension: auto
+            oc.commentPosition: ''
+            span: full
+            imageWidth: '100'
+            imageHeight: '100'
+            type: fileupload
+            tab: Media
+        images:
+            label: Images
+            mode: image
+            useCaption: true
+            thumbOptions:
+                mode: auto
+                extension: auto
+            oc.commentPosition: ''
+            span: full
+            imageWidth: '100'
+            imageHeight: '100'
+            type: fileupload
+            tab: Media
+        seo_title:
+            label: 'SEO Title'
+            type: text
+            tab: SEO
+        seo_description:
+            label: 'SEO Description'
+            type: textarea
+            tab: SEO
+        seo_keywords:
+            label: 'SEO Keywords'
+            type: textarea
+            tab: SEO

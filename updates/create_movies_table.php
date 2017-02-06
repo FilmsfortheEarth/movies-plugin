@@ -8,14 +8,6 @@ class CreateMoviesTable extends Migration
 {
     public function up()
     {
-        Schema::create('ffte_movies_tags', function(Blueprint $table) {
-            $table->engine = 'InnoDB';
-            $table->increments('id');
-            $table->string('name')->required();
-            $table->string('slug')->required();
-
-            $table->timestamps();
-        });
 
         Schema::create('ffte_movies_movies', function(Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -39,18 +31,10 @@ class CreateMoviesTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('ffte_movies_movie_tag', function(Blueprint $table) {
-            $table->integer('movie_id')->required();
-            $table->integer('tag_id')->required();
-
-            $table->primary(['tag_id', 'movie_id']);
-        });
     }
 
     public function down()
     {
-        Schema::dropIfExists('ffte_movies_tags');
         Schema::dropIfExists('ffte_movies_movies');
-        Schema::dropIfExists('ffte_movies_movie_tag');
     }
 }
