@@ -9,7 +9,10 @@ use System\Classes\PluginBase;
 class Plugin extends PluginBase
 {
 
-    
+    public $require = [
+        'RainLab.Translate'
+    ];
+
     /**
      * Register method, called when the plugin is first registered.
      *

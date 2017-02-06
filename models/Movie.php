@@ -1,13 +1,17 @@
 <?php namespace Ffte\Movies\Models;
 
 use Model;
+use System\Models\File;
 
 /**
  * Movie Model
  */
 class Movie extends Model
 {
+    public $implement = ['RainLab.Translate.Behaviors.TranslatableModel'];
 
+    public $translatable = ['title', 'slug', 'subtitle'];
+    
     /**
      * @var string The database table used by the model.
      */
@@ -16,24 +20,33 @@ class Movie extends Model
     /**
      * @var array Guarded fields
      */
-    protected $guarded = ['*'];
-
-    /**
-     * @var array Fillable fields
-     */
-    protected $fillable = ['title', 'slug'];
+    protected $guarded = [];
 
     /**
      * @var array Relations
      */
     public $hasOne = [];
-    public $hasMany = [];
+    public $hasMany = [
+        'media' => [Medium::class, 'delete' => true]
+    ];
+
     public $belongsTo = [];
-    public $belongsToMany = [];
+
+    public $belongsToMany = [
+        'tags' => [Tag::class, 'table' => 'ffte_movies_movie_tag']
+    ];
+
     public $morphTo = [];
     public $morphOne = [];
     public $morphMany = [];
-    public $attachOne = [];
-    public $attachMany = [];
+
+    public $attachOne = [
+        'cover' => File::class
+    ];
+
+    public $attachMany = [
+        'backgrounds' => File::class,
+        'images' => File::class
+    ];
 
 }

@@ -6,8 +6,20 @@ columns:
     id:
         label: ID
         searchable: true
+    is_active:
+        label: active
+        sortable: true
+        type: switch
+    cover:
+        label: Cover
+        type: partial
+        path: ~/plugins/ffte/movies/controllers/movies/_image.htm
+        sortable: false
     title:
         label: title
         searchable: true
         sortable: true
-        
+    updated_at:
+        label: last updated
+        sortable: true
+    

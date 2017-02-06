@@ -9,3 +9,12 @@ navigation:
         label: Movies
         url: ffte/movies/movies
         icon: icon-film
+        sideMenu:
+            side-menu-movies:
+                label: Movies
+                url: ffte/movies/movies
+                icon: icon-film
+            side-menu-tags:
+                label: Tags
+                url: ffte/movies/tags
+                icon: icon-tags

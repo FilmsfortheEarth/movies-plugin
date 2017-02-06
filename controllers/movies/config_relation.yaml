@@ -1,0 +1,8 @@
+
+media:
+  label: Media
+  view:
+    list: $/ffte/movies/models/medium/columns.yaml
+    toolbarButtons: create|delete
+  manage:
+    form: $/ffte/movies/models/medium/fields.yaml

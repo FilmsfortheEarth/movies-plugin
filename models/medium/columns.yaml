@@ -1,0 +1,14 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    title:
+        label: Title
+        type: text
+    url:
+        label: Url
+        type: text
+    provider:
+        label: Provider
+        type: text

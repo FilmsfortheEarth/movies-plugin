@@ -1,4 +1,4 @@
 1.0.1: 
   - First version of Movies
   - create_movies_table.php
-  
+  - create_media_table.php
