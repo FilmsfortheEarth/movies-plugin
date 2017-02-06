@@ -28,6 +28,7 @@ class CreateMoviesTable extends Migration
             $table->text('technical_info')->nullable();
             $table->text('links')->nullable();
 
+
             $table->string('seo_title')->nullable();
             $table->text('seo_description')->nullable();
             $table->text('seo_keywords')->nullable();
