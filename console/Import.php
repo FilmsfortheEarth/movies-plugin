@@ -38,7 +38,10 @@ class Import extends Command
         }
 
         foreach($tags as $tag) {
-            Tag::updateOrCreate(['id' => $tag['id']], $tag);
+            Tag::updateOrCreate(['id' => $tag['id']], [
+                'name' => $tag['name'],
+                'slug' => slugify($tag['name'])
+            ]);
         }
 
         foreach($movies as $movie) {

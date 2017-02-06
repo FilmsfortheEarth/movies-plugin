@@ -6,3 +6,6 @@ fields:
     name:
         label: Name
         required: true
+    slug:
+        label: Slug
+        required: true

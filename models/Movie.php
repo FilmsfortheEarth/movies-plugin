@@ -8,7 +8,9 @@ use System\Models\File;
  */
 class Movie extends Model
 {
-    public $implement = ['RainLab.Translate.Behaviors.TranslatableModel'];
+    public $implement = [
+        'RainLab.Translate.Behaviors.TranslatableModel'
+    ];
 
     public $translatable = ['title', 'slug', 'subtitle'];
     

@@ -7,6 +7,8 @@ columns:
         label: ID
         searchable: true
     name:
-        label: name
+        label: Name
         searchable: true
-        
+    slug:
+        label: Slug
+        searchable: true
