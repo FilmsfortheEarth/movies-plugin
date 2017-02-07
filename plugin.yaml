@@ -28,6 +28,10 @@ navigation:
                 label: Media
                 url: ffte/movies/media
                 icon: icon-sitemap
+            side-menu-providers:
+                label: Providers
+                url: ffte/movies/providers
+                icon: icon-sitemap
 permissions:
     ffte.movies.tags:
         tab: Movies
