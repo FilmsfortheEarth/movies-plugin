@@ -80,7 +80,7 @@ class Import extends Command
                 'seo_keywords' => $movie['seo_keywords'],
                 'updated_at' => $movie['updated_at'],
                 'created_at' => $movie['created_at'],
-                'year' => intval($info->get('Jahr')),
+                'year' => $info->getInt('Jahr')
             ]);
 
             update($model, $movie, 'title');
@@ -250,5 +250,10 @@ class Info {
 
     public function get($key) {
         return array_key_exists($key, $this->values) ? $this->values[$key] : null;
+    }
+
+    public function getInt($key) {
+        $val = $this->get($key);
+        return $val != null ? intval($val) : $val;
     }
 }
