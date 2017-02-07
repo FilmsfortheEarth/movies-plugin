@@ -97,6 +97,7 @@ class Import extends Command
 
             $model->tags = array_column($movie['tags'], 'id');
             $model->categories = array_column([$movie['category']], 'id');
+            $model->formats = $movie['formats'];
 
             $cover = getFile($movie['cover']);
             if($cover != null) {
@@ -125,7 +126,7 @@ class Import extends Command
                 $medium = new Medium();
                 $medium->title = $m['title'];
                 $medium->url = $m['url'];
-                $medium->provider = $m['provider'];
+                $medium->provider = convertProvider($m['provider']);
                 $medium->movie = $model;
                 $model->media()->add($medium);
             }
@@ -213,4 +214,18 @@ function slugify($text)
 function update($model, $movie, $name) {
     $model->setAttributeTranslated($name, $movie[$name.'_en'], 'en');
     $model->setAttributeTranslated($name, $movie[$name.'_fr'], 'fr');
+}
+
+// string to provider entity
+function convertProvider($name) {
+    $data = [
+        'Inactive' => NULL,
+        'arte' => 1,
+        'dailymotion' => 2,
+        'distrify' => 3,
+        'vhx' => 4,
+        'vimeo' => 5,
+        'youtube' => 6,
+    ];
+    return $data[$name];
 }

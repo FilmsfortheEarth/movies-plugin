@@ -17,7 +17,7 @@ class CreateMediaTable extends Migration
             $table->string('url');
             $table->integer('format_id')->nullable()->index();
             $table->integer('movie_id')->index();
-            $table->integer('provider_id')->nulllable()->index();
+            $table->integer('provider_id')->nullable()->index();
 
             $table->timestamps();
         });

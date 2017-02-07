@@ -3,6 +3,10 @@
 # ===================================
 
 columns:
+    movie:
+        label: Movie
+        relation: movie
+        select: title
     title:
         label: Title
         type: text
@@ -19,3 +23,4 @@ columns:
         relation: format
         sortable: false
         select: name
+        default: NULL

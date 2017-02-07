@@ -22,3 +22,7 @@ navigation:
                 label: Categories
                 url: ffte/movies/categories
                 icon: icon-sitemap
+            side-menu-media:
+                label: Media
+                url: ffte/movies/media
+                icon: icon-sitemap

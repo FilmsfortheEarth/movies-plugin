@@ -1,20 +1,25 @@
-# ===================================
-#  Form Field Definitions
-# ===================================
-
 fields:
     title:
         label: Title
+        oc.commentPosition: ''
+        span: left
         type: text
     url:
         label: Url
+        oc.commentPosition: ''
+        span: right
         type: text
     provider:
         label: Provider
+        oc.commentPosition: ''
+        nameFrom: name
+        descriptionFrom: description
+        span: full
         type: relation
-        default: null
     format:
         label: Format
+        oc.commentPosition: ''
+        nameFrom: name
+        descriptionFrom: description
+        span: full
         type: relation
-        default: null
-
