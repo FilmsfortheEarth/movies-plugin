@@ -4,3 +4,7 @@
   - create_media_table.php
   - create_tags_table.php
   - create_categories_table.php
+  - create_formats_table.php
+  - create_media_formats_table.php
+  - create_media_providers_table.php
+  - seed_all_tables.php

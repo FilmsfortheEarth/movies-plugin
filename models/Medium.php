@@ -11,7 +11,7 @@ class Medium extends Model
         'RainLab.Translate.Behaviors.TranslatableModel'
     ];
 
-    public $translatable = ['title', 'url'];
+    public $translatable = ['title', 'url', 'provider'];
 
     /**
      * @var string The database table used by the model.
@@ -34,11 +34,15 @@ class Medium extends Model
     public $hasOne = [
 
     ];
+
     public $hasMany = [
 
     ];
+
     public $belongsTo = [
-        'movie' => [Movie::class]
+        'movie' => [Movie::class],
+        'format' => [MediaFormat::class],
+        'provider' => [MediaProvider::class]
     ];
 
     public $belongsToMany = [];

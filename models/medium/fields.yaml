@@ -11,12 +11,10 @@ fields:
         type: text
     provider:
         label: Provider
-        type: dropdown
-        options:
-          Inactive: inactive
-          arte: Arte Future
-          dailymotion: Dailymotion
-          distrify: Distrify
-          vhx: VHX
-          vimeo: Vimeo
-          youtube: Youtube
+        type: relation
+        default: null
+    format:
+        label: Format
+        type: relation
+        default: null
+

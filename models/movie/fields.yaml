@@ -46,6 +46,12 @@ tabs:
             label: Links
             type: textarea
             tab: Details
+        formats:
+            label: Formats
+            type: taglist
+            mode: relation
+            customTags: false
+            tab: Details
         tags:
             label: Tags
             type: taglist
@@ -112,5 +118,5 @@ tabs:
             tab: SEO
         seo_keywords:
             label: 'SEO Keywords'
-            type: textarea
+            type: text
             tab: SEO

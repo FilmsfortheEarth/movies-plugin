@@ -11,4 +11,11 @@ columns:
         type: text
     provider:
         label: Provider
-        type: text
+        relation: provider
+        sortable: false
+        select: name
+    format:
+        label: Format
+        relation: format
+        sortable: false
+        select: name

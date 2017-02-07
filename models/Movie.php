@@ -1,7 +1,7 @@
 <?php namespace Ffte\Movies\Models;
 
 use Model;
-use System\Models\File;
+use \System\Models\File;
 
 /**
  * Movie Model
@@ -41,6 +41,7 @@ class Movie extends Model
     public $belongsToMany = [
         'tags' => [Tag::class, 'table' => 'ffte_movies_movie_tag'],
         'categories' => [Category::class, 'table' => 'ffte_movies_category_movie'],
+        'formats' => [Format::class, 'table' => 'ffte_movies_format_movie'],
     ];
 
     public $morphTo = [];
