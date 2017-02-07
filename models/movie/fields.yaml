@@ -42,6 +42,9 @@ tabs:
             label: 'Technical Info'
             type: textarea
             tab: Details
+        year:
+            label: Year
+            type: text
         links:
             label: Links
             type: textarea

@@ -31,7 +31,8 @@ class Import extends Command
      */
     public function fire()
     {
-        $url = $this->argument('url');
+        //$url = $this->argument('url');
+        $url = "C:\\Users\\munxar\\Downloads\\movies.json";
         $movies = json_decode(file_get_contents($url), true);
         $tags = [];
         $categories = [];
@@ -61,6 +62,7 @@ class Import extends Command
         }
 
         foreach($movies as $movie) {
+            $info = new Info($movie['technical_info']);
 
             $model = Movie::updateOrCreate(['id' => $movie['id']], [
                 'id' => $movie['id'],
@@ -78,6 +80,7 @@ class Import extends Command
                 'seo_keywords' => $movie['seo_keywords'],
                 'updated_at' => $movie['updated_at'],
                 'created_at' => $movie['created_at'],
+                'year' => intval($info->get('Jahr')),
             ]);
 
             update($model, $movie, 'title');
@@ -228,4 +231,24 @@ function convertProvider($name) {
         'youtube' => 6,
     ];
     return $data[$name];
+}
+
+class Info {
+    private $values;
+    public function __construct($info)
+    {
+        $lines = explode("\n", $info);
+        $values = [];
+        foreach($lines as $line) {
+            $tokens = explode(":", $line);
+            if(count($tokens) >= 2) {
+                $values[$tokens[0]] = $tokens[1];
+            }
+        }
+        $this->values = $values;
+    }
+
+    public function get($key) {
+        return array_key_exists($key, $this->values) ? $this->values[$key] : null;
+    }
 }
