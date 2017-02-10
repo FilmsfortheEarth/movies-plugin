@@ -41,7 +41,7 @@ tabs:
         technical_info:
             label: 'Technical Info'
             type: textarea
-            tab: Details
+            tab: Techinfo
         links:
             label: Links
             type: partial
