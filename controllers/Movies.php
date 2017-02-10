@@ -1,13 +1,15 @@
 <?php namespace Ffte\Movies\Controllers;
 
+use Backend\Behaviors\FormController;
 use Backend\Classes\Controller;
 use BackendMenu;
 
 class Movies extends Controller
 {
+
     public $implement = [
         'Backend\Behaviors\ListController',
-        'Backend\Behaviors\FormController',
+        FormController::class,
         'Backend\Behaviors\RelationController'
     ];
     
@@ -21,4 +23,5 @@ class Movies extends Controller
         BackendMenu::setContext('Ffte.Movies', 'main-menu-item', 'side-menu-movies');
     }
 
+   
 }

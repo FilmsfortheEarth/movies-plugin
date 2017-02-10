@@ -80,7 +80,8 @@ class Import extends Command
                 'seo_keywords' => $movie['seo_keywords'],
                 'updated_at' => $movie['updated_at'],
                 'created_at' => $movie['created_at'],
-                'year' => $info->getInt('Jahr')
+                'year' => $info->getInt('Jahr'),
+                'duration' => $info->get('Dauer')
             ]);
 
             update($model, $movie, 'title');
@@ -100,7 +101,7 @@ class Import extends Command
 
             $model->tags = array_column($movie['tags'], 'id');
             $model->categories = array_column([$movie['category']], 'id');
-            $model->formats = $movie['formats'];
+            $model->availabilities = $movie['formats'];
 
             $cover = getFile($movie['cover']);
             if($cover != null) {

@@ -8,6 +8,13 @@ use \System\Models\File;
  */
 class Movie extends Model
 {
+    use \October\Rain\Database\Traits\Validation;
+
+    public $rules = [
+        'title' => 'required',
+        'slug' => 'required',
+    ];
+
     public $implement = [
         'RainLab.Translate.Behaviors.TranslatableModel'
     ];
@@ -17,7 +24,9 @@ class Movie extends Model
         'jury_rating', 'other_rating', 'technical_info', 'links',
         'seo_title', 'seo_description', 'seo_keywords'
     ];
-    
+
+    public $jsonable = [];
+
     /**
      * @var string The database table used by the model.
      */
@@ -33,7 +42,8 @@ class Movie extends Model
      */
     public $hasOne = [];
     public $hasMany = [
-        'media' => [Medium::class, 'delete' => true]
+        'media' => [Medium::class, 'delete' => true],
+        'links' => [Link::class, 'delete' => true],
     ];
 
     public $belongsTo = [];
@@ -41,7 +51,10 @@ class Movie extends Model
     public $belongsToMany = [
         'tags' => [Tag::class, 'table' => 'ffte_movies_movie_tag'],
         'categories' => [Category::class, 'table' => 'ffte_movies_category_movie'],
-        'formats' => [Format::class, 'table' => 'ffte_movies_format_movie'],
+        'availabilities' => [Availability::class, 'table' => 'ffte_movies_availability_movie'],
+        'people' => [Person::class, 'table' => 'ffte_movies_movie_person'],
+        'countries' => [Country::class, 'table' => 'ffte_movies_movie_country'],
+        'languages' => [Language::class, 'table' => 'ffte_movies_movie_language'],
     ];
 
     public $morphTo = [];
@@ -54,7 +67,7 @@ class Movie extends Model
 
     public $attachMany = [
         'backgrounds' => [File::class, 'delete' => true],
-        'images' => [File::class, 'delete' => true]
+        'images' => [File::class, 'delete' => true],
     ];
 
 }

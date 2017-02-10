@@ -14,12 +14,13 @@ fields:
         oc.commentPosition: ''
         nameFrom: name
         descriptionFrom: description
-        span: full
+        span: left
         type: relation
     format:
         label: Format
         oc.commentPosition: ''
         nameFrom: name
         descriptionFrom: description
-        span: full
+        span: right
         type: relation
+        emptyOption: None

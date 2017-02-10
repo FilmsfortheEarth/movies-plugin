@@ -23,15 +23,31 @@ navigation:
             side-menu-categories:
                 label: Categories
                 url: ffte/movies/categories
-                icon: icon-sitemap
+                icon: icon-folder
             side-menu-media:
                 label: Media
                 url: ffte/movies/media
-                icon: icon-sitemap
+                icon: icon-camera
             side-menu-providers:
                 label: Providers
                 url: ffte/movies/providers
                 icon: icon-sitemap
+            side-menu-people:
+                label: People
+                url: ffte/movies/people
+                icon: icon-users
+            side-menu-countries:
+                label: Countries
+                url: ffte/movies/countries
+                icon: icon-flag
+            side-menu-language:
+                label: Languages
+                url: ffte/movies/languages
+                icon: icon-language
+            side-menu-links:
+                label: Links
+                url: ffte/movies/links
+                icon: icon-external-link
 permissions:
     ffte.movies.tags:
         tab: Movies

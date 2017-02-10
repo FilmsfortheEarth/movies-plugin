@@ -6,3 +6,11 @@ media:
     toolbarButtons: create|delete
   manage:
     form: $/ffte/movies/models/medium/fields.yaml
+
+links:
+  label: Links
+  view:
+    list: $/ffte/movies/models/link/columns.yaml
+    toolbarButtons: create|delete
+  manage:
+    form: $/ffte/movies/models/link/fields.yaml

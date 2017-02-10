@@ -42,15 +42,13 @@ tabs:
             label: 'Technical Info'
             type: textarea
             tab: Details
-        year:
-            label: Year
-            type: text
         links:
             label: Links
-            type: textarea
+            type: partial
+            path: field_links
             tab: Details
-        formats:
-            label: Formats
+        availabilities:
+            label: Availabilities
             type: taglist
             mode: relation
             customTags: false
@@ -67,6 +65,33 @@ tabs:
             mode: relation
             customTags: false
             tab: Details
+        countries:
+            label: Countries
+            type: taglist
+            mode: relation
+            customTags: false
+            tab: Techinfo
+        languages:
+            label: Languages
+            type: taglist
+            mode: relation
+            customTags: false
+            tab: Techinfo
+        year:
+            label: Year
+            type: text
+            span: left
+            tab: Techinfo
+        duration:
+            label: 'Duration (Minutes)'
+            type: text
+            span: right
+            tab: Techinfo
+        image_ratio:
+            label: 'Image Ratio'
+            type: text
+            span: left
+            tab: Techinfo
         media:
             label: Media
             type: partial

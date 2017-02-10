@@ -16,11 +16,9 @@ columns:
     provider:
         label: Provider
         relation: provider
-        sortable: false
         select: name
     format:
         label: Format
         relation: format
-        sortable: false
         select: name
         default: NULL
