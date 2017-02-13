@@ -24,7 +24,7 @@ class CreateMoviesTable extends Migration
             $table->string('duration')->nullable();
             $table->string('image_ratio')->nullable();
 
-            //$table->text('links')->nullable();
+            $table->text('org_links')->nullable();
             $table->text('availability')->nullable();
 
             $table->string('seo_title')->nullable();

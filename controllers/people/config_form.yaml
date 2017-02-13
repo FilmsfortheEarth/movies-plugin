@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Person
+
+# Model Form Field configuration
+form: $/ffte/movies/models/person/fields.yaml
+
+# Model Class name
+modelClass: Ffte\Movies\Models\Person
+
+# Default redirect location
+defaultRedirect: ffte/movies/people
+
+# Create page
+create:
+    title: Create Person
+    redirect: ffte/movies/people/update/:id
+    redirectClose: ffte/movies/people
+
+# Update page
+update:
+    title: Edit Person
+    redirect: ffte/movies/people
+    redirectClose: ffte/movies/people
+
+# Preview page
+preview:
+    title: Preview Person

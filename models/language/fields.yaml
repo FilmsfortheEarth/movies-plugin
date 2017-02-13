@@ -1,0 +1,17 @@
+fields:
+    id:
+        label: ID
+        oc.commentPosition: ''
+        span: full
+        disabled: true
+        type: text
+    code:
+        label: Code
+        oc.commentPosition: ''
+        span: left
+        type: text
+    name:
+        label: Name
+        span: right
+        oc.commentPosition: ''
+        type: text

@@ -1,0 +1,12 @@
+fields:
+    code:
+        label: Code
+        oc.commentPosition: ''
+        span: left
+        disabled: 0
+        type: text
+    name:
+        label: Name
+        oc.commentPosition: ''
+        span: right
+        type: text

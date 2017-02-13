@@ -1,0 +1,10 @@
+name: Countries
+form: $/ffte/movies/models/country/fields.yaml
+modelClass: Ffte\Movies\Models\Country
+defaultRedirect: ffte/movies/countries
+create:
+    redirect: 'ffte/movies/countries/update/:id'
+    redirectClose: ffte/movies/countries
+update:
+    redirect: ffte/movies/countries
+    redirectClose: ffte/movies/countries

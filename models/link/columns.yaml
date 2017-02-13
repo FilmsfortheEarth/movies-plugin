@@ -1,0 +1,13 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    linktype:
+      label: Type
+      relation: linktype
+      select: name
+    url:
+      label: Url
+    title:
+      label: Title

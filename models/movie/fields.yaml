@@ -47,6 +47,10 @@ tabs:
             type: partial
             path: field_links
             tab: Details
+        org_links:
+            label: Original Link Data
+            type: text
+            tab: Details
         availabilities:
             label: Availabilities
             type: taglist

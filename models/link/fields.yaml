@@ -1,0 +1,13 @@
+fields:
+    linktype:
+        lable: 'Link Type'
+        type: relation
+    url:
+        label: Url
+        required: true
+        type: text
+    title:
+        label: Title
+        oc.commentPosition: ''
+        span: full
+        type: text

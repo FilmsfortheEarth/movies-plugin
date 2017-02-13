@@ -1,0 +1,10 @@
+name: Languages
+form: $/ffte/movies/models/language/fields.yaml
+modelClass: Ffte\Movies\Models\Language
+defaultRedirect: ffte/movies/languages
+create:
+    redirect: 'ffte/movies/languages/update/:id'
+    redirectClose: ffte/movies/languages
+update:
+    redirect: ffte/movies/languages
+    redirectClose: ffte/movies/languages

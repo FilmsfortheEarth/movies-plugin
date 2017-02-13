@@ -1,0 +1,15 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    name:
+        label: Name
+        required: true
+    slug:
+        label: Slug
+        required: true
+    movies:
+        label: Movies
+        type: relation
+        nameFrom: title

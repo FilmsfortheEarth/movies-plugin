@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Medium
+
+# Model Form Field configuration
+form: $/ffte/movies/models/medium/fields.yaml
+
+# Model Class name
+modelClass: Ffte\Movies\Models\Medium
+
+# Default redirect location
+defaultRedirect: ffte/movies/media
+
+# Create page
+create:
+    title: Create Medium
+    redirect: ffte/movies/media/update/:id
+    redirectClose: ffte/movies/media
+
+# Update page
+update:
+    title: Edit Medium
+    redirect: ffte/movies/media
+    redirectClose: ffte/movies/media
+
+# Preview page
+preview:
+    title: Preview Medium

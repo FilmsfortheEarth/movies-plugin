@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Category
+
+# Model Form Field configuration
+form: $/ffte/movies/models/category/fields.yaml
+
+# Model Class name
+modelClass: Ffte\Movies\Models\Category
+
+# Default redirect location
+defaultRedirect: ffte/movies/categories
+
+# Create page
+create:
+    title: Create Category
+    redirect: ffte/movies/categories/update/:id
+    redirectClose: ffte/movies/categories
+
+# Update page
+update:
+    title: Edit Category
+    redirect: ffte/movies/categories
+    redirectClose: ffte/movies/categories
+
+# Preview page
+preview:
+    title: Preview Category

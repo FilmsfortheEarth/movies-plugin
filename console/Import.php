@@ -2,6 +2,8 @@
 
 use Exception;
 use Ffte\Movies\Models\Category;
+use Ffte\Movies\Models\Link;
+use Ffte\Movies\Models\LinkType;
 use Ffte\Movies\Models\Medium;
 use Ffte\Movies\Models\Tag;
 use Illuminate\Console\Command;
@@ -31,6 +33,8 @@ class Import extends Command
      */
     public function fire()
     {
+        $errors = [];
+
         //$url = $this->argument('url');
         $url = "C:\\Users\\munxar\\Downloads\\movies.json";
         $movies = json_decode(file_get_contents($url), true);
@@ -74,7 +78,7 @@ class Import extends Command
                 'jury_rating' => $movie['jury_rating'],
                 'other_rating' => $movie['other_rating'],
                 'technical_info' => $movie['technical_info'],
-                'links' => $movie['links'],
+                'org_links' => $movie['links'],
                 'seo_title' => $movie['seo_title'],
                 'seo_description' => $movie['seo_description'],
                 'seo_keywords' => $movie['seo_keywords'],
@@ -85,19 +89,21 @@ class Import extends Command
             ]);
 
             update($model, $movie, 'title');
-            $model->slug = slugify($movie['title_en']);
-            $model->slug = slugify($movie['title_fr']);
+            $model->lang('en')->slug = slugify($movie['title_en']);
+            $model->lang('fr')->slug = slugify($movie['title_fr']);
             update($model, $movie, 'subtitle');
             update($model, $movie, 'description');
             update($model, $movie, 'notes');
             update($model, $movie, 'jury_rating');
             update($model, $movie, 'other_rating');
             update($model, $movie, 'technical_info');
-            update($model, $movie, 'links');
+
             update($model, $movie, 'seo_title');
             update($model, $movie, 'seo_description');
             update($model, $movie, 'seo_keywords');
 
+            $model->lang('en')->org_links = $movie['links_en'];
+            $model->lang('fr')->org_links = $movie['links_fr'];
 
             $model->tags = array_column($movie['tags'], 'id');
             $model->categories = array_column([$movie['category']], 'id');
@@ -135,10 +141,17 @@ class Import extends Command
                 $model->media()->add($medium);
             }
 
+            $model->links()->delete();
+
+            $error = getLinks($movie['links'], $model);
+            array_push($errors, ['id' => $model->id, 'errors' => $error]);
+
             $model->save();
 
             echo $model->id.' '.$model->title."\n";
         }
+
+        file_put_contents('errors.json', json_encode($errors, JSON_PRETTY_PRINT));
     }
 
     /**
@@ -258,3 +271,49 @@ class Info {
         return $val != null ? intval($val) : $val;
     }
 }
+
+function getLinks($text, $movie) {
+    $errors = [];
+    // replace newline with |
+    $data = str_replace("\r\n", "|", $text);
+    // split by |
+    $lines = explode("|", $data);
+    $lines = array_filter($lines, function($v) { return !empty($v); });
+
+    foreach($lines as $line) {
+        $link = new Link();
+        $link->movie = $movie;
+
+        preg_match("/^.*<a.*href=\"?(.*)\"?.*>(.*)<\\/a>.*/is", $line, $matches);
+        if(count($matches) == 3) {
+            $link->url = $matches[1];
+            $link->title = $matches[2];
+        } else {
+            preg_match("/^.*\\\"(.*)\\\" *: *(.*)$/is", $line, $matches);
+            if(count($matches) == 3) {
+                $link->title = $matches[1];
+                $link->url = $matches[2];
+            }
+        }
+        if($link != "") {
+            $type = LinkType::where('name', '=', $link->title)->first();
+            if($type == null) {
+                $type = 1;
+            }
+        } else {
+            $type = 1;
+        }
+
+        $link->linktype = $type;
+
+        try {
+            $link->save();
+        } catch(Exception $e) {
+            array_push($errors, ['error' => $e->getMessage()]);
+            //echo "# ERROR: " . $movie->id . "\n" . $line . "\n" . $link->url . ", " . $link->title . "\n";
+        }
+    };
+
+    return $errors;
+}
+

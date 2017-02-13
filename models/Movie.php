@@ -21,7 +21,7 @@ class Movie extends Model
 
     public $translatable = [
         'title', 'slug', 'subtitle', 'description', 'notes',
-        'jury_rating', 'other_rating', 'technical_info', 'links',
+        'jury_rating', 'other_rating', 'technical_info', 'org_links',
         'seo_title', 'seo_description', 'seo_keywords'
     ];
 

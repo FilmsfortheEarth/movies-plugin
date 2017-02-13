@@ -1,0 +1,10 @@
+name: Links
+form: $/ffte/movies/models/link/fields.yaml
+modelClass: Ffte\Movies\Models\Link
+defaultRedirect: ffte/movies/links
+create:
+    redirect: 'ffte/movies/links/update/:id'
+    redirectClose: ffte/movies/links
+update:
+    redirect: ffte/movies/links
+    redirectClose: ffte/movies/links

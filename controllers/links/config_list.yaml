@@ -1,0 +1,11 @@
+list: $/ffte/movies/models/link/columns.yaml
+modelClass: Ffte\Movies\Models\Link
+title: Links
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'ffte/movies/links/update/:id'
