@@ -85,7 +85,14 @@ class Import extends Command
                 'updated_at' => $movie['updated_at'],
                 'created_at' => $movie['created_at'],
                 'year' => $info->getInt('Jahr'),
-                'duration' => $info->get('Dauer')
+                'duration' => $info->get('Dauer'),
+
+                'stars_contents' => $movie['ratings'][0],
+                'stars_entertainment' => $movie['ratings'][1],
+                'stars_quality' => $movie['ratings'][2],
+                'stars_momentum' => $movie['ratings'][3],
+                'stars_craftsmanship' => $movie['ratings'][4],
+
             ]);
 
             update($model, $movie, 'title');
