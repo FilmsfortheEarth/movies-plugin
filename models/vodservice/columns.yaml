@@ -1,0 +1,11 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    vod_provider:
+        label: Provider
+        relation: vod_provider
+        select: name
+    url:
+        label: Url

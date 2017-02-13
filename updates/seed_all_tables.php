@@ -6,6 +6,7 @@ use Ffte\Movies\Models\Language;
 use Ffte\Movies\Models\LinkType;
 use Ffte\Movies\Models\MediaFormat;
 use Ffte\Movies\Models\MediaProvider;
+use Ffte\Movies\Models\VodProvider;
 use October\Rain\Database\Updates\Seeder;
 use October\Rain\Support\Facades\File;
 
@@ -88,5 +89,16 @@ class SeedAllTables extends Seeder {
         foreach($linkTypes as $linkType) {
             LinkType::create($linkType);
         }
+
+        $vod_providers = [
+            ['name' => 'iTunes'],
+            ['name' => 'Amazon'],
+            ['name' => 'Netflix']
+        ];
+
+        foreach($vod_providers as $vod_provider) {
+            VodProvider::create($vod_provider);
+        }
+
     }
 }

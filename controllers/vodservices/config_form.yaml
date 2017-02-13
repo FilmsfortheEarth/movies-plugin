@@ -1,0 +1,10 @@
+name: VodServices
+form: $/ffte/movies/models/vodservice/fields.yaml
+modelClass: Ffte\Movies\Models\VodService
+defaultRedirect: ffte/movies/vodservices
+create:
+    redirect: 'ffte/movies/vodservices/update/:id'
+    redirectClose: ffte/movies/vodservices
+update:
+    redirect: ffte/movies/vodservices
+    redirectClose: ffte/movies/vodservices

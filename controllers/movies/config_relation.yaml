@@ -14,3 +14,11 @@ links:
     toolbarButtons: create|delete
   manage:
     form: $/ffte/movies/models/link/fields.yaml
+
+vod_services:
+  label: VOD Services
+  view:
+    list: $/ffte/movies/models/vodservice/columns.yaml
+    toolbarButtons: create|delete
+  manage:
+    form: $/ffte/movies/models/vodservice/fields.yaml

@@ -1,0 +1,13 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    vod_provider:
+        label: Provider
+        type: relation
+        required: true
+    url:
+        label: Url
+        type: text
+        required: true

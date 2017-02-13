@@ -3,31 +3,31 @@ tabs:
         is_active:
             label: Active
             type: switch
-            tab: Details
+            tab: General
         title:
             label: Title
             oc.commentPosition: ''
             span: left
             required: true
             type: text
-            tab: Details
+            tab: General
         slug:
             label: Slug
             required: true
             oc.commentPosition: ''
             span: right
             type: text
-            tab: Details
+            tab: General
         original_title:
-            label: Original Title
+            label: 'Original Title'
             type: text
             span: right
-            tab: Details
+            tab: General
         subtitle:
             label: Subtitle
             type: text
             span: left
-            tab: Details
+            tab: General
         description:
             label: Description
             type: textarea
@@ -58,7 +58,12 @@ tabs:
             type: taglist
             mode: relation
             customTags: false
-            tab: Details
+            tab: Availability
+        vod_services:
+            label: VOD Services
+            type: partial
+            path: field_vod_services
+            tab: Availability
         tags:
             label: Tags
             type: taglist
@@ -158,22 +163,3 @@ tabs:
             label: 'SEO Keywords'
             type: text
             tab: SEO
-        repeater1s:
-            label: Auszeichnungen
-            oc.commentPosition: ''
-            prompt: 'Add new item'
-            span: full
-            type: repeater
-            tab: 'Tab 5'
-            form:
-                fields:
-                    text1:
-                        label: Titel
-                        oc.commentPosition: ''
-                        span: auto
-                        type: text
-                    text2:
-                        label: Url
-                        oc.commentPosition: ''
-                        span: auto
-                        type: text

@@ -12,4 +12,6 @@
   - create_languages_table.php
   - create_links_table.php
   - create_link_types_table.php
+  - create_vod_providers_table.php
+  - create_vod_services_table.php
   - seed_all_tables.php

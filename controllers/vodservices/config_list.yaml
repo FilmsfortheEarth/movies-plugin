@@ -1,0 +1,11 @@
+list: $/ffte/movies/models/vodservice/columns.yaml
+modelClass: Ffte\Movies\Models\VodService
+title: VodServices
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'ffte/movies/vodservices/update/:id'
