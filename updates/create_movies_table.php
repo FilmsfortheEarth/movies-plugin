@@ -33,6 +33,12 @@ class CreateMoviesTable extends Migration
             $table->text('seo_description')->nullable();
             $table->text('seo_keywords')->nullable();
 
+            $table->float('stars_contents')->nullable();
+            $table->float('stars_entertainment')->nullable();
+            $table->float('stars_quality')->nullable();
+            $table->float('stars_momentum')->nullable();
+            $table->float('stars_craftsmanship')->nullable();
+
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

@@ -41,6 +41,35 @@ tabs:
             type: partial
             path: field_ratings
             tab: Rating
+        star_rating:
+            label: Star Rating
+            type: section
+            tab: Rating
+        stars_contents:
+            label: Contents
+            type: number
+            span: left
+            tab: Rating
+        stars_entertainment:
+            label: entertainment value
+            type: number
+            span: right
+            tab: Rating
+        stars_quality:
+            label: scientificity+ journalistic quality
+            type: number
+            span: left
+            tab: Rating
+        stars_momentum:
+            label: Transfer of a momentum
+            type: number
+            span: right
+            tab: Rating
+        stars_craftsmanship:
+            label: Picture, music, craftsmanship
+            type: number
+            span: left
+            tab: Rating
         jury_rating:
             label: 'Jury Rating'
             type: textarea
