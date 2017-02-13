@@ -44,7 +44,8 @@ class Movie extends Model
     public $hasMany = [
         'media' => [Medium::class, 'delete' => true],
         'links' => [Link::class, 'delete' => true],
-        'vod_services' => [VodService::class, 'delete' => true]
+        'vod_services' => [VodService::class, 'delete' => true],
+        'ratings' => [Rating::class, 'delete' => true],
     ];
 
     public $belongsTo = [];

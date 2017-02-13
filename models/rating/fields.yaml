@@ -1,0 +1,26 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    rating_type:
+        label: Type
+        type: relation
+    content:
+        label: Zitat / Text
+        type: textarea
+        size: small
+    name:
+        label: Quelle
+        type: text
+        trigger:
+            action: hide
+            field: rating_type
+            condition: value[1]
+    url:
+        label: Url
+        type: text
+        trigger:
+            action: hide
+            field: rating_type
+            condition: value[1]

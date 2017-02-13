@@ -22,3 +22,11 @@ vod_services:
     toolbarButtons: create|delete
   manage:
     form: $/ffte/movies/models/vodservice/fields.yaml
+
+ratings:
+  label: Ratings
+  view:
+    list: $/ffte/movies/models/rating/columns.yaml
+    toolbarButtons: create|delete
+  manage:
+    form: $/ffte/movies/models/rating/fields.yaml

@@ -6,6 +6,7 @@ use Ffte\Movies\Models\Language;
 use Ffte\Movies\Models\LinkType;
 use Ffte\Movies\Models\MediaFormat;
 use Ffte\Movies\Models\MediaProvider;
+use Ffte\Movies\Models\RatingType;
 use Ffte\Movies\Models\VodProvider;
 use October\Rain\Database\Updates\Seeder;
 use October\Rain\Support\Facades\File;
@@ -98,6 +99,15 @@ class SeedAllTables extends Seeder {
 
         foreach($vod_providers as $vod_provider) {
             VodProvider::create($vod_provider);
+        }
+
+        $rating_types = [
+            ['name' => 'Filme für die Erde Rating'],
+            ['name' => 'External Rating'],
+            ['name' => 'Festival Award']
+        ];
+        foreach($rating_types as $rating_type) {
+            RatingType::create($rating_type);
         }
 
     }

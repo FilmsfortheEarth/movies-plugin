@@ -1,0 +1,15 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    rating_type:
+        label: Type
+        relation: rating_type
+        select: name
+    content:
+        label: Zitat
+        type: text
+    name:
+        label: Source
+        type: text

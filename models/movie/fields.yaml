@@ -31,19 +31,25 @@ tabs:
         description:
             label: Description
             type: textarea
-            tab: Details
+            tab: General
         notes:
             label: Notes
             type: textarea
-            tab: Details
+            tab: General
+        ratings:
+            label: Ratings
+            type: partial
+            path: field_ratings
+            tab: Rating
         jury_rating:
             label: 'Jury Rating'
             type: textarea
-            tab: Details
+            tab: Rating
         other_rating:
             label: 'Other Rating'
             type: textarea
-            tab: Details
+            tab: Rating
+
         links:
             label: Links
             type: partial

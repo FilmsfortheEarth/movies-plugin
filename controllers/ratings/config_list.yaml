@@ -1,0 +1,11 @@
+list: $/ffte/movies/models/rating/columns.yaml
+modelClass: Ffte\Movies\Models\Rating
+title: Ratings
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'ffte/movies/ratings/update/:id'

@@ -1,0 +1,10 @@
+name: Ratings
+form: $/ffte/movies/models/rating/fields.yaml
+modelClass: Ffte\Movies\Models\Rating
+defaultRedirect: ffte/movies/ratings
+create:
+    redirect: 'ffte/movies/ratings/update/:id'
+    redirectClose: ffte/movies/ratings
+update:
+    redirect: ffte/movies/ratings
+    redirectClose: ffte/movies/ratings
