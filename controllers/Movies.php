@@ -1,6 +1,7 @@
 <?php namespace Ffte\Movies\Controllers;
 
 use Backend\Behaviors\FormController;
+use Backend\Behaviors\RelationController;
 use Backend\Classes\Controller;
 use BackendMenu;
 
@@ -10,7 +11,7 @@ class Movies extends Controller
     public $implement = [
         'Backend\Behaviors\ListController',
         FormController::class,
-        'Backend\Behaviors\RelationController'
+        RelationController::class
     ];
     
     public $listConfig = 'config_list.yaml';

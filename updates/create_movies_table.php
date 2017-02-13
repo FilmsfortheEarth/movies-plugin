@@ -14,6 +14,8 @@ class CreateMoviesTable extends Migration
             $table->increments('id');
             $table->string('title')->required();
             $table->string('slug')->required();
+
+            $table->string('original_title')->nullable();
             $table->string('subtitle')->nullable();
             $table->text('description')->nullable();
             $table->text('notes')->nullable();

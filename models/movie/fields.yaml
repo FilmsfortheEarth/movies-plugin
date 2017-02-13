@@ -18,9 +18,15 @@ tabs:
             span: right
             type: text
             tab: Details
+        original_title:
+            label: Original Title
+            type: text
+            span: right
+            tab: Details
         subtitle:
             label: Subtitle
             type: text
+            span: left
             tab: Details
         description:
             label: Description
@@ -38,17 +44,13 @@ tabs:
             label: 'Other Rating'
             type: textarea
             tab: Details
-        technical_info:
-            label: 'Technical Info'
-            type: textarea
-            tab: Techinfo
         links:
             label: Links
             type: partial
             path: field_links
             tab: Details
         org_links:
-            label: Original Link Data
+            label: 'Original Link Data'
             type: text
             tab: Details
         availabilities:
@@ -69,6 +71,10 @@ tabs:
             mode: relation
             customTags: false
             tab: Details
+        technical_info:
+            label: 'Technical Info'
+            type: textarea
+            tab: Techinfo
         countries:
             label: Countries
             type: taglist
@@ -152,3 +158,22 @@ tabs:
             label: 'SEO Keywords'
             type: text
             tab: SEO
+        repeater1s:
+            label: Auszeichnungen
+            oc.commentPosition: ''
+            prompt: 'Add new item'
+            span: full
+            type: repeater
+            tab: 'Tab 5'
+            form:
+                fields:
+                    text1:
+                        label: Titel
+                        oc.commentPosition: ''
+                        span: auto
+                        type: text
+                    text2:
+                        label: Url
+                        oc.commentPosition: ''
+                        span: auto
+                        type: text

@@ -11,8 +11,7 @@ class CreatePeopleTable extends Migration
         Schema::create('ffte_movies_people', function(Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('first_name')->nullable();
-            $table->string('last_name')->nullable();
+            $table->string('name');
             $table->timestamps();
         });
 
