@@ -35,8 +35,8 @@ class Import extends Command
     {
         $errors = [];
 
-        //$url = $this->argument('url');
-        $url = "C:\\Users\\munxar\\Downloads\\movies.json";
+        $url = $this->argument('url');
+        //$url = "C:\\Users\\munxar\\Downloads\\movies.json";
         $movies = json_decode(file_get_contents($url), true);
         $tags = [];
         $categories = [];
