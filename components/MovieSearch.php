@@ -12,7 +12,6 @@ class MovieSearch extends ComponentBase
     public function onRun()
     {
         $this->page['movieDetail'] = $this->property('movieDetail');
-        Debugbar::info('harr');
     }
 
     public function componentDetails()
