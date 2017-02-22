@@ -35,8 +35,8 @@ class Import extends Command
     {
         $errors = [];
 
-        $url = $this->argument('url');
-        //$url = "C:\\Users\\munxar\\Downloads\\movies.json";
+        //$url = $this->argument('url');
+        $url = "C:\\Users\\munxar\\Downloads\\movies.json";
         $movies = json_decode(file_get_contents($url), true);
         $tags = [];
         $categories = [];
@@ -66,96 +66,100 @@ class Import extends Command
         }
 
         foreach($movies as $movie) {
-            $info = new Info($movie['technical_info']);
+            if(!preg_match('/Weitere/', $movie['title'])) {
+                $info = new Info($movie['technical_info']);
 
-            $model = Movie::updateOrCreate(['id' => $movie['id']], [
-                'id' => $movie['id'],
-                'title' => $movie['title'],
-                'slug' => slugify($movie['title']),
-                'subtitle' => $movie['subtitle'],
-                'description' => $movie['description'],
-                'notes' => $movie['notes'],
-                'jury_rating' => $movie['jury_rating'],
-                'other_rating' => $movie['other_rating'],
-                'technical_info' => $movie['technical_info'],
-                'org_links' => $movie['links'],
-                'seo_title' => $movie['seo_title'],
-                'seo_description' => $movie['seo_description'],
-                'seo_keywords' => $movie['seo_keywords'],
-                'updated_at' => $movie['updated_at'],
-                'created_at' => $movie['created_at'],
-                'year' => $info->getInt('Jahr'),
-                'duration' => $info->get('Dauer'),
+                $model = Movie::updateOrCreate(['id' => $movie['id']], [
+                    'id' => $movie['id'],
+                    'title' => $movie['title'],
+                    'slug' => slugify($movie['title']).'-'.$movie['id'],
+                    'subtitle' => $movie['subtitle'],
+                    'description' => $movie['description'],
+                    'notes' => $movie['notes'],
+                    'jury_rating' => $movie['jury_rating'],
+                    'other_rating' => $movie['other_rating'],
+                    'technical_info' => $movie['technical_info'],
+                    'org_links' => $movie['links'],
+                    'seo_title' => $movie['seo_title'],
+                    'seo_description' => $movie['seo_description'],
+                    'seo_keywords' => $movie['seo_keywords'],
+                    'updated_at' => $movie['updated_at'],
+                    'created_at' => $movie['created_at'],
+                    'year' => $info->getInt('Jahr'),
+                    'duration' => $info->get('Dauer'),
 
-                'stars_contents' => $movie['ratings'][0],
-                'stars_entertainment' => $movie['ratings'][1],
-                'stars_quality' => $movie['ratings'][2],
-                'stars_momentum' => $movie['ratings'][3],
-                'stars_craftsmanship' => $movie['ratings'][4],
+                    'stars_contents' => $movie['ratings'][0],
+                    'stars_entertainment' => $movie['ratings'][1],
+                    'stars_quality' => $movie['ratings'][2],
+                    'stars_momentum' => $movie['ratings'][3],
+                    'stars_craftsmanship' => $movie['ratings'][4],
 
-            ]);
+                ]);
 
-            update($model, $movie, 'title');
-            $model->lang('en')->slug = slugify($movie['title_en']);
-            $model->lang('fr')->slug = slugify($movie['title_fr']);
-            update($model, $movie, 'subtitle');
-            update($model, $movie, 'description');
-            update($model, $movie, 'notes');
-            update($model, $movie, 'jury_rating');
-            update($model, $movie, 'other_rating');
-            update($model, $movie, 'technical_info');
+                update($model, $movie, 'title');
+                $model->lang('en')->slug = slugify($movie['title_en']).'-'.$movie['id'];
+                $model->lang('fr')->slug = slugify($movie['title_fr']).'-'.$movie['id'];
+                update($model, $movie, 'subtitle');
+                update($model, $movie, 'description');
+                update($model, $movie, 'notes');
+                update($model, $movie, 'jury_rating');
+                update($model, $movie, 'other_rating');
+                update($model, $movie, 'technical_info');
 
-            update($model, $movie, 'seo_title');
-            update($model, $movie, 'seo_description');
-            update($model, $movie, 'seo_keywords');
+                update($model, $movie, 'seo_title');
+                update($model, $movie, 'seo_description');
+                update($model, $movie, 'seo_keywords');
 
-            $model->lang('en')->org_links = $movie['links_en'];
-            $model->lang('fr')->org_links = $movie['links_fr'];
+                $model->lang('en')->org_links = $movie['links_en'];
+                $model->lang('fr')->org_links = $movie['links_fr'];
 
-            $model->tags = array_column($movie['tags'], 'id');
-            $model->categories = array_column([$movie['category']], 'id');
-            $model->availabilities = $movie['formats'];
+                $model->tags = array_column($movie['tags'], 'id');
+                $model->categories = array_column([$movie['category']], 'id');
+                $model->availabilities = $movie['formats'];
 
-            $cover = getFile($movie['cover']);
-            if($cover != null) {
-                $model->cover = $cover;
-            }
-
-            $backgrounds = array_map(function($url) { return getFile($url); }, $movie['backgrounds']);
-            $model->backgrounds()->delete();
-            foreach($backgrounds as $background) {
-                if($background != null) {
-                    $model->backgrounds()->add($background);
+                $cover = getFile($movie['cover']);
+                if($cover != null) {
+                    $model->cover = $cover;
                 }
-            }
 
-            $images = array_map(function($url) { return getFile($url); }, $movie['images']);
-            $model->images()->delete();
-            foreach($images as $image) {
-                if($image != null) {
-                    $model->images()->add($image);
+                $backgrounds = array_map(function($url) { return getFile($url); }, $movie['backgrounds']);
+                $model->backgrounds()->delete();
+                foreach($backgrounds as $background) {
+                    if($background != null) {
+                        $model->backgrounds()->add($background);
+                    }
                 }
+
+                $images = array_map(function($url) { return getFile($url); }, $movie['images']);
+                $model->images()->delete();
+                foreach($images as $image) {
+                    if($image != null) {
+                        $model->images()->add($image);
+                    }
+                }
+
+                $model->media()->delete();
+
+                foreach($movie['movies'] as $m) {
+                    $medium = new Medium();
+                    $medium->title = $m['title'];
+                    $medium->code = $m['url'];
+                    $medium->provider = convertProvider($m['provider']);
+                    $medium->movie = $model;
+                    $model->media()->add($medium);
+                }
+
+                $model->links()->delete();
+
+                $error = getLinks($movie['links'], $model);
+                array_push($errors, ['id' => $model->id, 'errors' => $error]);
+
+                $model->save();
+
+                echo $model->id.' '.$model->title."\n";
+            } else {
+                echo $movie['id']." skipped\n";
             }
-
-            $model->media()->delete();
-
-            foreach($movie['movies'] as $m) {
-                $medium = new Medium();
-                $medium->title = $m['title'];
-                $medium->url = $m['url'];
-                $medium->provider = convertProvider($m['provider']);
-                $medium->movie = $model;
-                $model->media()->add($medium);
-            }
-
-            $model->links()->delete();
-
-            $error = getLinks($movie['links'], $model);
-            array_push($errors, ['id' => $model->id, 'errors' => $error]);
-
-            $model->save();
-
-            echo $model->id.' '.$model->title."\n";
         }
 
         file_put_contents('errors.json', json_encode($errors, JSON_PRETTY_PRINT));

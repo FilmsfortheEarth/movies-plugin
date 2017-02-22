@@ -10,8 +10,8 @@ columns:
     title:
         label: Title
         type: text
-    url:
-        label: Url
+    code:
+        label: Code
         type: text
     provider:
         label: Provider

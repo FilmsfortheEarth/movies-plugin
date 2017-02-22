@@ -9,7 +9,9 @@ fields:
     name:
         label: Name
         type: text
-    embed_code:
-        label: Embed Code
-        type: codeeditor
-        language: html
+    embed_url_video:
+        label: Embed Url Video
+        type: text
+    embed_url_image:
+        label: Embed Url Image
+        type: text

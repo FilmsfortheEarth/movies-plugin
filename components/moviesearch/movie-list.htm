@@ -1,0 +1,22 @@
+{% for movie in __SELF__.movies %}
+<div class="col-12 col-lg-6 media my-4">
+    <a href="{{ movieDetail|page({slug: movie.slug}) }}">
+        <img class="d-flex mr-3" src="{{ movie.cover.thumb(128, auto) }}" alt="Generic placeholder image">
+    </a>
+    <div class="media-body">
+        <h5 class="mt-0 mb-1">{{ movie.title }}</h5>
+        {{ movie.seo_description }}
+
+        <div>
+            {% for medium in movie.media %}
+                <figure class="figure">
+                    <a href="{{ 'movie'|page({slug: movie.slug, medium: medium.id}) }}" class="media-action">
+                        <img width="60px" src="{{ image_src(medium) }}" class="figure-img img-fluid" alt="A generic square placeholder image with rounded corners in a figure.">
+                    </a>
+                    <figcaption class="figure-caption">{{medium.title}}</figcaption>
+                </figure>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endfor %}

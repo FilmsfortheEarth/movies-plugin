@@ -12,8 +12,9 @@ class CreateMediaProvidersTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('name')->required();
-            $table->text('embed_code')->nullable();
-            
+            $table->text('embed_url_video')->nullable();
+            $table->text('embed_url_image')->nullable();
+
             $table->timestamps();
         });
     }

@@ -20,7 +20,7 @@ class Movie extends Model
     ];
 
     public $translatable = [
-        'title', ['slug', 'index' => true], 'subtitle', 'description', 'notes',
+        ['title', 'index' => true], ['slug', 'index' => true], 'subtitle', 'description', 'notes',
         'jury_rating', 'other_rating', 'technical_info', 'org_links',
         'seo_title', 'seo_description', 'seo_keywords'
     ];

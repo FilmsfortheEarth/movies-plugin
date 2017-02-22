@@ -1,14 +1,4 @@
 fields:
-    title:
-        label: Title
-        oc.commentPosition: ''
-        span: left
-        type: text
-    url:
-        label: Url
-        oc.commentPosition: ''
-        span: right
-        type: text
     provider:
         label: Provider
         oc.commentPosition: ''
@@ -16,6 +6,16 @@ fields:
         descriptionFrom: description
         span: left
         type: relation
+    code:
+        label: Code
+        oc.commentPosition: ''
+        span: right
+        type: text
+    title:
+        label: Title
+        oc.commentPosition: ''
+        span: left
+        type: text
     format:
         label: Format
         oc.commentPosition: ''
@@ -24,3 +24,12 @@ fields:
         span: right
         type: relation
         emptyOption: None
+    duration:
+        label: Duration (min)
+        span: left
+        type: number
+    thumbnail:
+        label: Thumbnail
+        span: right
+        type: fileupload
+        mode: image

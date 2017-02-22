@@ -45,12 +45,32 @@ class SeedAllTables extends Seeder {
         }
 
         $providers = [
-            ['id' => 1, 'name' => 'Arte Future'],
-            ['id' => 2, 'name' => 'Dailymotion'],
-            ['id' => 3, 'name' => 'Distrify'],
-            ['id' => 4, 'name' => 'VHX'],
-            ['id' => 5, 'name' => 'Vimeo'],
-            ['id' => 6, 'name' => 'Youtube'],
+            [
+                'id' => 1, 'name' => 'Arte Future',
+
+            ],
+            [
+                'id' => 2, 'name' => 'Dailymotion',
+
+            ],
+            [
+                'id' => 3, 'name' => 'Distrify',
+
+            ],
+            [
+                'id' => 4, 'name' => 'VHX',
+
+            ],
+            [
+                'id' => 5, 'name' => 'Vimeo',
+                'embed_url_video' => 'https://player.vimeo.com/video/{{code}}',
+                'embed_url_image' => '{{code|vimeo}}'
+            ],
+            [
+                'id' => 6, 'name' => 'Youtube',
+                'embed_url_video' => 'https://www.youtube.com/embed/{{code}}',
+                'embed_url_image' => 'https://i.ytimg.com/vi/{{code}}/default.jpg'
+            ],
         ];
 
         foreach($providers as $provider) {

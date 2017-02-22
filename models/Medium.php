@@ -1,6 +1,7 @@
 <?php namespace Ffte\Movies\Models;
 
 use Model;
+use System\Models\File;
 
 /**
  * Medium Model
@@ -49,7 +50,9 @@ class Medium extends Model
     public $morphTo = [];
     public $morphOne = [];
     public $morphMany = [];
-    public $attachOne = [];
+    public $attachOne = [
+        'thumbnail' => [File::class]
+    ];
     public $attachMany = [];
 
     public function beforeSave() {
