@@ -1,9 +1,40 @@
 
 <form class="form">
     <div class="row">
-        <input data-request="{{__SELF__}}::onSearch" data-track-input="250" type="text" class="form-control" name="search" placeholder="Search">
+        <input type="search" class="form-control" name="search" placeholder="Search" value="{{search}}" autofocus autocomplete="off">
     </div>
 </form>
+<div class="row mt-2">
+    <div class="col">
+    {% if search %}
+        Suchbegriff: <span class="badge badge-pill badge-default">{{search}} <a href="{{ this.page.baseFileName|page }}"><span aria-hidden="true">&times;</span></a></span>
+    {% endif %}
+    </div>
+</div>
+
+{% for movie in movies %}
+{% else %}
+<div class="row justify-content-center">
+    <h2>Leider keine Filme mit {{search}} gefunden.</h2>
+</div>
+{% endfor %}
+
 <div class="movie-list">
     {% partial __SELF__~"::movie-list" %}
 </div>
+
+{% if movies.lastPage > 1 %}
+<nav aria-label="...">
+    <ul class="pagination pagination-sm justify-content-center">
+        <li class="page-item{{movies.currentPage == 1 ? ' disabled'}}"><a class="page-link" href="{{ this.page.baseFileName|page}}?page={{movies.currentPage-1}}&search={{search}}">Prev</a></li>
+
+        {% for page in 1..movies.lastPage %}
+        <li class="page-item{{ movies.currentPage == page ? ' active' : null }}">
+            <a class="page-link" href="{{ this.page.baseFileName|page}}?page={{page}}&search={{search}}">{{ page }}</a>
+        </li>
+        {% endfor %}
+
+        <li class="page-item{{movies.lastPage == movies.currentPage ? ' disabled'}}"><a class="page-link" href="{{ this.page.baseFileName|page}}?page={{movies.currentPage+1}}&search={{search}}">Next</a></li>
+    </ul>
+</nav>
+{% endif %}

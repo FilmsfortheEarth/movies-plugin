@@ -8,10 +8,14 @@ use Debugbar;
 class MovieSearch extends ComponentBase
 {
     public $search = '';
+    public $movies;
 
     public function onRun()
     {
+        $this->search = $this->page['search'] = Input('search');
+
         $this->page['movieDetail'] = $this->property('movieDetail');
+        $this->movies = $this->page['movies'] = $this->getMovies();
     }
 
     public function componentDetails()
@@ -42,10 +46,28 @@ class MovieSearch extends ComponentBase
         return Page::sortBy('baseFileName')->lists('baseFileName', 'baseFileName');
     }
 
-    public function movies() {
-        return $this->page['movies'] = Movie::with('media', 'media.provider', 'cover', 'backgrounds')->where('title', 'LIKE', "%$this->search%")->get();
+    public function getMovies() {
+        $search = "%$this->search%";
+        $page = trim(Input('page'));
+        if (!strlen($page) || !preg_match('/^[0-9]+$/', $page)) {
+            $page = 1;
+        }
+
+        return $this->page['movies'] = Movie::with('media', 'tags', 'categories', 'media.provider', 'cover', 'backgrounds')
+            ->where('title', 'LIKE', $search)
+            ->orWhere('description', 'LIKE', $search)
+            ->orWhere('seo_title', 'LIKE', $search)
+            ->orWhere('seo_description', 'LIKE', $search)
+            ->orWhereHas('tags', function($q) use($search) {
+                $q->where('name', 'LIKE', $search);
+            })
+            ->orWhereHas('categories', function($q) use($search) {
+                $q->where('name', 'LIKE', $search);
+            })
+            ->paginate(30, $page);
     }
 
+    /*
     public function onSearch() {
         $this->search = Input('search');
 
@@ -53,4 +75,5 @@ class MovieSearch extends ComponentBase
             '.movie-list' => $this->renderPartial('@movie-list')
         ];
     }
+    */
 }
