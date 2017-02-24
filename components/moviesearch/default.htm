@@ -3,6 +3,22 @@
     <div class="row">
         <input type="search" class="form-control" name="search" placeholder="Search" value="{{search}}" autocomplete="off">
     </div>
+    <div class="row">
+        <label for="tag">Tag: </label>
+        <select name="tag" id="tag" onchange="submit()">
+            <option value="">- Alle -</option>
+            {% for t in tags %}
+            <option value="{{t.id}}" {{tag == t.id ? "selected"}}>{{t.name}}</option>
+            {% endfor %}
+        </select>
+        <label for="availability">Availability: </label>
+        <select name="availability" id="availability" onchange="submit()">
+            <option value="">- Alle -</option>
+            {% for a in availabilities %}
+            <option value="{{a.id}}" {{availability_id == a.id ? "selected"}}>{{a.name}}</option>
+            {% endfor %}
+        </select>
+    </div>
 </form>
 <div class="row mt-2">
     <div class="col">

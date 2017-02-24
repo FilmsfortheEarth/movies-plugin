@@ -8,6 +8,7 @@ use Response;
 class MovieDetail extends ComponentBase
 {
     public $movie;
+    public $medium;
 
     public function componentDetails()
     {
@@ -46,7 +47,7 @@ class MovieDetail extends ComponentBase
             $media = $movie->media()->first();
         }
 
-        $this->page['media'] = $media;
+        $this->medium = $this->page['media'] = $media;
         $this->movie = $this->page['movie'] = $movie;
     }
 }
