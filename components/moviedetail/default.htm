@@ -15,7 +15,7 @@
         <a href="{{ 'movie'|page({slug: movie.slug, medium: medium.id}) }}" class="media-action">
             <img width="120px" src="{{ image_src(medium) }}" class="figure-img img-fluid" alt="A generic square placeholder image with rounded corners in a figure.">
         </a>
-        <figcaption class="figure-caption">{{medium.title}}</figcaption>
+        <figcaption class="figure-caption ml-1">{{medium.title}}</figcaption>
     </figure>
     {% endfor %}
 </div>
