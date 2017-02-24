@@ -2,28 +2,39 @@
 
 use Cms\Classes\ComponentBase;
 use Cms\Classes\Page;
+use Ffte\Movies\Classes\Link;
 use Ffte\Movies\Models\Availability;
 use \ffte\movies\models\Movie;
-use \ffte\movies\models\Tag;
 use Debugbar;
+use Input;
 
 class MovieSearch extends ComponentBase
 {
     public $search = '';
     public $movies;
-    public $tags;
-    public $tag;
     public $availabilities;
     public $availability_id;
+    public $sorts;
+    public $sort;
+    public $sort_dir;
 
     public function onRun()
     {
-        $this->tags = $this->page['tags'] = Tag::orderBy('name')->get();
+        $query = Input::all();
+        $mode = Input('mode');
+        if(empty($mode)) {
+            $mode = 'list';
+        }
+        $this->page['mode'] = $mode;
+        $this->page['modes'] = [new Link('fa fa-list', 'list', $query, $mode), new Link('fa fa-th', 'cover', $query, $mode)];
+
         $this->availabilities =  $this->page['availabilities'] = Availability::orderBy('name')->get();
+        $this->sorts = $this->page['sorts'] = ['year' => 'Release Year', 'title' => 'Title'];
 
         $this->availability_id = $this->page['availability_id'] = Input('availability');
         $this->search = $this->page['search'] = Input('search');
-        $this->tag = $this->page['tag'] = Input('tag');
+        $this->sort = $this->page['sort'] = Input('sort');
+        $this->sort_dir = $this->page['sort_dir'] = Input('sort_dir');
 
         $this->page['movieDetail'] = $this->property('movieDetail');
         $this->movies = $this->page['movies'] = $this->getMovies();
@@ -63,15 +74,15 @@ class MovieSearch extends ComponentBase
         if (!strlen($page) || !preg_match('/^[0-9]+$/', $page)) {
             $page = 1;
         }
-        $tag_id = $this->tag;
         $availabilty_id = $this->availability_id;
 
+        $sort = $this->sort;
+
+        if(empty($sort)) {
+            $sort = 'year';
+        }
+
         return $this->page['movies'] = Movie::with('media', 'tags', 'categories', 'media.provider', 'cover', 'backgrounds')
-            ->whereHas('tags', function($q) use($tag_id) {
-                if(!empty($tag_id)) {
-                    $q->where('id', $tag_id);
-                }
-            })
             ->whereHas('availabilities', function($q) use($availabilty_id) {
                 if(!empty($availabilty_id)) {
                     $q->where('id', $availabilty_id);
@@ -89,16 +100,8 @@ class MovieSearch extends ComponentBase
                         $q->where('name', 'LIKE', $search);
                     });
             })
+            ->orderBy($sort, $this->sort_dir)
             ->paginate(30, $page);
     }
 
-    /*
-    public function onSearch() {
-        $this->search = Input('search');
-
-        return [
-            '.movie-list' => $this->renderPartial('@movie-list')
-        ];
-    }
-    */
 }
