@@ -7,6 +7,8 @@ use Response;
 
 class MovieDetail extends ComponentBase
 {
+    public $movie;
+
     public function componentDetails()
     {
         return [
@@ -45,6 +47,6 @@ class MovieDetail extends ComponentBase
         }
 
         $this->page['media'] = $media;
-        $this->page['movie'] = $movie;
+        $this->movie = $this->page['movie'] = $movie;
     }
 }

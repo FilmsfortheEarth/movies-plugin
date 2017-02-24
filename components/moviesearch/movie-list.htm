@@ -1,31 +1,34 @@
+
+{% for movie in __SELF__.movies %}
 <div class="row">
-    {% for movie in __SELF__.movies %}
-        <div class="col-12 col-lg-6 media my-4">
-            <a href="{{ movieDetail|page({slug: movie.slug}) }}">
-                <img class="d-flex mr-3" src="{{ movie.cover.thumb(128, auto) }}" alt="Generic placeholder image">
-            </a>
-            <div class="media-body">
-                <h5 class="mt-0 mb-1">{{ movie.title }}</h5>
-                <p>{{ movie.seo_description }}</p>
-                <p>
-                    {% for medium in movie.media %}
-                        <figure class="figure">
-                            <a href="{{ 'movie'|page({slug: movie.slug, medium: medium.id}) }}" class="media-action">
-                                <img width="60px" src="{{ image_src(medium) }}" class="figure-img img-fluid" alt="A generic square placeholder image with rounded corners in a figure.">
-                            </a>
-                            <figcaption class="figure-caption">{{medium.title}}</figcaption>
-                        </figure>
-                    {% endfor %}
-                </p>
-                <p>
-                    {% for tag in movie.tags %}
-                        <a href="{{ 'tag'|page({slug: tag.slug}) }}"><span class="badge badge-pill badge-default">{{tag.name}}</span></a>
-                    {% endfor %}
-                    {% for category in movie.categories %}
-                        <a href="{{ 'collection'|page({slug: category.slug}) }}"><span class="badge badge-pill badge-primary">{{category.name}}</span></a>
-                    {% endfor %}
-                </p>
-            </div>
+    <div class="col-2"></div>
+    <div class="col-8 media my-4">
+        <a href="{{ movieDetail|page({slug: movie.slug}) }}">
+            <img class="d-flex mr-3" src="{{ movie.cover.thumb(128, auto) }}" alt="Generic placeholder image">
+        </a>
+        <div class="media-body">
+            <h5 class="mt-0 mb-1">{{ movie.title }}</h5>
+            <p>{{ movie.seo_description }}</p>
+            <p>
+                {% for tag in movie.tags %}
+                <a href="{{ 'tag'|page({slug: tag.slug}) }}"><span class="badge badge-pill badge-default">{{tag.name}}</span></a>
+                {% endfor %}
+                {% for category in movie.categories %}
+                <a href="{{ 'collection'|page({slug: category.slug}) }}"><span class="badge badge-pill badge-primary">{{category.name}}</span></a>
+                {% endfor %}
+            </p>
+            <p>
+                {% for medium in movie.media %}
+                    <figure class="figure">
+                        <a href="{{ 'movie'|page({slug: movie.slug, medium: medium.id}) }}" class="media-action">
+                            <img width="60px" src="{{ image_src(medium) }}" class="figure-img img-fluid" alt="A generic square placeholder image with rounded corners in a figure.">
+                        </a>
+                        <figcaption class="figure-caption">{{medium.title}}</figcaption>
+                    </figure>
+                {% endfor %}
+            </p>
         </div>
-    {% endfor %}
+    </div>
+    <div class="col-2"></div>
 </div>
+{% endfor %}
