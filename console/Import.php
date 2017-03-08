@@ -13,6 +13,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Ffte\Movies\Models\Movie;
 use System\Models\File;
 
+
 class Import extends Command
 {
     /**
@@ -33,7 +34,13 @@ class Import extends Command
      */
     public function fire()
     {
+        $base_path = base_path('data').DIRECTORY_SEPARATOR;
+
         $errors = [];
+        // create cache dir if not existing
+        if (!is_dir($base_path)) {
+            mkdir($base_path, 0777);
+        }
 
         $url = $this->argument('url');
         //$url = "C:\\Users\\munxar\\Downloads\\movies.json";
@@ -117,12 +124,12 @@ class Import extends Command
                 $model->categories = array_column([$movie['category']], 'id');
                 $model->availabilities = $movie['formats'];
 
-                $cover = getFile($movie['cover']);
+                $cover = getFile($movie['cover'], $base_path);
                 if($cover != null) {
                     $model->cover = $cover;
                 }
 
-                $backgrounds = array_map(function($url) { return getFile($url); }, $movie['backgrounds']);
+                $backgrounds = array_map(function($url) use($base_path) { return getFile($url, $base_path); }, $movie['backgrounds']);
                 $model->backgrounds()->delete();
                 foreach($backgrounds as $background) {
                     if($background != null) {
@@ -130,7 +137,7 @@ class Import extends Command
                     }
                 }
 
-                $images = array_map(function($url) { return getFile($url); }, $movie['images']);
+                $images = array_map(function($url) use($base_path) { return getFile($url, $base_path); }, $movie['images']);
                 $model->images()->delete();
                 foreach($images as $image) {
                     if($image != null) {
@@ -185,12 +192,13 @@ class Import extends Command
 
 }
 
-function getFile($img) {
+function getFile($img, $base_path) {
+
     $url = $img['name'];
     if(empty($url)) {
         return null;
     }
-    $local_url = base_path().'\\data\\'.$url;
+    $local_url = $base_path.$url;
 
     // if file doesn't exists, download
     if(!file_exists($local_url)) {
