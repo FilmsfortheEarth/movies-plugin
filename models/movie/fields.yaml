@@ -127,6 +127,12 @@ tabs:
             mode: relation
             customTags: false
             tab: Techinfo
+        subtitles:
+            label: Subtitles
+            type: taglist
+            mode: relation
+            customTags: false
+            tab: Techinfo
         year:
             label: Year
             type: text
@@ -142,10 +148,10 @@ tabs:
             type: text
             span: left
             tab: Techinfo
-        media:
-            label: Media
+        clips:
+            label: Clips
             type: partial
-            path: field_media
+            path: field_clips
             tab: Media
         cover:
             label: Cover
@@ -160,8 +166,8 @@ tabs:
             imageHeight: '100'
             type: fileupload
             tab: Media
-        backgrounds:
-            label: Backgrounds
+        background:
+            label: Background
             mode: image
             useCaption: true
             thumbOptions:

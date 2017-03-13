@@ -4,9 +4,5 @@
 
 columns:
     id:
-        label: Id
-        sortable: true
-        searchable: true
-    name:
-        label: Name
+        label: ID
         searchable: true

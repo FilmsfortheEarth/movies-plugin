@@ -1,15 +1,12 @@
 <?php namespace Ffte\Movies\Console;
 
 use Exception;
+use Ffte\Movies\Models\Clip;
 use Ffte\Movies\Models\Category;
 use Ffte\Movies\Models\Link;
 use Ffte\Movies\Models\LinkType;
-use Ffte\Movies\Models\Medium;
 use Ffte\Movies\Models\Tag;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Input;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Input\InputArgument;
 use Ffte\Movies\Models\Movie;
 use System\Models\File;
 
@@ -55,8 +52,7 @@ class Import extends Command
 
         foreach($tags as $tag) {
             Tag::updateOrCreate(['id' => $tag['id']], [
-                'name' => $tag['name'],
-                'slug' => slugify($tag['name'])
+                'name' => $tag['name']
             ]);
         }
 
@@ -130,11 +126,10 @@ class Import extends Command
                 }
 
                 $backgrounds = array_map(function($url) use($base_path) { return getFile($url, $base_path); }, $movie['backgrounds']);
-                $model->backgrounds()->delete();
-                foreach($backgrounds as $background) {
-                    if($background != null) {
-                        $model->backgrounds()->add($background);
-                    }
+                //$model->backgrounds()->delete();
+
+                if(sizeof($backgrounds) > 0) {
+                    $model->background()->add($backgrounds[0]);
                 }
 
                 $images = array_map(function($url) use($base_path) { return getFile($url, $base_path); }, $movie['images']);
@@ -145,15 +140,23 @@ class Import extends Command
                     }
                 }
 
-                $model->media()->delete();
+                //$model->media()->delete();
+                //$model->clips()->delete();
 
                 foreach($movie['movies'] as $m) {
+                    $clip = new Clip();
+                    $clip->title = $m['title'];
+                    $clip->url = getUrl($m['provider'], $m['url']);
+                    $clip->save();
+                    $model->clips()->add($clip);
+                    /*
                     $medium = new Medium();
                     $medium->title = $m['title'];
                     $medium->code = $m['url'];
                     $medium->provider = convertProvider($m['provider']);
                     $medium->movie = $model;
                     $model->media()->add($medium);
+                    */
                 }
 
                 $model->links()->delete();
@@ -190,6 +193,18 @@ class Import extends Command
         return [];
     }
 
+}
+
+function getUrl($provider, $url)
+{
+    if($provider == 'youtube') {
+        return "https://www.youtube.com/watch?v={$url}";
+    }
+    if($provider == 'vimeo') {
+        return "https://vimeo.com/{$url}";
+    }
+
+    return "https://www.youtube.com/watch?v=NpEaa2P7qZI";
 }
 
 function getFile($img, $base_path) {

@@ -1,11 +1,11 @@
 
-media:
-  label: Media
+clips:
+  label: Clips
   view:
-    list: $/ffte/movies/models/medium/columns.yaml
-    toolbarButtons: create|delete
+    list: $/ffte/movies/models/clip/columns.yaml
+    toolbarButtons: create|add|delete|remove
   manage:
-    form: $/ffte/movies/models/medium/fields.yaml
+    form: $/ffte/movies/models/clip/fields.yaml
 
 links:
   label: Links

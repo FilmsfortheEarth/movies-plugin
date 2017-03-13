@@ -1,0 +1,26 @@
+fields:
+    url:
+        label: Url
+        oc.commentPosition: ''
+        span: full
+        type: text
+    embed:
+        label: Video
+        type: partial
+        path: $/ffte/movies/controllers/clips/_video.htm
+        dependsOn:
+          - url
+    title:
+        label: Title
+        span: left
+        oc.commentPosition: ''
+        type: text
+    type:
+        label: Type
+        type: relation
+        span: right
+    tags:
+        label: Tags
+        type: taglist
+        mode: relation
+        customTags: false

@@ -1,0 +1,10 @@
+name: Clips
+modelClass: Ffte\Movies\Models\Clip
+form: $/ffte/movies/models/clip/fields.yaml
+defaultRedirect: ffte/movies/clips
+create:
+    redirect: 'ffte/movies/clips/update/:id'
+    redirectClose: ffte/movies/clips
+update:
+    redirect: ffte/movies/clips
+    redirectClose: ffte/movies/clips

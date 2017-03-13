@@ -11,7 +11,7 @@ class Tag extends Model
         'RainLab.Translate.Behaviors.TranslatableModel'
     ];
 
-    public $translatable = ['name', 'slug'];
+    public $translatable = ['name'];
 
     /**
      * @var string The database table used by the model.
@@ -31,18 +31,10 @@ class Tag extends Model
     /**
      * @var array Relations
      */
-    public $hasOne = [];
-    public $hasMany = [];
-    public $belongsTo = [];
 
-    public $belongsToMany = [
-        'movies' => [ Movie::class, 'table' => 'ffte_movies_movie_tag'],
+    public $morphedByMany = [
+        'movies' => [ Movie::class, 'name' => 'taggable', 'table' => 'ffte_movies_taggables'],
+        'clips' => [ Clip::class, 'name' => 'taggable', 'table' => 'ffte_movies_taggables'],
     ];
-
-    public $morphTo = [];
-    public $morphOne = [];
-    public $morphMany = [];
-    public $attachOne = [];
-    public $attachMany = [];
 
 }

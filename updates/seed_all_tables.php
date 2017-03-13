@@ -1,5 +1,6 @@
 <?php namespace Ffte\Movies\Updates;
 
+use Ffte\Movies\Models\ClipType;
 use Ffte\Movies\Models\Country;
 use Ffte\Movies\Models\Availability;
 use Ffte\Movies\Models\Language;
@@ -26,7 +27,7 @@ class SeedAllTables extends Seeder {
             Availability::create($format);
         }
 
-        $mediaFormats = [
+        $clipTypes = [
             ['id'=> 1, 'name' => 'Folge'],
             ['id'=> 2, 'name' => 'Reportage'],
             ['id'=> 3, 'name' => 'Kinofilm'],
@@ -40,48 +41,12 @@ class SeedAllTables extends Seeder {
             ['id'=>11, 'name' => 'Andere'],
         ];
 
-        foreach($mediaFormats as $mediaFormat) {
-            MediaFormat::create($mediaFormat);
+        foreach($clipTypes as $clipType) {
+            ClipType::create($clipType);
         }
 
-        $providers = [
-            [
-                'id' => 1, 'name' => 'Arte Future',
 
-            ],
-            [
-                'id' => 2, 'name' => 'Dailymotion',
-
-            ],
-            [
-                'id' => 3, 'name' => 'Distrify',
-
-            ],
-            [
-                'id' => 4, 'name' => 'VHX',
-
-            ],
-            [
-                'id' => 5, 'name' => 'Vimeo',
-                'embed_url_video' => 'https://player.vimeo.com/video/{{code}}',
-                'embed_url_image' => '{{code|vimeo}}'
-            ],
-            [
-                'id' => 6, 'name' => 'Youtube',
-                'embed_url_video' => 'https://www.youtube.com/embed/{{code}}',
-                'embed_url_image' => 'https://i.ytimg.com/vi/{{code}}/default.jpg'
-            ],
-        ];
-
-        foreach($providers as $provider) {
-           MediaProvider::create($provider);
-        }
-
-        $countries = [
-            ['code' => 'de', 'name' => 'Deutschland'],
-            ['code' => 'ch', 'name' => 'Schweiz'],
-            ['code' => 'at', 'name' => 'Östereich'],
-        ];
+        $countries = $languages = json_decode(File::get('plugins/ffte/movies/data/countries.json'), true);
 
         foreach($countries as $country) {
             Country::create($country);
@@ -97,14 +62,17 @@ class SeedAllTables extends Seeder {
         }
 
         $linkTypes = [
-            [ 'id' => 1, 'name' => 'Andere' ],
-            [ 'id' => 2, 'name' => 'Offizielle Website zum Film' ],
+            [ 'name' => 'Andere' ],
+            [ 'name' => 'Offizielle Website zum Film' ],
             [ 'name' => 'Facebook' ],
             [ 'name' => 'Twitter' ],
             [ 'name' => 'Vimeo' ],
             [ 'name' => 'Youtube' ],
             [ 'name' => 'Wikipedia' ],
             [ 'name' => 'Instagram' ],
+            [ 'name' => 'Filmheft' ],
+            [ 'name' => 'Presseheft' ],
+            [ 'name' => 'Schulunterlagen' ],
         ];
 
         foreach($linkTypes as $linkType) {

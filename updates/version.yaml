@@ -1,19 +1,21 @@
-1.0.1: 
-  - First version of Movies
-  - create_movies_table.php
-  - create_media_table.php
-  - create_tags_table.php
-  - create_categories_table.php
-  - create_availabilities_table.php
-  - create_media_formats_table.php
-  - create_media_providers_table.php
-  - create_people_table.php
-  - create_countries_table.php
-  - create_languages_table.php
-  - create_links_table.php
-  - create_link_types_table.php
-  - create_vod_providers_table.php
-  - create_vod_services_table.php
-  - create_ratings_table.php
-  - create_rating_types_table.php
-  - seed_all_tables.php
+1.0.1:
+    - 'First version of Movies'
+    - create_movies_table.php
+    - create_media_table.php
+    - create_tags_table.php
+    - create_categories_table.php
+    - create_availabilities_table.php
+    - create_media_formats_table.php
+    - create_media_providers_table.php
+    - create_people_table.php
+    - create_countries_table.php
+    - create_languages_table.php
+    - create_links_table.php
+    - create_link_types_table.php
+    - create_vod_providers_table.php
+    - create_vod_services_table.php
+    - create_ratings_table.php
+    - create_rating_types_table.php
+    - create_clips_table.php
+    - create_clip_types_table.php
+    - seed_all_tables.php

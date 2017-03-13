@@ -1,0 +1,16 @@
+columns:
+    url:
+        label: Url
+        type: text
+        searchable: true
+        sortable: true
+    title:
+        label: Title
+        type: text
+        searchable: true
+        sortable: true
+    type:
+        label: Type
+        type: relation
+        relation: type
+        select: name

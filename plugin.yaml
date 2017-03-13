@@ -24,26 +24,14 @@ navigation:
                 label: Categories
                 url: ffte/movies/categories
                 icon: icon-folder
-            side-menu-media:
-                label: Media
-                url: ffte/movies/media
-                icon: icon-camera
-            side-menu-providers:
-                label: Providers
-                url: ffte/movies/providers
-                icon: icon-sitemap
+            side-menu-clips:
+                label: Clips
+                url: ffte/movies/clips
+                icon: icon-video-camera
             side-menu-people:
                 label: People
                 url: ffte/movies/people
                 icon: icon-users
-            side-menu-countries:
-                label: Countries
-                url: ffte/movies/countries
-                icon: icon-flag
-            side-menu-language:
-                label: Languages
-                url: ffte/movies/languages
-                icon: icon-language
             side-menu-links:
                 label: Links
                 url: ffte/movies/links

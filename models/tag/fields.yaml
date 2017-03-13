@@ -6,10 +6,11 @@ fields:
     name:
         label: Name
         required: true
-    slug:
-        label: Slug
-        required: true
     movies:
         label: Movies
+        type: relation
+        nameFrom: title
+    clips:
+        label: Clips
         type: relation
         nameFrom: title

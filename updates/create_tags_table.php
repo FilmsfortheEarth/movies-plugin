@@ -12,22 +12,20 @@ class CreateTagsTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('name')->required();
-            $table->string('slug')->required();
-
             $table->timestamps();
         });
 
-        Schema::create('ffte_movies_movie_tag', function(Blueprint $table) {
-            $table->integer('movie_id')->required();
-            $table->integer('tag_id')->required();
-
-            $table->primary(['tag_id', 'movie_id']);
+        Schema::create('ffte_movies_taggables', function(Blueprint $table) {
+            $table->integer('tag_id');
+            $table->integer('taggable_id');
+            $table->string('taggable_type');
+            $table->primary(['tag_id', 'taggable_id', 'taggable_type']);
         });
     }
 
     public function down()
     {
         Schema::dropIfExists('ffte_movies_tags');
-        Schema::dropIfExists('ffte_movies_movie_tag');
+        Schema::dropIfExists('ffte_movies_taggables');
     }
 }
