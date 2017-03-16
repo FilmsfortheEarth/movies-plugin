@@ -21,4 +21,8 @@ class YoutubeClipInfo implements ClipInfo
         return "https://www.youtube.com/embed/{$this->id}?rel=0&controls=1&showinfo=0";
     }
 
+    public function getProvider()
+    {
+        return 'Youtube';
+    }
 }

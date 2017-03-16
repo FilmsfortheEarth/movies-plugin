@@ -109,8 +109,6 @@ tabs:
             mode: relation
             span: right
             tab: Techinfo
-            dependsOn:
-                - directors
         production:
             label: Production
             type: taglist
@@ -159,6 +157,11 @@ tabs:
             span: left
             tab: Techinfo
             emptyOption: --
+        age_recommendation:
+            label: Age Recommendation
+            type: number
+            span: right
+            tab: Techinfo
         technical_info:
             label: 'Technical Info'
             type: textarea

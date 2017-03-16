@@ -63,14 +63,27 @@ class Clip extends Model
         'tags' => [ Tag::class, 'name' => 'taggable', 'table' => 'ffte_movies_taggables'],
     ];
 
-    public function getEmbedAttribute()
+    private function getClipInfo()
     {
         $service = new ClipInfoService;
-        $info = $service->getProvider($this->url);
+        return $service->getProvider($this->url);
+    }
+
+    public function getEmbedAttribute()
+    {
+        $info = $this->getClipInfo();
         if($info) {
             return $info->getEmbedUrl();
         }
         return null;
     }
 
+    public function getProviderAttribute()
+    {
+        $info = $this->getClipInfo();
+        if($info) {
+            return $info->getProvider();
+        }
+        return null;
+    }
 }

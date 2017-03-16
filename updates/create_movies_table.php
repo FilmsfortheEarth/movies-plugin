@@ -40,6 +40,7 @@ class CreateMoviesTable extends Migration
             $table->float('stars_craftsmanship')->nullable();
 
             $table->integer('ratio_id')->nullable();
+            $table->integer('age_recommendation')->nullable();
 
             $table->timestamps();
         });

@@ -14,11 +14,9 @@ columns:
         type: text
         searchable: true
         sortable: true
-    type:
-        label: Type
-        type: relation
-        relation: type
-        select: name
+    provider:
+        label: Provider
+        sortable: false
     languages_audio:
         label: Languages (Audio)
         type: languages

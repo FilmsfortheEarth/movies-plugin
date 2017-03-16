@@ -21,4 +21,9 @@ class VimeoClipInfo implements ClipInfo
 
         return "https://player.vimeo.com/video/{$this->id}";
     }
+
+    public function getProvider()
+    {
+        return 'Vimeo';
+    }
 }

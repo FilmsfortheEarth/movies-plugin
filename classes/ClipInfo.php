@@ -11,4 +11,5 @@ interface ClipInfo
      */
     public function getEmbedUrl();
 
+    public function getProvider();
 }
