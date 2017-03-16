@@ -40,11 +40,11 @@ class MovieDetail extends ComponentBase
         }
 
         $medium_id = $this->property('medium');
-        $media = $movie->media()->where('id', '=', $medium_id)->first();
+        $media = $movie->clips()->where('id', '=', $medium_id)->first();
 
         if(null === $media)
         {
-            $media = $movie->media()->first();
+            $media = $movie->clips()->first();
         }
 
         $this->medium = $this->page['media'] = $media;

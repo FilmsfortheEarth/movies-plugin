@@ -6,11 +6,8 @@ columns:
     id:
         label: ID
         searchable: true
-    first_name:
-        label: First Name
+    name:
+        label: Name
         type: text
         searchable: true
-    last_name:
-        label: Last Name
-        type: text
-        searchable: true
+        sortable: true

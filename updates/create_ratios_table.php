@@ -4,20 +4,20 @@ use Schema;
 use October\Rain\Database\Schema\Blueprint;
 use October\Rain\Database\Updates\Migration;
 
-class CreateMediaFormatsTable extends Migration
+class CreateRatiosTable extends Migration
 {
     public function up()
     {
-        Schema::create('ffte_movies_media_formats', function(Blueprint $table) {
+        Schema::create('ffte_movies_ratios', function(Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('name')->required();
-            $table->timestamps();
+            $table->integer('width');
+            $table->integer('height');
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('ffte_movies_media_formats');
+        Schema::dropIfExists('ffte_movies_ratios');
     }
 }

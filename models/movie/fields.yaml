@@ -1,7 +1,7 @@
 tabs:
     fields:
-        is_active:
-            label: Active
+        published:
+            label: Published
             type: switch
             tab: General
         title:
@@ -9,13 +9,6 @@ tabs:
             oc.commentPosition: ''
             span: left
             required: true
-            type: text
-            tab: General
-        slug:
-            label: Slug
-            required: true
-            oc.commentPosition: ''
-            span: right
             type: text
             tab: General
         original_title:
@@ -78,7 +71,6 @@ tabs:
             label: 'Other Rating'
             type: textarea
             tab: Rating
-
         links:
             label: Links
             type: partial
@@ -105,33 +97,51 @@ tabs:
             mode: relation
             customTags: false
             tab: Details
-        categories:
-            label: Categories
+        directors:
+            label: Directors
             type: taglist
             mode: relation
-            customTags: false
-            tab: Details
-        technical_info:
-            label: 'Technical Info'
-            type: textarea
+            span: left
+            tab: Techinfo
+        script:
+            label: Script
+            type: taglist
+            mode: relation
+            span: right
+            tab: Techinfo
+            dependsOn:
+                - directors
+        production:
+            label: Production
+            type: taglist
+            mode: relation
+            span: left
+            tab: Techinfo
+        music:
+            label: Music
+            type: taglist
+            mode: relation
+            span: right
+            tab: Techinfo
+        actors:
+            label: Actors
+            type: taglist
+            mode: relation
+            span: full
             tab: Techinfo
         countries:
             label: Countries
             type: taglist
             mode: relation
             customTags: false
+            span: left
             tab: Techinfo
-        languages:
-            label: Languages
+        shooting_locations:
+            label: Shooting Locations
             type: taglist
             mode: relation
             customTags: false
-            tab: Techinfo
-        subtitles:
-            label: Subtitles
-            type: taglist
-            mode: relation
-            customTags: false
+            span: right
             tab: Techinfo
         year:
             label: Year
@@ -143,10 +153,15 @@ tabs:
             type: text
             span: right
             tab: Techinfo
-        image_ratio:
+        ratio:
             label: 'Image Ratio'
-            type: text
+            type: relation
             span: left
+            tab: Techinfo
+            emptyOption: --
+        technical_info:
+            label: 'Technical Info'
+            type: textarea
             tab: Techinfo
         clips:
             label: Clips

@@ -4,6 +4,8 @@ use Backend\Behaviors\FormController;
 use Backend\Behaviors\RelationController;
 use Backend\Classes\Controller;
 use BackendMenu;
+use Debugbar;
+use Ffte\Movies\Models\Movie;
 
 class Movies extends Controller
 {
@@ -13,7 +15,7 @@ class Movies extends Controller
         FormController::class,
         RelationController::class
     ];
-    
+
     public $listConfig = 'config_list.yaml';
     public $formConfig = 'config_form.yaml';
     public $relationConfig = 'config_relation.yaml';
@@ -24,5 +26,4 @@ class Movies extends Controller
         BackendMenu::setContext('Ffte.Movies', 'main-menu-item', 'side-menu-movies');
     }
 
-   
 }

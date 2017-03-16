@@ -8,6 +8,7 @@ use Ffte\Movies\Models\LinkType;
 use Ffte\Movies\Models\MediaFormat;
 use Ffte\Movies\Models\MediaProvider;
 use Ffte\Movies\Models\RatingType;
+use Ffte\Movies\Models\Ratio;
 use Ffte\Movies\Models\VodProvider;
 use October\Rain\Database\Updates\Seeder;
 use October\Rain\Support\Facades\File;
@@ -94,9 +95,26 @@ class SeedAllTables extends Seeder {
             ['name' => 'External Rating'],
             ['name' => 'Festival Award']
         ];
+
         foreach($rating_types as $rating_type) {
             RatingType::create($rating_type);
         }
 
+        $ratios = [
+            [21,9],
+            [18,9],
+            [17,9],
+            [16,9],
+            [9,16],
+            [4,3],
+            [3,2]
+        ];
+
+        foreach($ratios as $ratio) {
+            Ratio::create([
+                'width' => $ratio[0],
+                'height' => $ratio[1]
+            ]);
+        }
     }
 }

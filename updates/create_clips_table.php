@@ -13,6 +13,7 @@ class CreateClipsTable extends Migration
             $table->increments('id');
             $table->string('url');
             $table->string('title');
+            $table->integer('duration')->nullable();
             $table->integer('type_id')->nullable();
 
             $table->timestamps();
@@ -25,11 +26,25 @@ class CreateClipsTable extends Migration
             $table->string('clippable_type');
             $table->primary(['clip_id', 'clippable_id']);
         });
+
+        Schema::create('ffte_movies_clip_language_audio', function(Blueprint $table) {
+            $table->integer('clip_id');
+            $table->integer('language_id');
+            $table->primary(['clip_id', 'language_id']);
+        });
+
+        Schema::create('ffte_movies_clip_language_subtitle', function(Blueprint $table) {
+            $table->integer('clip_id');
+            $table->integer('language_id');
+            $table->primary(['clip_id', 'language_id']);
+        });
     }
 
     public function down()
     {
         Schema::dropIfExists('ffte_movies_clips');
         Schema::dropIfExists('ffte_movies_clippables');
+        Schema::dropIfExists('ffte_movies_clip_language_audio');
+        Schema::dropIfExists('ffte_movies_clip_language_subtitle');
     }
 }

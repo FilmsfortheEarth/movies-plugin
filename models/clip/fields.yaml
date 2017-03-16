@@ -19,8 +19,25 @@ fields:
         label: Type
         type: relation
         span: right
+        emptyOption: --
     tags:
         label: Tags
         type: taglist
         mode: relation
+        span: full
         customTags: false
+    languages_audio:
+        label: Languages (Audio)
+        type: taglist
+        mode: relation
+        span: left
+        customTag: false
+    languages_subtitle:
+        label: Languages (Subtitle)
+        type: taglist
+        mode: relation
+        span: right
+        customTag: false
+    duration:
+        label: Duration
+        type: number

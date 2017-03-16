@@ -82,7 +82,7 @@ class MovieSearch extends ComponentBase
             $sort = 'year';
         }
 
-        return $this->page['movies'] = Movie::with('media', 'tags', 'categories', 'media.provider', 'cover', 'backgrounds')
+        return $this->page['movies'] = Movie::with('clips', 'tags', 'categories', 'cover', 'background')
             ->whereHas('availabilities', function($q) use($availabilty_id) {
                 if(!empty($availabilty_id)) {
                     $q->where('id', $availabilty_id);

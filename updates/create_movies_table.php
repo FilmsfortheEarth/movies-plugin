@@ -12,8 +12,8 @@ class CreateMoviesTable extends Migration
         Schema::create('ffte_movies_movies', function(Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
+            $table->boolean('published')->default(false);
             $table->string('title')->required();
-            $table->string('slug')->required()->unique();
 
             $table->string('original_title')->nullable();
             $table->string('subtitle')->nullable();
@@ -39,7 +39,8 @@ class CreateMoviesTable extends Migration
             $table->float('stars_momentum')->nullable();
             $table->float('stars_craftsmanship')->nullable();
 
-            $table->boolean('is_active')->default(true);
+            $table->integer('ratio_id')->nullable();
+
             $table->timestamps();
         });
 

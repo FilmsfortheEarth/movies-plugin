@@ -2,6 +2,7 @@
 
 use October\Rain\Database\Model;
 use \System\Models\File;
+use Debugbar;
 
 /**
  * Movie Model
@@ -11,8 +12,7 @@ class Movie extends Model
     use \October\Rain\Database\Traits\Validation;
 
     public $rules = [
-        'title' => 'required',
-        'slug' => 'required',
+        'title' => 'required'
     ];
 
     public $implement = [
@@ -20,7 +20,7 @@ class Movie extends Model
     ];
 
     public $translatable = [
-        ['title', 'index' => true], ['slug', 'index' => true], 'subtitle', 'description', 'notes',
+        ['title', 'index' => true], 'subtitle', 'description', 'notes',
         'jury_rating', 'other_rating', 'technical_info', 'org_links',
         'seo_title', 'seo_description', 'seo_keywords'
     ];
@@ -40,21 +40,30 @@ class Movie extends Model
     /**
      * @var array Relations
      */
-    public $hasOne = [];
+    public $hasOne = [
+    ];
     public $hasMany = [
-        //'media' => [Medium::class, 'delete' => true],
         'links' => [Link::class, 'delete' => true],
         'vod_services' => [VodService::class, 'delete' => true],
         'ratings' => [Rating::class, 'delete' => true],
     ];
 
-    public $belongsTo = [];
+    public $belongsTo = [
+        'ratio' => [Ratio::class]
+    ];
 
     public $belongsToMany = [
         'categories' => [Category::class, 'table' => 'ffte_movies_category_movie'],
         'availabilities' => [Availability::class, 'table' => 'ffte_movies_availability_movie'],
-        'people' => [Person::class, 'table' => 'ffte_movies_movie_person'],
+        'directors' => [Person::class, 'table' => 'ffte_movies_movie_person_director'],
+        'script' => [Person::class, 'table' => 'ffte_movies_movie_person_script'],
+        'production' => [Person::class, 'table' => 'ffte_movies_movie_person_production'],
+        'music' => [Person::class, 'table' => 'ffte_movies_movie_person_music'],
+        'actors' => [Person::class, 'table' => 'ffte_movies_movie_person_actor'],
+
         'countries' => [Country::class, 'table' => 'ffte_movies_movie_country'],
+        'shooting_locations' => [Country::class, 'table' => 'ffte_movies_movie_shooting_location'],
+
         //'languages' => [Language::class, 'table' => 'ffte_movies_movie_language'],
     ];
 
@@ -64,8 +73,8 @@ class Movie extends Model
     public $morphToMany = [
         'tags' => [ Tag::class, 'name' => 'taggable', 'table' => 'ffte_movies_taggables'],
         'clips' => [ Clip::class, 'name' => 'clippable', 'table' => 'ffte_movies_clippables'],
-        'languages' => [Language::class, 'name' => 'lang', 'table' => 'ffte_movies_languagable'],
-        'subtitles' => [Language::class, 'name' => 'lang', 'table' => 'ffte_movies_languagable']
+        //'languages' => [Language::class, 'name' => 'lang', 'table' => 'ffte_movies_languagable'],
+        //'subtitles' => [Language::class, 'name' => 'lang', 'table' => 'ffte_movies_languagable']
     ];
 
     public $attachOne = [
@@ -77,4 +86,9 @@ class Movie extends Model
         'images' => [File::class, 'delete' => true],
     ];
 
+    public function getCountriesAttribute()
+    {
+
+        return [];
+    }
 }

@@ -1,22 +1,18 @@
 <?php namespace Ffte\Movies\Models;
 
-use Model;
+use October\Rain\Database\Model;
 
 /**
- * MediaFormat Model
+ * Ratio Model
  */
-class MediaFormat extends Model
+class Ratio extends Model
 {
-    public $implement = [
-        'RainLab.Translate.Behaviors.TranslatableModel'
-    ];
-
-    public $translatable = ['name'];
+    public $timestamps = false;
 
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'ffte_movies_media_formats';
+    public $table = 'ffte_movies_ratios';
 
     /**
      * @var array Guarded fields
@@ -27,6 +23,15 @@ class MediaFormat extends Model
      * @var array Fillable fields
      */
     protected $fillable = [];
+
+    /**
+     * render ratio e.g. as 6:19, 3:4
+     * @return string
+     */
+    public function getNameAttribute()
+    {
+        return $this->width . ':' . $this->height;
+    }
 
     /**
      * @var array Relations

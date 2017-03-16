@@ -6,7 +6,7 @@ columns:
     id:
         label: ID
         searchable: true
-    is_active:
+    published:
         label: active
         sortable: true
         type: switch

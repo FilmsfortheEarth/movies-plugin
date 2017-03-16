@@ -16,18 +16,22 @@ class CreateCountriesTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('ffte_movies_movie_country', function($table) {
-            $table->engine = 'InnoDB';
-            $table->integer('movie_id')->index();
-            $table->integer('country_id')->index();
-            $table->integer('mode')->default(0);
-            $table->primary(['movie_id', 'country_id']);
-        });
+        $this->makeRelation('country');
+        $this->makeRelation('shooting_location');
     }
 
     public function down()
     {
-        Schema::dropIFExists('ffte_movies_movie_country');
+        Schema::dropIfExists('ffte_movies_movie_country');
+        Schema::dropIfExists('ffte_movies_movie_shooting_location');
         Schema::dropIfExists('ffte_movies_countries');
+    }
+
+    private function makeRelation($name) {
+        Schema::create("ffte_movies_movie_{$name}", function($table) {
+            $table->integer('movie_id');
+            $table->integer('country_id');
+            $table->primary(['movie_id', 'country_id']);
+        });
     }
 }

@@ -49,7 +49,10 @@ class Clip extends Model
     public $belongsTo = [
         'type' => [ClipType::class]
     ];
-    public $belongsToMany = [];
+    public $belongsToMany = [
+        'languages_audio' => [Language::class, 'table' => 'ffte_movies_clip_language_audio'],
+        'languages_subtitle' => [Language::class, 'table' => 'ffte_movies_clip_language_subtitle']
+    ];
     public $morphTo = [];
     public $morphOne = [];
     public $morphMany = [];
