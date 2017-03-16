@@ -1,11 +1,16 @@
 columns:
-    url:
-        label: Url
+    title:
+        label: Title
         type: text
         searchable: true
         sortable: true
-    title:
-        label: Title
+    type:
+        label: Format
+        type: relation
+        relation: type
+        select: name
+    url:
+        label: Url
         type: text
         searchable: true
         sortable: true
@@ -14,3 +19,7 @@ columns:
         type: relation
         relation: type
         select: name
+    languages_audio:
+        label: Languages (Audio)
+        type: languages
+        sortable: false

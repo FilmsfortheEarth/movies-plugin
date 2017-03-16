@@ -93,4 +93,13 @@ class Plugin extends PluginBase
             ]
         ];
     }
+
+    public function registerListColumnTypes()
+    {
+        return [
+            'languages' => function($value) {
+                return implode(', ', array_map(function($language) { return $language['name']; }, $value->toArray()));
+            }
+        ];
+    }
 }

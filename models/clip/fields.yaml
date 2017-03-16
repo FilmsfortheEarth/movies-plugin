@@ -31,13 +31,13 @@ fields:
         type: taglist
         mode: relation
         span: left
-        customTag: false
+        customTags: false
     languages_subtitle:
         label: Languages (Subtitle)
         type: taglist
         mode: relation
         span: right
-        customTag: false
+        customTags: false
     duration:
         label: Duration
         type: number
