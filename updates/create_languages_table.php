@@ -16,18 +16,23 @@ class CreateLanguagesTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('ffte_movies_movie_language', function(Blueprint $table) {
-            $table->engine = 'InnoDB';
-            $table->integer('movie_id');
-            $table->integer('language_id');
-            $table->primary(['movie_id', 'language_id']);
-        });
-
+        $this->makeRelation('language_audio');
+        $this->makeRelation('language_subtitle');
     }
 
     public function down()
     {
         Schema::dropIfExists('ffte_movies_languages');
-        Schema::dropIfExists('ffte_movies_movie_language');
+        Schema::dropIfExists('ffte_movies_movie_language_audio');
+        Schema::dropIfExists('ffte_movies_movie_language_subtitle');
+    }
+
+    private function makeRelation($name)
+    {
+        Schema::create("ffte_movies_movie_{$name}", function(Blueprint $table) {
+            $table->integer('movie_id');
+            $table->integer('language_id');
+            $table->primary(['movie_id', 'language_id']);
+        });
     }
 }

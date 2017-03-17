@@ -162,6 +162,20 @@ tabs:
             type: number
             span: right
             tab: Techinfo
+        languages_audio:
+            label: Availabile Languages (Audio)
+            type: taglist
+            mode: relation
+            customTags: false
+            span: left
+            tab: Techinfo
+        languages_subtitle:
+            label: Availabile Languages (Subtitle)
+            type: taglist
+            mode: relation
+            customTags: false
+            span: right
+            tab: Techinfo
         technical_info:
             label: 'Technical Info'
             type: textarea

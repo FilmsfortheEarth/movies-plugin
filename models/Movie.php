@@ -64,7 +64,8 @@ class Movie extends Model
         'countries' => [Country::class, 'table' => 'ffte_movies_movie_country'],
         'shooting_locations' => [Country::class, 'table' => 'ffte_movies_movie_shooting_location'],
 
-        //'languages' => [Language::class, 'table' => 'ffte_movies_movie_language'],
+        'languages_audio' => [Language::class, 'table' => 'ffte_movies_movie_language_audio'],
+        'languages_subtitle' => [Language::class, 'table' => 'ffte_movies_movie_language_subtitle'],
     ];
 
     public $morphTo = [];
@@ -73,8 +74,6 @@ class Movie extends Model
     public $morphToMany = [
         'tags' => [ Tag::class, 'name' => 'taggable', 'table' => 'ffte_movies_taggables'],
         'clips' => [ Clip::class, 'name' => 'clippable', 'table' => 'ffte_movies_clippables'],
-        //'languages' => [Language::class, 'name' => 'lang', 'table' => 'ffte_movies_languagable'],
-        //'subtitles' => [Language::class, 'name' => 'lang', 'table' => 'ffte_movies_languagable']
     ];
 
     public $attachOne = [
