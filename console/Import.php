@@ -75,7 +75,6 @@ class Import extends Command
                 $model = Movie::updateOrCreate(['id' => $movie['id']], [
                     'id' => $movie['id'],
                     'title' => $movie['title'],
-                    'slug' => slugify($movie['title']).'-'.$movie['id'],
                     'subtitle' => $movie['subtitle'],
                     'description' => $movie['description'],
                     'notes' => $movie['notes'],
@@ -96,12 +95,9 @@ class Import extends Command
                     'stars_quality' => $movie['ratings'][2],
                     'stars_momentum' => $movie['ratings'][3],
                     'stars_craftsmanship' => $movie['ratings'][4],
-
                 ]);
 
                 update($model, $movie, 'title');
-                $model->lang('en')->slug = slugify($movie['title_en']).'-'.$movie['id'];
-                $model->lang('fr')->slug = slugify($movie['title_fr']).'-'.$movie['id'];
                 update($model, $movie, 'subtitle');
                 update($model, $movie, 'description');
                 update($model, $movie, 'notes');
