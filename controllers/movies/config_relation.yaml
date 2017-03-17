@@ -30,3 +30,11 @@ ratings:
     toolbarButtons: create|delete
   manage:
     form: $/ffte/movies/models/rating/fields.yaml
+
+rights:
+  label: Rights
+  view:
+    list: $/ffte/movies/models/right/columns.yaml
+    toolbarButtons: create|delete
+  manage:
+    form: $/ffte/movies/models/right/fields.yaml

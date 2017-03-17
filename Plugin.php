@@ -98,7 +98,11 @@ class Plugin extends PluginBase
     {
         return [
             'languages' => function($value) {
-                return implode(', ', array_map(function($language) { return $language['name']; }, $value->toArray()));
+                $array = [];
+                if($value !== null) {
+                    $array = $value->toArray();
+                }
+                return implode(', ', array_map(function($language) { return $language['name']; }, $array));
             }
         ];
     }

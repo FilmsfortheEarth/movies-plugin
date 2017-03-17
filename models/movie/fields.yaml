@@ -29,13 +29,28 @@ tabs:
             label: Notes
             type: textarea
             tab: General
+        links:
+            span: full
+            path: field_links
+            type: partial
+            tab: General
+        org_links:
+            label: 'Original Link Data'
+            type: textarea
+            tab: General
+        tags:
+            label: Tags
+            type: taglist
+            mode: relation
+            customTags: false
+            tab: General
         ratings:
             label: Ratings
             type: partial
             path: field_ratings
             tab: Rating
         star_rating:
-            label: Star Rating
+            label: 'Star Rating'
             type: section
             tab: Rating
         stars_contents:
@@ -44,22 +59,22 @@ tabs:
             span: left
             tab: Rating
         stars_entertainment:
-            label: entertainment value
+            label: 'entertainment value'
             type: number
             span: right
             tab: Rating
         stars_quality:
-            label: scientificity+ journalistic quality
+            label: 'scientificity+ journalistic quality'
             type: number
             span: left
             tab: Rating
         stars_momentum:
-            label: Transfer of a momentum
+            label: 'Transfer of a momentum'
             type: number
             span: right
             tab: Rating
         stars_craftsmanship:
-            label: Picture, music, craftsmanship
+            label: 'Picture, music, craftsmanship'
             type: number
             span: left
             tab: Rating
@@ -71,15 +86,6 @@ tabs:
             label: 'Other Rating'
             type: textarea
             tab: Rating
-        links:
-            label: Links
-            type: partial
-            path: field_links
-            tab: Details
-        org_links:
-            label: 'Original Link Data'
-            type: text
-            tab: Details
         availabilities:
             label: Availabilities
             type: taglist
@@ -87,16 +93,10 @@ tabs:
             customTags: false
             tab: Availability
         vod_services:
-            label: VOD Services
+            label: 'VOD Services'
             type: partial
             path: field_vod_services
             tab: Availability
-        tags:
-            label: Tags
-            type: taglist
-            mode: relation
-            customTags: false
-            tab: Details
         directors:
             label: Directors
             type: taglist
@@ -135,7 +135,7 @@ tabs:
             span: left
             tab: Techinfo
         shooting_locations:
-            label: Shooting Locations
+            label: 'Shooting Locations'
             type: taglist
             mode: relation
             customTags: false
@@ -156,25 +156,30 @@ tabs:
             type: relation
             span: left
             tab: Techinfo
-            emptyOption: --
+            emptyOption: '--'
         age_recommendation:
-            label: Age Recommendation
+            label: 'Age Recommendation'
             type: number
             span: right
             tab: Techinfo
         languages_audio:
-            label: Availabile Languages (Audio)
+            label: 'Availabile Languages (Audio)'
             type: taglist
             mode: relation
             customTags: false
             span: left
             tab: Techinfo
         languages_subtitle:
-            label: Availabile Languages (Subtitle)
+            label: 'Availabile Languages (Subtitle)'
             type: taglist
             mode: relation
             customTags: false
             span: right
+            tab: Techinfo
+        rights:
+            label: Rights
+            type: partial
+            path: field_rights
             tab: Techinfo
         technical_info:
             label: 'Technical Info'
@@ -187,52 +192,43 @@ tabs:
             tab: Media
         cover:
             label: Cover
+            oc.commentPosition: ''
             mode: image
             useCaption: true
             thumbOptions:
                 mode: auto
                 extension: auto
-            oc.commentPosition: ''
             span: left
-            imageWidth: '100'
-            imageHeight: '100'
             type: fileupload
             tab: Media
         background:
             label: Background
+            oc.commentPosition: ''
             mode: image
             useCaption: true
             thumbOptions:
                 mode: auto
                 extension: auto
-            oc.commentPosition: ''
             span: full
-            imageWidth: '100'
-            imageHeight: '100'
+            imageWidth: '512'
             type: fileupload
             tab: Media
         images:
             label: Images
+            oc.commentPosition: ''
             mode: image
             useCaption: true
             thumbOptions:
-                mode: auto
+                mode: exact
                 extension: auto
-            oc.commentPosition: ''
             span: full
-            imageWidth: '100'
-            imageHeight: '100'
             type: fileupload
             tab: Media
-        seo_title:
-            label: 'SEO Title'
-            type: text
-            tab: SEO
         seo_description:
-            label: 'SEO Description'
+            label: 'Click Text'
             type: textarea
             tab: SEO
         seo_keywords:
             label: 'SEO Keywords'
-            type: text
+            type: taglist
             tab: SEO

@@ -36,6 +36,10 @@ navigation:
                 label: Links
                 url: ffte/movies/links
                 icon: icon-external-link
+            side-menu-rights:
+                label: Rightsholders
+                url: ffte/movies/rightsholders
+                icon: icon-copyright
 permissions:
     ffte.movies.tags:
         tab: Movies

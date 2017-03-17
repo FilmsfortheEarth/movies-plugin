@@ -16,7 +16,7 @@ fields:
         oc.commentPosition: ''
         type: text
     type:
-        label: Type
+        label: Format
         type: relation
         span: right
         emptyOption: --

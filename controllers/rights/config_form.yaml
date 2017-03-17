@@ -1,0 +1,10 @@
+name: Rights
+form: $/ffte/movies/models/right/fields.yaml
+modelClass: Ffte\Movies\Models\Right
+defaultRedirect: ffte/movies/rights
+create:
+    redirect: 'ffte/movies/rights/update/:id'
+    redirectClose: ffte/movies/rights
+update:
+    redirect: ffte/movies/rights
+    redirectClose: ffte/movies/rights

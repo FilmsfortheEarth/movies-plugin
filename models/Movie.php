@@ -46,6 +46,7 @@ class Movie extends Model
         'links' => [Link::class, 'delete' => true],
         'vod_services' => [VodService::class, 'delete' => true],
         'ratings' => [Rating::class, 'delete' => true],
+        'rights' => [Right::class, 'delete' => true],
     ];
 
     public $belongsTo = [

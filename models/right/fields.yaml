@@ -1,0 +1,12 @@
+fields:
+    rightsholder:
+        label: Rightsholder
+        nameFrom: name
+        span: full
+        type: relation
+    countries:
+        label: Countries
+        type: taglist
+        mode: relation
+        customTags: false
+        commentAbove: 'Leave blank for worldwide'

@@ -1,0 +1,13 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    rightsholder:
+        label: Rightsholder
+        type: relation
+        relation: rightsholder
+        select: name
+    countries:
+        label: Countries
+        type: languages

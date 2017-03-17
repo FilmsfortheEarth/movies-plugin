@@ -19,4 +19,6 @@
     - create_clips_table.php
     - create_clip_types_table.php
     - create_ratios_table.php
+    - create_rightsholders_table.php
+    - create_rights_table.php
     - seed_all_tables.php

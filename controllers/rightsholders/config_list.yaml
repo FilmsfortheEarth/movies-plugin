@@ -1,0 +1,11 @@
+list: $/ffte/movies/models/rightsholder/columns.yaml
+modelClass: Ffte\Movies\Models\Rightsholder
+title: RightsHolders
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'ffte/movies/rightsholders/update/:id'

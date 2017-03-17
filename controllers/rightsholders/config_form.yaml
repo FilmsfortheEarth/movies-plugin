@@ -1,0 +1,10 @@
+name: RightsHolders
+form: $/ffte/movies/models/rightsholder/fields.yaml
+modelClass: Ffte\Movies\Models\Rightsholder
+defaultRedirect: ffte/movies/rightsholders
+create:
+    redirect: 'ffte/movies/rightsholders/update/:id'
+    redirectClose: ffte/movies/rightsholders
+update:
+    redirect: ffte/movies/rightsholders
+    redirectClose: ffte/movies/rightsholders
