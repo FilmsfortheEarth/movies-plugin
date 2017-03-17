@@ -6,6 +6,8 @@ clips:
     toolbarButtons: create|add|delete|remove
   manage:
     form: $/ffte/movies/models/clip/fields.yaml
+    recordsPerPage: 10
+    showSearch: true
 
 links:
   label: Links

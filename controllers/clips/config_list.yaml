@@ -11,3 +11,4 @@ toolbar:
         prompt: 'backend::lang.list.search_prompt'
 # Records to display per page
 recordsPerPage: 20
+filter: config_filter.yaml

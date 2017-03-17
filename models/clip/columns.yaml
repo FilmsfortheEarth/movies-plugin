@@ -12,12 +12,22 @@ columns:
     url:
         label: Url
         type: text
+        invisible: true
         searchable: true
         sortable: true
     provider:
         label: Provider
         sortable: false
+    duration:
+        label: Duration
+        type: number
+        sortable: true
     languages_audio:
         label: Languages (Audio)
         type: languages
+        sortable: false
+    languages_subtitle:
+        label: Languages (Subtitle)
+        type: languages
+        invisible: true
         sortable: false

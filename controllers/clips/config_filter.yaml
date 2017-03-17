@@ -1,0 +1,6 @@
+scopes:
+    format:
+        label: Format
+        modelClass: Ffte\Movies\Models\ClipType
+        conditions: type_id in (:filtered)
+        nameFrom: name

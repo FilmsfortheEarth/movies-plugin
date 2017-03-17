@@ -40,9 +40,7 @@ tabs:
             tab: General
         tags:
             label: Tags
-            type: taglist
-            mode: relation
-            customTags: false
+            type: relation
             tab: General
         ratings:
             label: Ratings
@@ -230,5 +228,5 @@ tabs:
             tab: SEO
         seo_keywords:
             label: 'SEO Keywords'
-            type: taglist
+            type: text
             tab: SEO

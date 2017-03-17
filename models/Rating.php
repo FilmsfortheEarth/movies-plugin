@@ -1,5 +1,6 @@
 <?php namespace Ffte\Movies\Models;
 
+use Ffte\Movies\Classes\SaveTranslationHack;
 use Model;
 
 /**
@@ -7,6 +8,19 @@ use Model;
  */
 class Rating extends Model
 {
+    /**
+     * todo: remove if https://github.com/rainlab/translate-plugin/issues/209 is fixed
+     */
+    use SaveTranslationHack;
+
+    public $implement = [
+        'RainLab.Translate.Behaviors.TranslatableModel'
+    ];
+
+    public $translatable = [
+        'content'
+    ];
+
     /**
      * @var string The database table used by the model.
      */
@@ -36,4 +50,6 @@ class Rating extends Model
     public $morphMany = [];
     public $attachOne = [];
     public $attachMany = [];
+
+
 }
