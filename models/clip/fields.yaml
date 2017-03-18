@@ -40,4 +40,4 @@ fields:
         customTags: false
     duration:
         label: Duration
-        type: number
+        type: duration

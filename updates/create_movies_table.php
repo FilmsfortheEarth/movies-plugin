@@ -22,8 +22,8 @@ class CreateMoviesTable extends Migration
             $table->text('jury_rating')->nullable();
             $table->text('other_rating')->nullable();
             $table->text('technical_info')->nullable();
-            $table->string('year')->nullable();
-            $table->string('duration')->nullable();
+            $table->integer('year')->nullable();
+            $table->integer('duration')->nullable();
             $table->string('image_ratio')->nullable();
 
             $table->text('org_links')->nullable();

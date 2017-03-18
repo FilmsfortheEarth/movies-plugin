@@ -6,6 +6,7 @@ use Exception;
 use Ffte\Movies\Components\MovieDetail;
 use Ffte\Movies\Components\MovieSearch;
 use Ffte\Movies\Console\Import;
+use Ffte\Movies\FormWidgets\Duration;
 use Ffte\Movies\Models\Medium;
 use System\Classes\PluginBase;
 use App;
@@ -104,6 +105,13 @@ class Plugin extends PluginBase
                 }
                 return implode(', ', array_map(function($language) { return $language['name']; }, $array));
             }
+        ];
+    }
+
+    public function registerFormWidgets()
+    {
+        return [
+            Duration::class => 'duration'
         ];
     }
 }

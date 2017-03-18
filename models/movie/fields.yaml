@@ -145,8 +145,8 @@ tabs:
             span: left
             tab: Techinfo
         duration:
-            label: 'Duration (Minutes)'
-            type: text
+            label: 'Duration'
+            type: duration
             span: right
             tab: Techinfo
         ratio:

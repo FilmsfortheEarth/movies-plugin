@@ -40,8 +40,13 @@ class Import extends Command
         }
 
         $url = $this->argument('url');
-        //$url = "C:\\Users\\munxar\\Downloads\\movies.json";
-        $movies = json_decode(file_get_contents($url), true);
+        $moviesFile = $base_path.'movies.json';
+
+        if(!file_exists($moviesFile)) {
+            file_put_contents($moviesFile, file_get_contents($url));
+        };
+
+        $movies = json_decode(file_get_contents($moviesFile), true);
         $tags = [];
         $categories = [];
 
@@ -71,10 +76,12 @@ class Import extends Command
         foreach($movies as $movie) {
             if(!preg_match('/Weitere/', $movie['title'])) {
                 $info = new Info($movie['technical_info']);
+                $info2 = new Info2($movie['technical_info']);
 
                 $model = Movie::updateOrCreate(['id' => $movie['id']], [
                     'id' => $movie['id'],
                     'title' => $movie['title'],
+                    'original_title' => $info2->getRegex('/Originaltitel:\s(.*)/m'),
                     'subtitle' => $movie['subtitle'],
                     'description' => $movie['description'],
                     'notes' => $movie['notes'],
@@ -87,8 +94,10 @@ class Import extends Command
                     'seo_keywords' => $movie['seo_keywords'],
                     'updated_at' => $movie['updated_at'],
                     'created_at' => $movie['created_at'],
-                    'year' => $info->getInt('Jahr'),
-                    'duration' => $info->get('Dauer'),
+
+                    'year' => $info2->getInt('/Jahr:\s(\d+)/m'),
+                    'duration' => $info2->getInt('/Dauer:\s(\d+)/m') * 60,
+                    'age_recommendation' => $info2->getInt('/Alterszulassung:\s(\d+)/m'),
 
                     'stars_contents' => $movie['ratings'][0],
                     'stars_entertainment' => $movie['ratings'][1],
@@ -299,6 +308,31 @@ class Info {
     public function getInt($key) {
         $val = $this->get($key);
         return $val != null ? intval($val) : $val;
+    }
+}
+
+class Info2
+{
+    private $text;
+    public function __construct($text)
+    {
+        $this->text = $text;
+    }
+
+    public function getInt($regex)
+    {
+        $val = $this->getRegex($regex);
+        return $val !== null ? intval($val) : null;
+    }
+
+    public function getRegex($regex, $default = null)
+    {
+        $match = [];
+        $res = $default;
+        if(preg_match($regex, $this->text, $match)) {
+            $res = $match[1];
+        }
+        return $res;
     }
 }
 
