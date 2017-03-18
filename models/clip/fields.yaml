@@ -8,6 +8,7 @@ fields:
         label: Video
         type: partial
         path: $/ffte/movies/controllers/clips/_video.htm
+        span: left
         dependsOn:
           - url
     title:

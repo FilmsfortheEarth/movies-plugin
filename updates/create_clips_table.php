@@ -13,6 +13,7 @@ class CreateClipsTable extends Migration
             $table->increments('id');
             $table->string('url');
             $table->string('title');
+            $table->string('thumbnail_url')->nullable();
             $table->integer('duration')->nullable();
             $table->integer('type_id')->nullable();
 

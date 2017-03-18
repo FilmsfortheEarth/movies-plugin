@@ -12,4 +12,6 @@ interface ClipInfo
     public function getEmbedUrl();
 
     public function getProvider();
+
+    public function getThumbnailUrl();
 }

@@ -3,6 +3,7 @@
 use Ffte\Movies\Classes\ClipInfoService;
 use Model;
 use RainLab\Translate\Behaviors\TranslatableModel;
+use Debugbar;
 
 /**
  * Clip Model
@@ -85,5 +86,10 @@ class Clip extends Model
             return $info->getProvider();
         }
         return null;
+    }
+
+    public function beforeSave()
+    {
+        $this->thumbnail_url = $this->getClipInfo()->getThumbnailUrl();
     }
 }

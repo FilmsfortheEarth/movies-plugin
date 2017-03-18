@@ -1,4 +1,9 @@
 columns:
+    thumbnail_url:
+        label: Thumbnail
+        type: partial
+        path: $/ffte/movies/controllers/clips/_thumbnail.htm
+        sortable: false
     title:
         label: Title
         type: text

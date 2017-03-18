@@ -1,6 +1,7 @@
 <?php
 
 namespace Ffte\Movies\Classes;
+use Debugbar;
 
 class VimeoClipInfo implements ClipInfo
 {
@@ -25,5 +26,13 @@ class VimeoClipInfo implements ClipInfo
     public function getProvider()
     {
         return 'Vimeo';
+    }
+
+    public function getThumbnailUrl()
+    {
+        $res = file_get_contents("https://vimeo.com/api/oembed.json?url=https://vimeo.com/{$this->id}");
+        $data = json_decode($res, true);
+
+        return $data['thumbnail_url'];
     }
 }

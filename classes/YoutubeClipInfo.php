@@ -25,4 +25,9 @@ class YoutubeClipInfo implements ClipInfo
     {
         return 'Youtube';
     }
+
+    public function getThumbnailUrl()
+    {
+        return "https://img.youtube.com/vi/{$this->id}/2.jpg";
+    }
 }
