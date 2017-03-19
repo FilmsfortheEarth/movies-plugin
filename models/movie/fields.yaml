@@ -141,7 +141,7 @@ tabs:
             tab: Techinfo
         year:
             label: Year
-            type: text
+            type: number
             span: left
             tab: Techinfo
         duration:
@@ -197,7 +197,7 @@ tabs:
                 mode: auto
                 extension: auto
             span: left
-            type: fileupload
+            type: mlfileupload
             tab: Media
         background:
             label: Background
@@ -209,7 +209,7 @@ tabs:
                 extension: auto
             span: full
             imageWidth: '512'
-            type: fileupload
+            type: mlfileupload
             tab: Media
         images:
             label: Images
@@ -220,7 +220,7 @@ tabs:
                 mode: exact
                 extension: auto
             span: full
-            type: fileupload
+            type: mlfileupload
             tab: Media
         seo_description:
             label: 'Click Text'

@@ -3,11 +3,6 @@ columns:
         label: ID
         type: number
         searchable: true
-    code:
-        label: code
-        type: text
-        searchable: true
-        sortable: true
     name:
         label: name
         type: text

@@ -1,12 +1,17 @@
 <?php namespace Ffte\Movies\Models;
 
 use Model;
+use RainLab\Translate\Behaviors\TranslatableModel;
 
 /**
  * Country Model
  */
 class Country extends Model
 {
+    public $implement = [TranslatableModel::class];
+    public $translatable = ['name'];
+    public $timestamps = false;
+
     /**
      * @var string The database table used by the model.
      */
@@ -20,7 +25,7 @@ class Country extends Model
     /**
      * @var array Fillable fields
      */
-    protected $fillable = [];
+    protected $fillable = ['name'];
 
     /**
      * @var array Relations

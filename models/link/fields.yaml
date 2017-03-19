@@ -7,7 +7,7 @@ fields:
         required: true
         type: text
     title:
-        label: Title
+        label: Override Title
         oc.commentPosition: ''
         span: full
         type: text

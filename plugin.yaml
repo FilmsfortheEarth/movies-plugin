@@ -40,6 +40,14 @@ navigation:
                 label: Rightsholders
                 url: ffte/movies/rightsholders
                 icon: icon-copyright
+            side-menu-language:
+                label: Languages
+                url: ffte/movies/languages
+                icon: icon-language
+            side-menu-countries:
+                label: Countries
+                url: ffte/movies/countries
+                icon: icon-flag
 permissions:
     ffte.movies.tags:
         tab: Movies

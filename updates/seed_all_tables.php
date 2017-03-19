@@ -47,12 +47,15 @@ class SeedAllTables extends Seeder {
         }
 
 
+        /*
         $countries = $languages = json_decode(File::get('plugins/ffte/movies/data/countries.json'), true);
 
         foreach($countries as $country) {
             Country::create($country);
         }
+        */
 
+        /*
         $languages = json_decode(File::get('plugins/ffte/movies/data/languages.json'), true);
 
         foreach($languages as $language) {
@@ -61,6 +64,7 @@ class SeedAllTables extends Seeder {
                 'name' => $language['name']
             ]);
         }
+        */
 
         $linkTypes = [
             [ 'name' => 'Andere' ],

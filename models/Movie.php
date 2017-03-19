@@ -1,8 +1,6 @@
 <?php namespace Ffte\Movies\Models;
 
 use October\Rain\Database\Model;
-use \System\Models\File;
-use Debugbar;
 
 /**
  * Movie Model

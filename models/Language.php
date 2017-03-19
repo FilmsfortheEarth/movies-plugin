@@ -10,6 +10,7 @@ class Language extends Model
 {
     public $implement = [TranslatableModel::class];
     public $translatable = ['name'];
+    public $timestamps = false;
 
     /**
      * @var string The database table used by the model.
@@ -24,7 +25,7 @@ class Language extends Model
     /**
      * @var array Fillable fields
      */
-    protected $fillable = ['code', 'name'];
+    protected $fillable = ['name'];
 
 
 }

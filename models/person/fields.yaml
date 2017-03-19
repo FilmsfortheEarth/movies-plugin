@@ -6,9 +6,7 @@ fields:
     id:
         label: ID
         disabled: true
-    first_name:
-        label: First Name
+    name:
+        label: Name
         type: text
-    last_name:
-        label: Last Name
-        type: text
+    

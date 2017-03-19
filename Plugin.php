@@ -1,13 +1,11 @@
 <?php namespace Ffte\Movies;
 
 
-use Backend;
 use Exception;
 use Ffte\Movies\Components\MovieDetail;
 use Ffte\Movies\Components\MovieSearch;
-use Ffte\Movies\Console\Import;
 use Ffte\Movies\FormWidgets\Duration;
-use Ffte\Movies\Models\Medium;
+use Ffte\Movies\FormWidgets\MLFileUpload;
 use System\Classes\PluginBase;
 use App;
 use Cache;
@@ -60,38 +58,6 @@ class Plugin extends PluginBase
     public function registerMarkupTags()
     {
         return [
-            'functions' => [
-                'video_src' => function($medium) {
-                    $url = $medium->provider ? $medium->provider->embed_url_video : '';
-
-                    return App::make('twig')->render($url, ['code' => $medium->code]);
-                },
-                'image_src' => function($medium) {
-                    $url = $medium->provider ? $medium->provider->embed_url_image : '';
-
-                    return App::make('twig')->render($url, ['code' => $medium->code]);
-                }
-            ],
-            'filters' => [
-                'vimeo' => function($url) {
-                    $store = Cache::store('file');
-
-                    if (false === $store->has($url)) {
-                        $vimeo_url = "https://placehold.it/350x150";
-
-                        try {
-                            $response = file_get_contents("https://vimeo.com/api/oembed.json?url=https://www.vimeo.com/$url&width=120&height=90");
-                            $data = json_decode($response, true);
-                            $vimeo_url = $data['thumbnail_url'];
-                        } catch(Exception $exception) {
-
-                        }
-                        $store->forever($url, $vimeo_url);
-                    }
-
-                    return $store->get($url);
-                }
-            ]
         ];
     }
 
@@ -111,7 +77,8 @@ class Plugin extends PluginBase
     public function registerFormWidgets()
     {
         return [
-            Duration::class => 'duration'
+            Duration::class => 'duration',
+            MLFileUpload::class => 'mlfileupload',
         ];
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Ffte\Movies\Classes;
 use Debugbar;
+use Exception;
 
 class VimeoClipInfo implements ClipInfo
 {
@@ -18,8 +19,6 @@ class VimeoClipInfo implements ClipInfo
      */
     public function getEmbedUrl()
     {
-        //$data = json_decode(file_get_contents("https://vimeo.com/api/oembed.json?url={$this->url}"));
-
         return "https://player.vimeo.com/video/{$this->id}";
     }
 
@@ -30,9 +29,12 @@ class VimeoClipInfo implements ClipInfo
 
     public function getThumbnailUrl()
     {
-        $res = file_get_contents("https://vimeo.com/api/oembed.json?url=https://vimeo.com/{$this->id}");
-        $data = json_decode($res, true);
-
-        return $data['thumbnail_url'];
+        try {
+            $res = file_get_contents("https://vimeo.com/api/oembed.json?url=https://vimeo.com/{$this->id}");
+            $data = json_decode($res, true);
+            return $data['thumbnail_url'];
+        } catch(Exception $exception) {
+            return '';
+        }
     }
 }

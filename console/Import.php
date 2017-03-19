@@ -3,12 +3,17 @@
 use Exception;
 use Ffte\Movies\Models\Clip;
 use Ffte\Movies\Models\Category;
+use Ffte\Movies\Models\Country;
+use Ffte\Movies\Models\Language;
 use Ffte\Movies\Models\Link;
 use Ffte\Movies\Models\LinkType;
+use Ffte\Movies\Models\Person;
 use Ffte\Movies\Models\Tag;
 use Illuminate\Console\Command;
 use Ffte\Movies\Models\Movie;
+use Illuminate\Support\Facades\Lang;
 use System\Models\File;
+use Debugbar;
 
 
 class Import extends Command
@@ -76,12 +81,11 @@ class Import extends Command
         foreach($movies as $movie) {
             if(!preg_match('/Weitere/', $movie['title'])) {
                 $info = new Info($movie['technical_info']);
-                $info2 = new Info2($movie['technical_info']);
 
                 $model = Movie::updateOrCreate(['id' => $movie['id']], [
                     'id' => $movie['id'],
                     'title' => $movie['title'],
-                    'original_title' => $info2->getRegex('/Originaltitel:\s(.*)/m'),
+                    'original_title' => $info->getRegex('/Originaltitel:\s(.*)/m'),
                     'subtitle' => $movie['subtitle'],
                     'description' => $movie['description'],
                     'notes' => $movie['notes'],
@@ -95,9 +99,9 @@ class Import extends Command
                     'updated_at' => $movie['updated_at'],
                     'created_at' => $movie['created_at'],
 
-                    'year' => $info2->getInt('/Jahr:\s(\d+)/m'),
-                    'duration' => $info2->getInt('/Dauer:\s(\d+)/m') * 60,
-                    'age_recommendation' => $info2->getInt('/Alterszulassung:\s(\d+)/m'),
+                    'year' => $info->getInt('/Jahr:\s(\d+)/m'),
+                    'duration' => $info->getInt('/Dauer:\s(\d+)/m') * 60,
+                    'age_recommendation' => $info->getInt('/Alterszulassung:\s(\d+)/m'),
 
                     'stars_contents' => $movie['ratings'][0],
                     'stars_entertainment' => $movie['ratings'][1],
@@ -131,7 +135,6 @@ class Import extends Command
                 }
 
                 $backgrounds = array_map(function($url) use($base_path) { return getFile($url, $base_path); }, $movie['backgrounds']);
-                //$model->backgrounds()->delete();
 
                 if(sizeof($backgrounds) > 0) {
                     $model->background()->add($backgrounds[0]);
@@ -145,8 +148,7 @@ class Import extends Command
                     }
                 }
 
-                //$model->media()->delete();
-                //$model->clips()->delete();
+                $model->clips()->delete();
 
                 foreach($movie['movies'] as $m) {
                     $clip = new Clip();
@@ -154,20 +156,25 @@ class Import extends Command
                     $clip->url = getUrl($m['provider'], $m['url']);
                     $clip->save();
                     $model->clips()->add($clip);
-                    /*
-                    $medium = new Medium();
-                    $medium->title = $m['title'];
-                    $medium->code = $m['url'];
-                    $medium->provider = convertProvider($m['provider']);
-                    $medium->movie = $model;
-                    $model->media()->add($medium);
-                    */
                 }
 
                 $model->links()->delete();
 
                 $error = getLinks($movie['links'], $model);
                 array_push($errors, ['id' => $model->id, 'errors' => $error]);
+
+                attachEntities(Person::class, $model, $info, 'Regie', 'directors');
+                attachEntities(Person::class, $model, $info, 'Produktion', 'production');
+                attachEntities(Person::class, $model, $info, 'Drehbuch', 'script');
+                attachEntities(Person::class, $model, $info, 'Musik', 'music');
+                attachEntities(Person::class, $model, $info, 'Akteure', 'actors');
+
+                attachEntities(Country::class, $model, $info, 'Land', 'countries');
+                attachEntities(Country::class, $model, $info, 'Drehorte', 'shooting_locations');
+
+                attachEntities(Language::class, $model, $info, 'Sprache \(Audio\)', 'languages_audio');
+                attachEntities(Language::class, $model, $info, 'Sprache \(Untertitel\)', 'languages_subtitle');
+
 
                 $model->save();
 
@@ -198,6 +205,19 @@ class Import extends Command
         return [];
     }
 
+}
+
+function attachEntities($clazz, $model, $info, $regexName, $name)
+{
+    $entities = $info->getArray($regexName);
+    $res = [];
+    foreach($entities as $entity) {
+        // remove surrounding whitespaces
+        $entity = trim($entity);
+        $p = $clazz::updateOrCreate(['name' => $entity], ['name' => $entity]);
+        array_push($res, $p->id);
+    }
+    $model->{$name}()->sync($res);
 }
 
 function getUrl($provider, $url)
@@ -286,37 +306,13 @@ function convertProvider($name) {
     return $data[$name];
 }
 
-class Info {
-    private $values;
-    public function __construct($info)
-    {
-        $lines = explode("\n", $info);
-        $values = [];
-        foreach($lines as $line) {
-            $tokens = explode(":", $line);
-            if(count($tokens) >= 2) {
-                $values[$tokens[0]] = $tokens[1];
-            }
-        }
-        $this->values = $values;
-    }
-
-    public function get($key) {
-        return array_key_exists($key, $this->values) ? $this->values[$key] : null;
-    }
-
-    public function getInt($key) {
-        $val = $this->get($key);
-        return $val != null ? intval($val) : $val;
-    }
-}
-
-class Info2
+class Info
 {
     private $text;
     public function __construct($text)
     {
-        $this->text = $text;
+        // remove windows newline encoding to make preg_match with /m option happy.
+        $this->text = str_replace("\r\n", "\n", $text);
     }
 
     public function getInt($regex)
@@ -333,6 +329,19 @@ class Info2
             $res = $match[1];
         }
         return $res;
+    }
+
+    public function getArray($name)
+    {
+        $regex = "/{$name}.*:\\s(.*)/m";
+        $str = $this->getRegex($regex);
+        $array = [];
+        $str = str_replace('\r', '', $str);
+        $str = str_replace('\n', '', $str);
+        if(!empty($str)) {
+            $array = explode(',', $str);
+        }
+        return $array;
     }
 }
 

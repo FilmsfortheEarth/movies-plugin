@@ -11,9 +11,9 @@ class CreateLanguagesTable extends Migration
         Schema::create('ffte_movies_languages', function(Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('code')->required();
-            $table->string('name')->required();
-            $table->timestamps();
+            //$table->string('code')->required();
+            $table->string('name')->unique()->required();
+            //$table->timestamps();
         });
 
         $this->makeRelation('language_audio');
