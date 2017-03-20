@@ -8,5 +8,6 @@ fields:
         required: true
     movies:
         label: Movies
-        type: relation
-        nameFrom: title
+        type: partial
+        path: field_movies
+

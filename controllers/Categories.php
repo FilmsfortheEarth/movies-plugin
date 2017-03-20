@@ -1,5 +1,6 @@
 <?php namespace Ffte\Movies\Controllers;
 
+use Backend\Behaviors\RelationController;
 use BackendMenu;
 use Backend\Classes\Controller;
 
@@ -12,11 +13,13 @@ class Categories extends Controller
 
     public $implement = [
         'Backend.Behaviors.FormController',
-        'Backend.Behaviors.ListController'
+        'Backend.Behaviors.ListController',
+        RelationController::class
     ];
 
     public $formConfig = 'config_form.yaml';
     public $listConfig = 'config_list.yaml';
+    public $relationConfig = 'config_relation.yaml';
 
     public function __construct()
     {

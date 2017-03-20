@@ -1,0 +1,9 @@
+movies:
+  label: Movies
+  view:
+    list: $/ffte/movies/models/movie/columns_search.yaml
+    toolbarButtons: add|remove
+    itemsPerPage: 10
+  manage:
+    list: $/ffte/movies/models/movie/columns.yaml
+    showSearch: true

@@ -1,0 +1,11 @@
+columns:
+    title:
+        label: Title
+        type: text
+        searchable: true
+        sortable: true
+    type:
+        label: Format
+        type: relation
+        relation: type
+        select: name
