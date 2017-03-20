@@ -22,3 +22,6 @@
     - create_rightsholders_table.php
     - create_rights_table.php
     - seed_all_tables.php
+1.0.2:
+    - 'add clip type "Filmbeschreibung"'
+    - seed_clip_types.php
