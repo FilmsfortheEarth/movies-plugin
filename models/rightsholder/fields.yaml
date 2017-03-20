@@ -4,3 +4,7 @@ fields:
         span: auto
         oc.commentPosition: ''
         type: text
+    url:
+        label: Url
+        span: auto
+        type: text

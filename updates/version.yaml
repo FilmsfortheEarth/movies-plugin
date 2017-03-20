@@ -25,3 +25,6 @@
 1.0.2:
     - 'add clip type "Filmbeschreibung"'
     - seed_clip_types.php
+1.0.3:
+    - 'added url to rightsholders'
+    - builder_table_update_ffte_movies_rightsholders.php

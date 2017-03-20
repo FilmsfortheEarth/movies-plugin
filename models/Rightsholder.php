@@ -17,6 +17,8 @@ class Rightsholder extends Model
      * Validation
      */
     public $rules = [
+        'name' => 'required',
+        'url' => 'url'
     ];
 
     /**
