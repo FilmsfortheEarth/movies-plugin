@@ -11,9 +11,7 @@ use Ffte\Movies\Models\Person;
 use Ffte\Movies\Models\Tag;
 use Illuminate\Console\Command;
 use Ffte\Movies\Models\Movie;
-use Illuminate\Support\Facades\Lang;
 use System\Models\File;
-use Debugbar;
 
 
 class Import extends Command
@@ -68,13 +66,10 @@ class Import extends Command
 
         foreach($categories as $category) {
             $cat = Category::updateOrCreate(['id' => $category['id']], [
-                'name' => $category['name'],
-                'slug' => slugify($category['name'])
+                'name' => $category['name']
             ]);
 
             update($cat, $category, 'name');
-            $cat->lang('en')->slug = slugify($category['name_en']);
-            $cat->lang('fr')->slug = slugify($category['name_fr']);
             $cat->save();
         }
 

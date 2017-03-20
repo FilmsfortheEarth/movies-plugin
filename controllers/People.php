@@ -8,6 +8,8 @@ use Backend\Classes\Controller;
  */
 class People extends Controller
 {
+    public $requiredPermissions = ['ffte.movies.people'];
+
     public $implement = [
         'Backend.Behaviors.FormController',
         'Backend.Behaviors.ListController'

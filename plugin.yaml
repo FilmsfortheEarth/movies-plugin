@@ -14,6 +14,8 @@ navigation:
                 label: Movies
                 url: ffte/movies/movies
                 icon: icon-film
+                permissions:
+                    - ffte.movies.movies
             side-menu-tags:
                 label: Tags
                 url: ffte/movies/tags
@@ -24,31 +26,69 @@ navigation:
                 label: Categories
                 url: ffte/movies/categories
                 icon: icon-folder
+                permissions:
+                    - ffte.movies.categories
             side-menu-clips:
                 label: Clips
                 url: ffte/movies/clips
                 icon: icon-video-camera
+                permissions:
+                    - ffte.movies.clips
             side-menu-people:
                 label: People
                 url: ffte/movies/people
                 icon: icon-users
+                permissions:
+                    - ffte.movies.people
             side-menu-links:
                 label: Links
                 url: ffte/movies/links
                 icon: icon-external-link
+                permissions:
+                    - ffte.movies.links
             side-menu-rights:
                 label: Rightsholders
                 url: ffte/movies/rightsholders
                 icon: icon-copyright
+                permissions:
+                    - ffte.movies.rightsholders
             side-menu-language:
                 label: Languages
                 url: ffte/movies/languages
                 icon: icon-language
+                permissions:
+                    - ffte.movies.languages
             side-menu-countries:
                 label: Countries
                 url: ffte/movies/countries
                 icon: icon-flag
+                permissions:
+                    - ffte.movies.countries
 permissions:
     ffte.movies.tags:
         tab: Movies
         label: Tags
+    ffte.movies.movies:
+        tab: Movies
+        label: Movies
+    ffte.movies.categories:
+        tab: Movies
+        label: Categories
+    ffte.movies.languages:
+        tab: Movies
+        label: Languages
+    ffte.movies.countries:
+        tab: Movies
+        label: Countries
+    ffte.movies.people:
+        tab: Movies
+        label: People
+    ffte.movies.clips:
+        tab: Movies
+        label: Clips
+    ffte.movies.links:
+        tab: Movies
+        label: Links
+    ffte.movies.rightsholders:
+        tab: Movies
+        label: Rightsholders

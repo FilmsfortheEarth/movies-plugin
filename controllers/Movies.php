@@ -9,6 +9,7 @@ use Ffte\Movies\Models\Movie;
 
 class Movies extends Controller
 {
+    public $requiredPermissions = ['ffte.movies.movies'];
 
     public $implement = [
         'Backend\Behaviors\ListController',

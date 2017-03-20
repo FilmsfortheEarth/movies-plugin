@@ -5,6 +5,8 @@ use BackendMenu;
 
 class Clips extends Controller
 {
+    public $requiredPermissions = ['ffte.movies.clips'];
+
     public $implement = ['Backend\Behaviors\ListController','Backend\Behaviors\FormController'];
     
     public $listConfig = 'config_list.yaml';

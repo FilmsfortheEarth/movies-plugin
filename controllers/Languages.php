@@ -5,6 +5,8 @@ use BackendMenu;
 
 class Languages extends Controller
 {
+    public $requiredPermissions = ['ffte.movies.languages'];
+
     public $implement = ['Backend\Behaviors\ListController','Backend\Behaviors\FormController'];
     
     public $listConfig = 'config_list.yaml';

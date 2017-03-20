@@ -8,6 +8,8 @@ use Backend\Classes\Controller;
  */
 class Categories extends Controller
 {
+    public $requiredPermissions = ['ffte.movies.categories'];
+
     public $implement = [
         'Backend.Behaviors.FormController',
         'Backend.Behaviors.ListController'

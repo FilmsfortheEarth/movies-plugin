@@ -11,7 +11,7 @@ class Category extends Model
         'RainLab.Translate.Behaviors.TranslatableModel'
     ];
 
-    public $translatable = ['name', 'slug'];
+    public $translatable = ['name'];
 
     /**
      * @var string The database table used by the model.

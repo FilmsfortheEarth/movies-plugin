@@ -5,6 +5,7 @@ use BackendMenu;
 
 class Links extends Controller
 {
+    public $requiredPermissions = ['ffte.movies.links'];
 
     public $implement = ['Backend\Behaviors\ListController','Backend\Behaviors\FormController'];
     

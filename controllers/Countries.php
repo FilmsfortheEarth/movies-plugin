@@ -5,6 +5,8 @@ use BackendMenu;
 
 class Countries extends Controller
 {
+    public $requiredPermissions = ['ffte.movies.countries'];
+
     public $implement = ['Backend\Behaviors\ListController','Backend\Behaviors\FormController'];
     
     public $listConfig = 'config_list.yaml';
