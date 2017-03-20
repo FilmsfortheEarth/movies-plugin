@@ -1,9 +1,8 @@
 <?php namespace Ffte\Movies\Console;
 
-use Ffte\Movies\Models\Movie;
 use Illuminate\Console\Command;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Input\InputArgument;
+use System\Models\File;
+
 
 class Clear extends Command
 {
@@ -23,9 +22,9 @@ class Clear extends Command
      */
     public function fire()
     {
-        foreach(Movie::all() as $movie) {
-            $movie->delete();
-        }
+        File::truncate();
+        \Ffte\Movies\Models\File::truncate();
+
 
         $this->output->writeln('done');
     }
