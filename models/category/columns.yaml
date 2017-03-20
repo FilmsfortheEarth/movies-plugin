@@ -7,6 +7,10 @@ columns:
         label: ID
         searchable: true
         invisible: true
+    published:
+        label: Published
+        searchable: false
+        type: switch
     name:
         label: Name
         searchable: true

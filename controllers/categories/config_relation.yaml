@@ -1,9 +1,18 @@
 movies:
   label: Movies
   view:
-    list: $/ffte/movies/models/movie/columns_search.yaml
+    list: $/ffte/movies/models/categorymoviepivot/columns.yaml
     toolbarButtons: add|remove
     itemsPerPage: 10
   manage:
     list: $/ffte/movies/models/movie/columns.yaml
     showSearch: true
+  pivot:
+    form: $/ffte/movies/models/categorymoviepivot/fields.yaml
+
+clips:
+  label: Clips
+  view:
+    list: $/ffte/movies/models/clip/columns.yaml
+  manage:
+    form: $/ffte/movies/models/clip/fields.yaml

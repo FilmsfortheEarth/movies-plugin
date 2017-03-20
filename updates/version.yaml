@@ -28,3 +28,12 @@
 1.0.3:
     - 'added url to rightsholders'
     - builder_table_update_ffte_movies_rightsholders.php
+1.0.4:
+    - 'Updated table ffte_movies_categories'
+    - builder_table_update_ffte_movies_categories.php
+1.0.5:
+    - 'Created table ffte_movies_category_clip'
+    - builder_table_create_ffte_movies_category_clip.php
+1.0.6:
+    - 'Updated table ffte_movies_category_movie'
+    - builder_table_update_ffte_movies_category_movie.php

@@ -3,11 +3,35 @@
 # ===================================
 
 fields:
+    published:
+        label: Published
+        type: switch
     name:
         label: Name
         required: true
+    teaser_text:
+        label: Teaser Text
+        type: text
+    text:
+        label: Text
+        type: richeditor
+    image:
+        label: Keyvisual
+        type: mlfileupload
+        mode: image
+        span: left
+    quote_text:
+        label: Quote
+        type: textarea
+        span: right
+    quote_author:
+        label: Quote Author
+        type: text
     movies:
         label: Movies
         type: partial
         path: field_movies
-
+    clips:
+        label: Clips
+        type: partial
+        path: field_clips

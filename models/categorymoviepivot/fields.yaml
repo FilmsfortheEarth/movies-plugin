@@ -1,0 +1,9 @@
+fields:
+    pivot[tip]:
+        label: Tip
+        type: switch
+        span: left
+    pivot[description]:
+        label: Description
+        type: textarea
+        span: full
