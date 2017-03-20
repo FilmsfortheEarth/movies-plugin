@@ -6,7 +6,7 @@ columns:
     id:
         label: Id
         sortable: true
-        searchable: true
+        invisible: true
     name:
         label: Name
         searchable: true

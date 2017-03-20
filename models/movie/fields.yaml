@@ -39,7 +39,13 @@ tabs:
             tab: General
         tags:
             label: Tags
-            type: relation
+            type: partial
+            path: field_tags
+            tab: General
+        categories:
+            label: Categories
+            type: partial
+            path: field_categories
             tab: General
         ratings:
             label: Ratings
@@ -195,7 +201,7 @@ tabs:
             thumbOptions:
                 mode: auto
                 extension: auto
-            span: full
+            span: left
             type: mlfileupload
             tab: Media
         background:
@@ -206,8 +212,7 @@ tabs:
             thumbOptions:
                 mode: auto
                 extension: auto
-            span: full
-            imageWidth: '512'
+            span: right
             type: mlfileupload
             tab: Media
         images:

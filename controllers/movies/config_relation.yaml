@@ -40,3 +40,19 @@ rights:
     toolbarButtons: create|delete
   manage:
     form: $/ffte/movies/models/right/fields.yaml
+
+tags:
+  label: Tags
+  view:
+    list: $/ffte/movies/models/tag/columns.yaml
+    toolbarButtons: add|remove
+  manage:
+    showSearch: true
+
+categories:
+  label: Categories
+  view:
+    list: $/ffte/movies/models/category/columns.yaml
+    toolbarButtons: add|remove
+  manage:
+    showSearch: true
