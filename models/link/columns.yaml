@@ -7,7 +7,10 @@ columns:
       label: Type
       relation: linktype
       select: name
+      searchable: true
     url:
       label: Url
+      searchable: true
     title:
       label: Title
+      searchable: true

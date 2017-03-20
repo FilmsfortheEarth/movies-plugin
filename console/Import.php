@@ -347,13 +347,16 @@ class Info
 
 function getLinks($text, $movie) {
     $errors = [];
+    // windows to unix newline
+    $text = str_replace("\r\n", "\n", $text);
     // replace newline with |
-    $data = str_replace("\r\n", "|", $text);
+    $data = str_replace("\n", "|", $text);
     // split by |
     $lines = explode("|", $data);
     $lines = array_filter($lines, function($v) { return !empty($v); });
 
     foreach($lines as $line) {
+        $line = trim($line);
         $link = new Link();
         $link->movie = $movie;
 
@@ -362,8 +365,8 @@ function getLinks($text, $movie) {
             $link->url = $matches[1];
             $link->title = $matches[2];
         } else {
-            preg_match("/^.*\\\"(.*)\\\" *: *(.*)$/is", $line, $matches);
-            if(count($matches) == 3) {
+            if(preg_match('/^"(.*?)":\s?(https?.*)$/i', $line, $matches))
+            {
                 $link->title = $matches[1];
                 $link->url = $matches[2];
             }

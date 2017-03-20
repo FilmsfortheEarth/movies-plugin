@@ -6,7 +6,6 @@ tabs:
             tab: General
         title:
             label: Title
-            oc.commentPosition: ''
             span: left
             required: true
             type: text
@@ -57,12 +56,12 @@ tabs:
             span: left
             tab: Rating
         stars_entertainment:
-            label: 'entertainment value'
+            label: 'Entertainment value'
             type: number
             span: right
             tab: Rating
         stars_quality:
-            label: 'scientificity+ journalistic quality'
+            label: 'Scientificity + journalistic quality'
             type: number
             span: left
             tab: Rating
@@ -145,7 +144,7 @@ tabs:
             span: left
             tab: Techinfo
         duration:
-            label: 'Duration'
+            label: Duration
             type: duration
             span: right
             tab: Techinfo
@@ -184,24 +183,24 @@ tabs:
             type: textarea
             tab: Techinfo
         clips:
-            label: Clips
-            type: partial
+            span: full
             path: field_clips
+            type: partial
             tab: Media
         cover:
             label: Cover
-            oc.commentPosition: ''
+            commentAbove: 'Override automatic title and description for this attachment if needed'
             mode: image
             useCaption: true
             thumbOptions:
                 mode: auto
                 extension: auto
-            span: left
+            span: full
             type: mlfileupload
             tab: Media
         background:
             label: Background
-            oc.commentPosition: ''
+            commentAbove: 'Override automatic title and description for this attachment if needed'
             mode: image
             useCaption: true
             thumbOptions:
@@ -213,7 +212,7 @@ tabs:
             tab: Media
         images:
             label: Images
-            oc.commentPosition: ''
+            commentAbove: 'Override automatic title for this attachment if needed'
             mode: image
             useCaption: true
             thumbOptions:
