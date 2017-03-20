@@ -13,7 +13,8 @@ class ClipInfoService
     {
         $this->providers = [
             new YoutubeClipInfoProvider(),
-            new VimeoClipInfoProvider()
+            new VimeoClipInfoProvider(),
+            new DefaultClipInfoProvider(),
         ];
     }
 
