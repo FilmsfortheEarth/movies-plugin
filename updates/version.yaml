@@ -39,3 +39,5 @@
     - builder_table_update_ffte_movies_category_movie.php
 1.0.7:
     - 'fixed relation translation. added inline add rightsholder to right.'
+1.0.8:
+    - 'cosmetics on forms and lists. added clip type as entity.'

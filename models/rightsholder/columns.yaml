@@ -4,3 +4,8 @@ columns:
         type: text
         searchable: true
         sortable: true
+    url:
+        label: Url
+        type: text
+        searchable: true
+        sortable: true

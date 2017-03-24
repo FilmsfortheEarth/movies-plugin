@@ -1,0 +1,10 @@
+name: ClipFormats
+form: $/ffte/movies/models/cliptype/fields.yaml
+modelClass: Ffte\Movies\Models\ClipType
+defaultRedirect: ffte/movies/clipformats
+create:
+    redirect: 'ffte/movies/clipformats/update/:id'
+    redirectClose: ffte/movies/clipformats
+update:
+    redirect: ffte/movies/clipformats
+    redirectClose: ffte/movies/clipformats

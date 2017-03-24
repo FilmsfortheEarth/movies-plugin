@@ -2,5 +2,5 @@ fields:
     name:
         label: Name
         oc.commentPosition: ''
-        span: right
+        span: full
         type: text

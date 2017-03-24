@@ -11,7 +11,7 @@ class Rightsholder extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'url'];
 
     /*
      * Validation

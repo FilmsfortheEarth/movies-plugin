@@ -64,6 +64,12 @@ navigation:
                 icon: icon-flag
                 permissions:
                     - ffte.movies.countries
+            side-menu-item:
+                label: 'Clip Formats'
+                url: ffte/movies/clipformats
+                icon: icon-paperclip
+                permissions:
+                    - ffte.movies.clipformats
 permissions:
     ffte.movies.tags:
         tab: Movies
@@ -92,3 +98,6 @@ permissions:
     ffte.movies.rightsholders:
         tab: Movies
         label: Rightsholders
+    ffte.movies.clipformats:
+        tab: Movies
+        label: 'Clip Formats'

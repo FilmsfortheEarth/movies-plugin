@@ -1,12 +1,21 @@
 <?php namespace Ffte\Movies\Models;
 
 use Model;
+use RainLab\Translate\Behaviors\TranslatableModel;
 
 /**
  * ClipType Model
  */
 class ClipType extends Model
 {
+    public $implement = [
+        TranslatableModel::class
+    ];
+
+    public $translatable = [
+        'name'
+    ];
+
     /**
      * @var string The database table used by the model.
      */

@@ -5,4 +5,8 @@
 columns:
     id:
         label: ID
+        invisible: true
+    name:
+        label: Name
         searchable: true
+        sortable: true

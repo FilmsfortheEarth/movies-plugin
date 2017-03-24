@@ -6,8 +6,9 @@ columns:
     id:
         label: ID
         searchable: true
+        invisible: true
     published:
-        label: active
+        label: Published
         sortable: true
         type: switch
     cover:
@@ -16,10 +17,39 @@ columns:
         path: ~/plugins/ffte/movies/controllers/movies/_image.htm
         sortable: false
     title:
-        label: title
+        label: Title
         searchable: true
         sortable: true
+    year:
+        label: Year
+        type: number
+        invisible: true
+        sortable: true
+        searchable: true
+    duration:
+        label: Duration
+        type: duration
+        sortable: true
+        invisible: true
+    age_recommendation:
+        label: Age Recommendation
+        type: number
+        sortable: true
+        invisible: true
+    languages_audio:
+        label: Languages (Audio)
+        type: languages
+        sortable: false
+        invisible: true
+    languages_subtitle:
+        label: Languages (Subtitle)
+        type: languages
+        sortable: false
+        invisible: true
     updated_at:
         label: last updated
         sortable: true
-    
+    created_at:
+        label: Created At
+        sortable: true
+        invisible: true

@@ -1,12 +1,6 @@
 fields:
-    id:
-        label: ID
-        oc.commentPosition: ''
-        span: full
-        disabled: true
-        type: text
     name:
         label: Name
-        span: right
+        span: full
         oc.commentPosition: ''
         type: text
