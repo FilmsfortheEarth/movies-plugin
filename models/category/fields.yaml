@@ -17,7 +17,7 @@ fields:
         type: richeditor
     image:
         label: Keyvisual
-        type: mlfileupload
+        type: fileupload
         mode: image
         span: left
     quote_text:
@@ -31,7 +31,13 @@ fields:
         label: Movies
         type: partial
         path: field_movies
+        context:
+          - update
+          - view
     clips:
         label: Clips
         type: partial
         path: field_clips
+        context:
+          - update
+          - view

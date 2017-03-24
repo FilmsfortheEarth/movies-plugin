@@ -43,13 +43,14 @@ class MLFileUpload extends FileUpload
      */
     public function onSaveAttachmentConfig()
     {
+
         try {
             $fileModel = $this->getRelationModel();
             if (($fileId = post('file_id')) && ($file = $fileModel::find($fileId))) {
 
                 foreach(post('RLTranslate') as $code => $attrs) {
                     foreach($attrs as $k => $v) {
-                        $file->lang($code)->$k = $v;
+                        $file->lang($code)->{$k} = $v;
                     }
                 }
 
@@ -63,6 +64,7 @@ class MLFileUpload extends FileUpload
         catch (Exception $ex) {
             return json_encode(['error' => $ex->getMessage()]);
         }
+
     }
 
 }

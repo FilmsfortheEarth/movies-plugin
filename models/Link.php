@@ -1,5 +1,6 @@
 <?php namespace Ffte\Movies\Models;
 
+use Ffte\Movies\Classes\SaveTranslationHack;
 use Model;
 use October\Rain\Database\Traits\Validation;
 
@@ -8,13 +9,14 @@ use October\Rain\Database\Traits\Validation;
  */
 class Link extends Model
 {
+    use SaveTranslationHack;
+    use Validation;
+
     public $implement = [
         'RainLab.Translate.Behaviors.TranslatableModel'
     ];
 
     public $translatable = ['title', 'url'];
-
-    use Validation;
 
     public $rules = [
         'url' => 'required'

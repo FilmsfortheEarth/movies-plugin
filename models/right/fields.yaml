@@ -1,9 +1,15 @@
 fields:
     rightsholder:
         label: Rightsholder
-        nameFrom: name
         span: full
-        type: relation
+        type: recordfinder
+        list: $/ffte/movies/models/rightsholder/columns.yaml
+        nameFrom: name
+
+    _add_rightsholder:
+        type: partial
+        path: field_rightsholder
+
     countries:
         label: Countries
         type: taglist

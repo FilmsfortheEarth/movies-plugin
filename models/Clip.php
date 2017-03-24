@@ -1,6 +1,7 @@
 <?php namespace Ffte\Movies\Models;
 
 use Ffte\Movies\Classes\ClipInfoService;
+use Ffte\Movies\Classes\SaveTranslationHack;
 use Model;
 use RainLab\Translate\Behaviors\TranslatableModel;
 use Debugbar;
@@ -11,6 +12,7 @@ use Debugbar;
 class Clip extends Model
 {
     use \October\Rain\Database\Traits\Validation;
+    use SaveTranslationHack;
 
     public $implement = [
         TranslatableModel::class

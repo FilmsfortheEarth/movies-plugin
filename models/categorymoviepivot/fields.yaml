@@ -1,9 +1,11 @@
 fields:
-    pivot[tip]:
+    'pivot[tip]':
         label: Tip
         type: switch
         span: left
-    pivot[description]:
+    'pivot[description]':
         label: Description
-        type: textarea
+        size: ''
+        oc.commentPosition: ''
         span: full
+        type: textarea

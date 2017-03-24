@@ -25,7 +25,7 @@ columns:
         sortable: false
     duration:
         label: Duration
-        type: number
+        type: duration
         sortable: true
     languages_audio:
         label: Languages (Audio)

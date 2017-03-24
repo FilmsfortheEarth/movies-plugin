@@ -1,15 +1,18 @@
 <?php namespace Ffte\Movies;
 
 
+use Carbon\Carbon;
 use Exception;
 use Ffte\Movies\Components\MovieDetail;
 use Ffte\Movies\Components\MovieSearch;
 use Ffte\Movies\FormWidgets\Duration;
 use Ffte\Movies\FormWidgets\MLFileUpload;
+use Ffte\Movies\Models\CategoryMoviePivot;
 use System\Classes\PluginBase;
 use App;
 use Cache;
 use \System\Twig\Extension as TwigExtension;
+
 
 /**
  * Movies Plugin Information File
@@ -45,6 +48,7 @@ class Plugin extends PluginBase
      */
     public function boot()
     {
+
     }
 
     public function registerComponents()
@@ -70,6 +74,13 @@ class Plugin extends PluginBase
                     $array = $value->toArray();
                 }
                 return implode(', ', array_map(function($language) { return $language['name']; }, $array));
+            },
+            'duration' => function($value) {
+                $hours = floor($value / 3600);
+                $mins = floor($value / 60 % 60);
+                $secs = floor($value % 60);
+
+                return $value ? sprintf('%02d:%02d:%02d', $hours, $mins, $secs) : '';
             }
         ];
     }

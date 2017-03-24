@@ -4,9 +4,12 @@ movies:
     list: $/ffte/movies/models/categorymoviepivot/columns.yaml
     toolbarButtons: add|remove
     itemsPerPage: 10
+    deferredBinding: true
   manage:
     list: $/ffte/movies/models/movie/columns.yaml
     showSearch: true
+    showSorting: true
+    showCheckboxes: true
   pivot:
     form: $/ffte/movies/models/categorymoviepivot/fields.yaml
 

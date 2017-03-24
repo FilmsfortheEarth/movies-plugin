@@ -1,0 +1,27 @@
+<?= Form::open() ?>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="popup">&times;</button>
+        <h4 class="model-title">Create new rightsholder</h4>
+    </div>
+
+    <div class="modal-body">
+        <?= $rightsholderFormWidget->render() ?>
+    </div>
+
+    <div class="modal-footer">
+        <button
+            type="submit"
+            data-request="onCreateRightsholder"
+            data-request-data="redirect:0"
+            data-popup-load-indicator
+            class="btn btn-primary">
+            Create
+        </button>
+        <button
+                type="button"
+                class="btn btn-default"
+                data-dismiss="popup">
+            Cancel
+        </button>
+    </div>
+<?= Form::close() ?>

@@ -2,6 +2,7 @@
 
 use Ffte\Movies\Classes\SaveTranslationHack;
 use System\Models\File as SystemFile;
+use Db;
 
 /**
  * File Model

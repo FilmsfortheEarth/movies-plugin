@@ -1,0 +1,5 @@
+rightsholder:
+  label: Rightholder
+  view:
+    list: $/ffte/movies/models/rightsholder/columns.yaml
+    toolbarButtons: create|delete

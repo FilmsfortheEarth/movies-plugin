@@ -1,5 +1,6 @@
 <?php namespace Ffte\Movies\Controllers;
 
+use Backend\Behaviors\FormController;
 use Backend\Behaviors\RelationController;
 use BackendMenu;
 use Backend\Classes\Controller;
@@ -12,7 +13,7 @@ class Categories extends Controller
     public $requiredPermissions = ['ffte.movies.categories'];
 
     public $implement = [
-        'Backend.Behaviors.FormController',
+        FormController::class,
         'Backend.Behaviors.ListController',
         RelationController::class
     ];

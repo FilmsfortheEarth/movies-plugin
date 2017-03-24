@@ -1,7 +1,7 @@
 <?php namespace Ffte\Movies\Models;
 
 use Model;
-use System\Models\File;
+use \System\Models\File;
 
 /**
  * Category Model
@@ -14,7 +14,9 @@ class Category extends Model
         'RainLab.Translate.Behaviors.TranslatableModel'
     ];
 
-    public $translatable = ['name', 'teaser_text', 'text', 'quote_text'];
+    public $translatable = [
+        'name', 'teaser_text', 'text', 'quote_text'
+    ];
 
     public $rules = [
         'name' => 'required'
@@ -46,7 +48,7 @@ class Category extends Model
             Movie::class,
             'table' => 'ffte_movies_category_movie',
             'pivot' => ['tip', 'description'],
-            'pivotModel' => CategoryMoviePivot::class,
+            //'pivotModel' => CategoryMoviePivot::class,
         ],
         'clips' => [Clip::class, 'table' => 'ffte_movies_category_clip']
     ];

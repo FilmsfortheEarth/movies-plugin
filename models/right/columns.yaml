@@ -11,3 +11,4 @@ columns:
     countries:
         label: Countries
         type: languages
+        sortable: false
