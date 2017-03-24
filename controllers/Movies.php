@@ -17,7 +17,7 @@ class Movies extends Controller
     public $implement = [
         'Backend\Behaviors\ListController',
         FormController::class,
-        RelationController::class
+        RelationController::class,
     ];
 
     public $listConfig = 'config_list.yaml';
@@ -53,6 +53,6 @@ class Movies extends Controller
         $model = new Rightsholder();
         $model->fill($data);
         $model->save();
-
     }
+
 }

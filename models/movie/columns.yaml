@@ -20,6 +20,14 @@ columns:
         label: Title
         searchable: true
         sortable: true
+    categories:
+        label: Categories
+        type: languages
+        sortable: false
+    tags:
+        label: Tags
+        type: languages
+        sortable: false
     year:
         label: Year
         type: number

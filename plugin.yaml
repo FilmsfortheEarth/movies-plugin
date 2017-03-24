@@ -16,24 +16,24 @@ navigation:
                 icon: icon-film
                 permissions:
                     - ffte.movies.movies
-            side-menu-tags:
-                label: Tags
-                url: ffte/movies/tags
-                icon: icon-tags
-                permissions:
-                    - ffte.movies.tags
-            side-menu-categories:
-                label: Categories
-                url: ffte/movies/categories
-                icon: icon-folder
-                permissions:
-                    - ffte.movies.categories
             side-menu-clips:
                 label: Clips
                 url: ffte/movies/clips
                 icon: icon-video-camera
                 permissions:
                     - ffte.movies.clips
+            side-menu-categories:
+                label: Categories
+                url: ffte/movies/categories
+                icon: icon-folder
+                permissions:
+                    - ffte.movies.categories
+            side-menu-tags:
+                label: Tags
+                url: ffte/movies/tags
+                icon: icon-tags
+                permissions:
+                    - ffte.movies.tags
             side-menu-people:
                 label: People
                 url: ffte/movies/people

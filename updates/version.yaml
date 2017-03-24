@@ -41,3 +41,5 @@
     - 'fixed relation translation. added inline add rightsholder to right.'
 1.0.8:
     - 'cosmetics on forms and lists. added clip type as entity.'
+1.0.9:
+    - 'added filters to movie list. added column categories, tags and languages columns to movie list.'

@@ -1,0 +1,21 @@
+scopes:
+    categories:
+        label: Categories
+        modelClass: Ffte\Movies\Models\Category
+        conditions: id in (select movie_id from ffte_movies_category_movie where category_id in (:filtered))
+        nameFrom: name
+    tags:
+        label: Tags
+        modelClass: Ffte\Movies\Models\Tag
+        conditions: id in (select taggable_id from ffte_movies_taggables where taggable_type = 'Ffte\\Movies\\Models\\Movie' and tag_id in (:filtered))
+        nameFrom: name
+    languages_audio:
+        label: Languages (Audio)
+        modelClass: Ffte\Movies\Models\Language
+        conditions: id in (select movie_id from ffte_movies_movie_language_audio where language_id  in (:filtered))
+        nameFrom: name
+    languages_subtitle:
+        label: Languages (Subtitle)
+        modelClass: Ffte\Movies\Models\Language
+        conditions: id in (select movie_id from ffte_movies_movie_language_subtitle where language_id  in (:filtered))
+        nameFrom: name
