@@ -36,9 +36,10 @@ clips:
           label: Tip
         pivot[description]:
           label: Description
-    toolbarButtons: add|remove
+    toolbarButtons: create|add|delete|remove
   manage:
     list: $/ffte/movies/models/clip/columns.yaml
+    form: $/ffte/movies/models/clip/fields.yaml
     showCheckboxes: true
     recordsPerPage: 20
     showSearch: true
