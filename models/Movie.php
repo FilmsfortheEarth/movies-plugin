@@ -11,7 +11,7 @@ class Movie extends Model
 
     public $rules = [
         'title' => 'required',
-        'original_title' => 'required'
+        //'original_title' => 'required'
     ];
 
     public $implement = [

@@ -1,7 +1,6 @@
 <?php namespace Ffte\Movies\Models;
 
 use Model;
-use \System\Models\File;
 
 /**
  * Category Model
