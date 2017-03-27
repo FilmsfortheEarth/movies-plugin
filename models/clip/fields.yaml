@@ -11,6 +11,12 @@ fields:
         span: left
         dependsOn:
           - url
+    _provider:
+        label: Provider
+        span: right
+        readOnly: true
+        dependsOn:
+          - url
     title:
         label: Title
         span: left
