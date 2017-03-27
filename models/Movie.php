@@ -10,7 +10,8 @@ class Movie extends Model
     use \October\Rain\Database\Traits\Validation;
 
     public $rules = [
-        'title' => 'required'
+        'title' => 'required',
+        'original_title' => 'required'
     ];
 
     public $implement = [
