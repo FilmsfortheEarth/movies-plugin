@@ -22,6 +22,12 @@ navigation:
                 icon: icon-video-camera
                 permissions:
                     - ffte.movies.clips
+            side-menu-collections:
+                label: Collections
+                url: ffte/movies/collections
+                icon: icon-cubes
+                permissions:
+                    - ffte.movies.collections
             side-menu-categories:
                 label: Categories
                 url: ffte/movies/categories
@@ -101,3 +107,6 @@ permissions:
     ffte.movies.clipformats:
         tab: Movies
         label: 'Clip Formats'
+    ffte.movies.collections:
+        tab: Movies
+        label: Collections

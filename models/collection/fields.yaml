@@ -1,0 +1,16 @@
+fields:
+    title:
+        label: Title
+        oc.commentPosition: ''
+        span: full
+        type: text
+    movies:
+        label: Films
+        span: full
+        type: partial
+        path: movies
+    clips:
+        label: Clips
+        span: full
+        type: partial
+        path: clips

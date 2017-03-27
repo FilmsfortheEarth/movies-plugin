@@ -43,3 +43,15 @@
     - 'cosmetics on forms and lists. added clip type as entity.'
 1.0.9:
     - 'added filters to movie list. added column categories, tags and languages columns to movie list.'
+1.0.10:
+    - 'Created table ffte_movies_collections'
+    - builder_table_create_ffte_movies_collections.php
+1.0.11:
+    - 'Updated table ffte_movies_categories'
+    - builder_table_update_ffte_movies_categories2.php
+1.0.12:
+    - 'Created table ffte_movies_collection_movie'
+    - builder_table_create_ffte_movies_collection_movie.php
+1.0.13:
+    - 'Created table ffte_movies_collection_clip'
+    - builder_table_create_ffte_movies_collection_clip.php

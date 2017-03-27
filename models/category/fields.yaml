@@ -1,43 +1,7 @@
-# ===================================
-#  Form Field Definitions
-# ===================================
-
 fields:
-    published:
-        label: Published
-        type: switch
     name:
         label: Name
+        oc.commentPosition: ''
+        span: full
         required: true
-    teaser_text:
-        label: Teaser Text
         type: text
-    text:
-        label: Text
-        type: richeditor
-    image:
-        label: Keyvisual
-        type: fileupload
-        mode: image
-        span: left
-    quote_text:
-        label: Quote
-        type: textarea
-        span: right
-    quote_author:
-        label: Quote Author
-        type: text
-    movies:
-        label: Movies
-        type: partial
-        path: field_movies
-        context:
-          - update
-          - view
-    clips:
-        label: Clips
-        type: partial
-        path: field_clips
-        context:
-          - update
-          - view

@@ -1,0 +1,53 @@
+movies:
+  label: Movies
+  view:
+    list:
+      columns:
+        title:
+          label: Title
+        pivot[tip]:
+          label: Tip
+        pivot[description]:
+          label: Description
+    toolbarButtons: add|remove
+  manage:
+    list: $/ffte/movies/models/movie/columns.yaml
+    showCheckboxes: true
+    recordsPerPage: 20
+    showSearch: true
+  pivot:
+    form:
+      fields:
+        pivot[tip]:
+          label: Tip
+          type: switch
+        pivot[description]:
+          label: Description
+          type: textarea
+
+clips:
+  label: Clips
+  view:
+    list:
+      columns:
+        title:
+          label: Title
+        pivot[tip]:
+          label: Tip
+        pivot[description]:
+          label: Description
+    toolbarButtons: add|remove
+  manage:
+    list: $/ffte/movies/models/clip/columns.yaml
+    showCheckboxes: true
+    recordsPerPage: 20
+    showSearch: true
+  pivot:
+    form:
+      fields:
+        pivot[tip]:
+          label: Tip
+          type: switch
+        pivot[description]:
+          label: Description
+          type: textarea

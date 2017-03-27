@@ -15,7 +15,7 @@ class Category extends Model
     ];
 
     public $translatable = [
-        'name', 'teaser_text', 'text', 'quote_text'
+        'name'
     ];
 
     public $rules = [
@@ -47,17 +47,13 @@ class Category extends Model
         'movies' => [
             Movie::class,
             'table' => 'ffte_movies_category_movie',
-            'pivot' => ['tip', 'description'],
-            //'pivotModel' => CategoryMoviePivot::class,
         ],
         'clips' => [Clip::class, 'table' => 'ffte_movies_category_clip']
     ];
     public $morphTo = [];
     public $morphOne = [];
     public $morphMany = [];
-    public $attachOne = [
-        'image' => [File::class, 'delete' => true]
-    ];
+    public $attachOne = [];
     public $attachMany = [];
 
 }

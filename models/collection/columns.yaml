@@ -2,9 +2,7 @@ columns:
     id:
         label: ID
         type: number
-        searchable: false
         invisible: true
-    name:
-        label: Name
-        type: text
+    title:
+        label: Title
         searchable: true

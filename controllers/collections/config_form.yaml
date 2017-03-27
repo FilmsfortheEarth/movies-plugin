@@ -1,0 +1,10 @@
+name: Collections
+form: $/ffte/movies/models/collection/fields.yaml
+modelClass: Ffte\Movies\Models\Collection
+defaultRedirect: ffte/movies/collections
+create:
+    redirect: 'ffte/movies/collections/update/:id'
+    redirectClose: ffte/movies/collections
+update:
+    redirect: ffte/movies/collections
+    redirectClose: ffte/movies/collections

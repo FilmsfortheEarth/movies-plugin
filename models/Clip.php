@@ -54,7 +54,8 @@ class Clip extends Model
     ];
     public $belongsToMany = [
         'languages_audio' => [Language::class, 'table' => 'ffte_movies_clip_language_audio'],
-        'languages_subtitle' => [Language::class, 'table' => 'ffte_movies_clip_language_subtitle']
+        'languages_subtitle' => [Language::class, 'table' => 'ffte_movies_clip_language_subtitle'],
+        'categories' => [Category::class, 'table' => 'ffte_movies_category_clip']
     ];
     public $morphTo = [];
     public $morphOne = [];

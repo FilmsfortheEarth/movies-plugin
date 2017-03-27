@@ -21,11 +21,17 @@ fields:
         type: relation
         span: right
         emptyOption: --
+    categories:
+        label: Categories
+        type: taglist
+        mode: relation
+        span: left
+        customTags: false
     tags:
         label: Tags
         type: taglist
         mode: relation
-        span: full
+        span: right
         customTags: false
     languages_audio:
         label: Languages (Audio)
