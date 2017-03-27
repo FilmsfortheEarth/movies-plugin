@@ -11,7 +11,7 @@ navigation:
         icon: icon-film
         sideMenu:
             side-menu-movies:
-                label: Movies
+                label: 'ffte.movies::lang.movies.title'
                 url: ffte/movies/movies
                 icon: icon-film
                 permissions:
@@ -41,7 +41,7 @@ navigation:
                 permissions:
                     - ffte.movies.tags
             side-menu-people:
-                label: People
+                label: 'ffte.movies::lang.people.title'
                 url: ffte/movies/people
                 icon: icon-users
                 permissions:

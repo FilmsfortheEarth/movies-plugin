@@ -114,6 +114,7 @@ tabs:
             tab: Techinfo
         production:
             label: Production
+            commentAbove: 'ffte.movies::lang.movie.production.comment'
             type: taglist
             mode: relation
             span: left
