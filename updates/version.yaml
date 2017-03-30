@@ -55,3 +55,5 @@
 1.0.13:
     - 'Created table ffte_movies_collection_clip'
     - builder_table_create_ffte_movies_collection_clip.php
+1.0.14:
+    - 'fixed "relation is not a valid type" warning'
