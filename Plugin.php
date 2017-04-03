@@ -7,6 +7,7 @@ use Ffte\Movies\Components\MovieDetail;
 use Ffte\Movies\Components\MovieSearch;
 use Ffte\Movies\FormWidgets\Duration;
 use Ffte\Movies\FormWidgets\MLFileUpload;
+use Ffte\Movies\FormWidgets\MLMediaFinder;
 use Ffte\Movies\Models\CategoryMoviePivot;
 use System\Classes\PluginBase;
 use App;
@@ -90,6 +91,7 @@ class Plugin extends PluginBase
         return [
             Duration::class => 'duration',
             MLFileUpload::class => 'mlfileupload',
+            MLMediaFinder::class => 'mlmediafinder',
         ];
     }
 }
