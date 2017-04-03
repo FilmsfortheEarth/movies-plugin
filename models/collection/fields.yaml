@@ -5,12 +5,16 @@ fields:
         span: full
         type: text
     movies:
-        label: Films
         span: full
-        type: partial
         path: movies
-    clips:
-        label: Clips
-        span: full
+        context:
+            - update
+            - preview
         type: partial
+    clips:
+        span: full
         path: clips
+        context:
+            - update
+            - preview
+        type: partial
