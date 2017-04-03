@@ -11,10 +11,10 @@ columns:
         label: Published
         sortable: true
         type: switch
-    cover:
+    cover_url:
         label: Cover
         type: partial
-        path: ~/plugins/ffte/movies/controllers/movies/_image.htm
+        path: ~/plugins/ffte/movies/controllers/movies/_thumb.htm
         sortable: false
     title:
         label: Title

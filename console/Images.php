@@ -25,22 +25,34 @@ class Images extends Command
      */
     public function fire()
     {
-        $this->createDirectory();
+        $dir = base_path() . MediaLibrary::url('') . 'covers';
+        $this->createDirectory($dir);
         $movies = Movie::all();
 
-        echo public_path();
+        $publicDir = storage_path() . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR;
 
-        foreach($movies as $movie) {
-            $name = $movie->cover->disk_name;
-            $one = substr($name, 0, 3);
+        foreach ($movies as $movie) {
+            if ($movie->cover != null) {
+                $name = $movie->cover->disk_name;
+                $file_name = $movie->cover->file_name;
 
+                $one = substr($name, 0, 3);
+                $two = substr($name, 3, 3);
+                $three = substr($name, 6, 3);
+
+                $source = $publicDir . $one . DIRECTORY_SEPARATOR . $two . DIRECTORY_SEPARATOR . $three . DIRECTORY_SEPARATOR . $name;
+                $dest = $dir . DIRECTORY_SEPARATOR . $file_name;
+                if(copy($source, $dest)) {
+                    $movie->cover_url = "covers/{$file_name}";
+                    $movie->save();
+                }
+            }
         }
     }
 
-    private function createDirectory()
+    private function createDirectory($dir)
     {
-        $dir = base_path().MediaLibrary::url('').DIRECTORY_SEPARATOR.'covers';
-        if(!is_dir($dir)) {
+        if (!is_dir($dir)) {
             mkdir($dir);
         }
     }
