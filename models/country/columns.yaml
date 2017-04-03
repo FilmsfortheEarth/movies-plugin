@@ -8,3 +8,11 @@ columns:
         type: text
         searchable: true
         sortable: true
+    name_en:
+        label: name (en)
+        type: text
+        sortable: false
+    name_fr:
+        label: name (fr)
+        type: text
+        sortable: false

@@ -27,6 +27,16 @@ class Country extends Model
      */
     protected $fillable = ['name'];
 
+    public function getNameEnAttribute()
+    {
+        return $this->noFallbackLocale()->lang('en')->name;
+    }
+
+    public function getNameFrAttribute()
+    {
+        return $this->noFallbackLocale()->lang('fr')->name;
+    }
+
     /**
      * @var array Relations
      */
