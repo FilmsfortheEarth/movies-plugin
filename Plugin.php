@@ -5,6 +5,7 @@ use Carbon\Carbon;
 use Exception;
 use Ffte\Movies\Components\MovieDetail;
 use Ffte\Movies\Components\MovieSearch;
+use Ffte\Movies\Console\Images;
 use Ffte\Movies\FormWidgets\Duration;
 use Ffte\Movies\FormWidgets\MLFileUpload;
 use Ffte\Movies\FormWidgets\MLMediaFinder;
@@ -32,14 +33,17 @@ class Plugin extends PluginBase
      */
     public function register()
     {
-        $this->registerConsoleCommand('movies.import', 'Ffte\Movies\Console\Import');
-        $this->registerConsoleCommand('movies.clear', 'Ffte\Movies\Console\Clear');
+        //$this->registerConsoleCommand('movies.import', 'Ffte\Movies\Console\Import');
+        //$this->registerConsoleCommand('movies.clear', 'Ffte\Movies\Console\Clear');
+        $this->registerConsoleCommand('movies:images', Images::class);
 
+        /*
         $this->app->singleton('twig', function() {
             $twig = new \Twig_Environment(new \Twig_Loader_String());
             $twig->addExtension(new TwigExtension());
             return $twig;
         });
+        */
     }
 
     /**

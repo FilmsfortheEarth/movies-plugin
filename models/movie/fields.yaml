@@ -194,16 +194,12 @@ tabs:
             path: field_clips
             type: partial
             tab: Media
-        cover:
+        cover_url:
             label: Cover
             commentAbove: 'Override automatic title and description for this attachment if needed'
-            mode: image
-            useCaption: true
-            thumbOptions:
-                mode: auto
-                extension: auto
             span: left
-            type: mlfileupload
+            type: mlmediafinder
+            mode: image
             tab: Media
         background:
             label: Background
