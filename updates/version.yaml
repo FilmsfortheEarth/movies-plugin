@@ -57,3 +57,5 @@
     - builder_table_create_ffte_movies_collection_clip.php
 1.0.14:
     - 'fixed "relation is not a valid type" warning'
+1.0.15:
+    - 'added language columns to coujntry an language'
