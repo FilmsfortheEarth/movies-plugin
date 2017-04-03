@@ -1,6 +1,7 @@
 <?php namespace Ffte\Movies;
 
 
+use AlgoliaSearch\Laravel\AlgoliaServiceProvider;
 use Carbon\Carbon;
 use Exception;
 use Ffte\Movies\Components\MovieDetail;
@@ -9,11 +10,11 @@ use Ffte\Movies\Console\Images;
 use Ffte\Movies\FormWidgets\Duration;
 use Ffte\Movies\FormWidgets\MLFileUpload;
 use Ffte\Movies\FormWidgets\MLMediaFinder;
-use Ffte\Movies\Models\CategoryMoviePivot;
 use System\Classes\PluginBase;
 use App;
 use Cache;
-use \System\Twig\Extension as TwigExtension;
+use Config;
+//use \System\Twig\Extension as TwigExtension;
 
 
 /**
@@ -53,7 +54,9 @@ class Plugin extends PluginBase
      */
     public function boot()
     {
-
+        App::register(AlgoliaServiceProvider::class);
+        Config::set('algolia.connections.main.id', 'MJO8ZVRUIE');
+        Config::set('algolia.connections.main.key', '3a9df9523992e77a07065c67506ba788');
     }
 
     public function registerComponents()
