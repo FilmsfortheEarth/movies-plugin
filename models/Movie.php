@@ -31,7 +31,7 @@ class Movie extends Model
             'title' => $this->title,
             'subtitle' => $this->subtitle,
             'year' => intval($this->year),
-            'cover_url' => MediaLibrary::url($this->cover_url),
+            'cover_url' => url().MediaLibrary::url($this->cover_url),
             'tags' => $this->tags->pluck('name')->toArray(),
             'categories' => $this->categories->pluck('name')->toArray(),
             'availabilities' => $this->availabilities->pluck('name')->toArray(),
