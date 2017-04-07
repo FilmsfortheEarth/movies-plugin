@@ -30,6 +30,7 @@ class Movie extends Model
             'id' => $this->id,
             'title' => $this->title,
             'subtitle' => $this->subtitle,
+            'description' => $this->description,
             'year' => intval($this->year),
             'cover_url' => url().MediaLibrary::url($this->cover_url),
             'tags' => $this->tags->pluck('name')->toArray(),
