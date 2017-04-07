@@ -5,6 +5,7 @@ use AlgoliaSearch\Laravel\AlgoliaServiceProvider;
 use Ffte\Movies\Components\MovieDetail;
 use Ffte\Movies\Components\MovieSearch;
 use Ffte\Movies\Console\Images;
+use Ffte\Movies\Console\Reindex;
 use Ffte\Movies\FormWidgets\Duration;
 use Ffte\Movies\FormWidgets\MLFileUpload;
 use Ffte\Movies\FormWidgets\MLMediaFinder;
@@ -35,7 +36,7 @@ class Plugin extends PluginBase
         $this->registerConsoleCommand('movies.import', 'Ffte\Movies\Console\Import');
         //$this->registerConsoleCommand('movies.clear', 'Ffte\Movies\Console\Clear');
         $this->registerConsoleCommand('movies:images', Images::class);
-
+        $this->registerConsoleCommand('movies:reindex', Reindex::class);
         /*
         $this->app->singleton('twig', function() {
             $twig = new \Twig_Environment(new \Twig_Loader_String());
