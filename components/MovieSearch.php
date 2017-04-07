@@ -15,7 +15,7 @@ class MovieSearch extends ComponentBase
     public function onRun()
     {
         $this->addJs('http://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js');
-        $this->addJs('assets/vendor/js/vue.js');
+        $this->addJs('assets/js/vue.js');
         $this->addJs('assets/js/search.js');
     }
 
