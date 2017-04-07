@@ -41,6 +41,19 @@ class Movie extends Model
         ];
     }
     public static $perEnvironment = true;
+    public $algoliaSettings = [
+        'searchableAttributes' => [
+            'title',
+            'subtitle',
+            'description',
+            'categories',
+            'tags'
+        ],
+        'customRanking' => [
+            'desc(rating)',
+            'desc(year)',
+        ],
+    ];
 
 
     public $rules = [
