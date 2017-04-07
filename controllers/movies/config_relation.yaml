@@ -17,6 +17,14 @@ links:
   manage:
     form: $/ffte/movies/models/link/fields.yaml
 
+attachments:
+  label: Attachments
+  view:
+    list: $/ffte/movies/models/attachment/columns.yaml
+    toolbarButtons: create|delete
+  manage:
+    form: $/ffte/movies/models/attachment/fields.yaml
+
 vod_services:
   label: VOD Services
   view:

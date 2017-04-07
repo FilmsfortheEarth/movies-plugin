@@ -1,0 +1,10 @@
+name: LinkTypes
+form: $/ffte/movies/models/linktype/fields.yaml
+modelClass: Ffte\Movies\Models\LinkType
+defaultRedirect: ffte/movies/linktypes
+create:
+    redirect: 'ffte/movies/linktypes/update/:id'
+    redirectClose: ffte/movies/linktypes
+update:
+    redirect: ffte/movies/linktypes
+    redirectClose: ffte/movies/linktypes

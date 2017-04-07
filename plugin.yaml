@@ -76,6 +76,18 @@ navigation:
                 icon: icon-paperclip
                 permissions:
                     - ffte.movies.clipformats
+            side-menu-linktypes:
+                label: 'Link Types'
+                url: ffte/movies/linktypes
+                icon: icon-sitemap
+                permissions:
+                    - ffte.movies.linktypes
+            side-menu-attachmenttypes:
+                label: 'Attachment Types'
+                url: ffte/movies/attachmenttypes
+                icon: icon-sitemap
+                permissions:
+                    - ffte.movies.attachmenttypes
 permissions:
     ffte.movies.tags:
         tab: Movies
@@ -110,3 +122,9 @@ permissions:
     ffte.movies.collections:
         tab: Movies
         label: Collections
+    ffte.movies.linktypes:
+        tab: Movies
+        label: 'Link Types'
+    ffte.movies.attachmenttypes:
+        tab: Movies
+        label: 'Attachement Types'

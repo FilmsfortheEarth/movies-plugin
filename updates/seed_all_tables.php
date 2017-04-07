@@ -46,26 +46,6 @@ class SeedAllTables extends Seeder {
             ClipType::create($clipType);
         }
 
-
-        /*
-        $countries = $languages = json_decode(File::get('plugins/ffte/movies/data/countries.json'), true);
-
-        foreach($countries as $country) {
-            Country::create($country);
-        }
-        */
-
-        /*
-        $languages = json_decode(File::get('plugins/ffte/movies/data/languages.json'), true);
-
-        foreach($languages as $language) {
-            Language::create([
-                'code' => $language['code'],
-                'name' => $language['name']
-            ]);
-        }
-        */
-
         $linkTypes = [
             [ 'name' => 'Andere' ],
             [ 'name' => 'Offizielle Website zum Film' ],
@@ -75,9 +55,6 @@ class SeedAllTables extends Seeder {
             [ 'name' => 'Youtube' ],
             [ 'name' => 'Wikipedia' ],
             [ 'name' => 'Instagram' ],
-            [ 'name' => 'Filmheft' ],
-            [ 'name' => 'Presseheft' ],
-            [ 'name' => 'Schulunterlagen' ],
         ];
 
         foreach($linkTypes as $linkType) {

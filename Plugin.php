@@ -54,9 +54,9 @@ class Plugin extends PluginBase
      */
     public function boot()
     {
-        App::register(AlgoliaServiceProvider::class);
-        Config::set('algolia.connections.main.id', 'MJO8ZVRUIE');
-        Config::set('algolia.connections.main.key', '3a9df9523992e77a07065c67506ba788');
+        //App::register(AlgoliaServiceProvider::class);
+        //Config::set('algolia.connections.main.id', 'MJO8ZVRUIE');
+        //Config::set('algolia.connections.main.key', '3a9df9523992e77a07065c67506ba788');
     }
 
     public function registerComponents()

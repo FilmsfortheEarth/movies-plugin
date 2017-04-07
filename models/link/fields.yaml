@@ -1,6 +1,6 @@
 fields:
     linktype:
-        lable: 'Link Type'
+        label: 'Link Type'
         type: relation
     url:
         label: Url

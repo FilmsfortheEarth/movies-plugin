@@ -1,12 +1,18 @@
 <?php namespace Ffte\Movies\Models;
 
 use Model;
+use RainLab\Translate\Behaviors\TranslatableModel;
 
 /**
  * LinkType Model
  */
 class LinkType extends Model
 {
+    public $implement = [
+        TranslatableModel::class
+    ];
+    public $translatable = ['name'];
+
     /**
      * @var string The database table used by the model.
      */

@@ -1,0 +1,10 @@
+name: AttachmentTypes
+form: $/ffte/movies/models/attachmenttype/fields.yaml
+modelClass: Ffte\Movies\Models\AttachmentType
+defaultRedirect: ffte/movies/attachmenttypes
+create:
+    redirect: 'ffte/movies/attachmenttypes/update/:id'
+    redirectClose: ffte/movies/attachmenttypes
+update:
+    redirect: ffte/movies/attachmenttypes
+    redirectClose: ffte/movies/attachmenttypes

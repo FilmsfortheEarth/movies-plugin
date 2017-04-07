@@ -1,0 +1,11 @@
+list: $/ffte/movies/models/attachmenttype/columns.yaml
+modelClass: Ffte\Movies\Models\AttachmentType
+title: AttachmentTypes
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'ffte/movies/attachmenttypes/update/:id'

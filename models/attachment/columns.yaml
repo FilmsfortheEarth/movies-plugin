@@ -1,0 +1,12 @@
+columns:
+   attachmenttype:
+     label: Type
+     relation: attachmenttype
+     select: name
+     searchable: true
+   url:
+     label: Url
+     searchable: true
+   title:
+     label: Title
+     searchable: true

@@ -29,8 +29,15 @@ tabs:
             type: textarea
             tab: General
         links:
+            label: Links
             span: full
             path: field_links
+            type: partial
+            tab: General
+        attachments:
+            label: Attachments
+            span: full
+            path: field_attachments
             type: partial
             tab: General
         org_links:

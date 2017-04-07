@@ -1,0 +1,14 @@
+fields:
+  attachmenttype:
+    label: 'Attachment Type'
+    type: relation
+  url:
+    label: Url
+    required: true
+    type: mlmediafinder
+    mode: file
+  title:
+    label: 'Override Title'
+    oc.commentPosition: ''
+    span: full
+    type: text
