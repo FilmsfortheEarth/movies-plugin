@@ -1,57 +1,88 @@
+<style>
+    .search-container {
+        display: flex;
+        flex-direction: column;
+    }
+    .search-input {
+        width: 100%;
+        border-style: none;
+        height: 3rem;
+        padding-left: 1.5rem;
+        transition: border-radius 0.25s;
+    }
+    .search-info {
+        padding-left: 1rem;
+    }
+    .search-input:focus {
+        outline: none;
+        border-radius: 1.5rem;
+    }
+    .search-hit {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        transition: background-color 0.25s;
+    }
+    .search-hit:hover {
+        background-color: #212121;
+    }
 
-<form class="form">
-    <div class="row">
-        <input type="search" class="form-control" name="search" placeholder="Search" value="{{search}}" autocomplete="off">
-    </div>
-    <div class="row">
-        <label for="availability">Availability: </label>
-        <select name="availability" id="availability" onchange="submit()">
-            <option value="">- Alle -</option>
-            {% for a in availabilities %}
-            <option value="{{a.id}}" {{availability_id == a.id ? "selected"}}>{{a.name}}</option>
-            {% endfor %}
-        </select>
-    </div>
-    <div class="row">
-        <label for="sort">Sortieren:</label>
-        <select name="sort" id="sort" onchange="submit()">
-            {% for k,v in sorts %}
-            <option value="{{k}}" {{sort == k ? "selected"}}>{{v}}</option>
-            {% endfor %}
-        </select>
-    </div>
-    <div class="row justify-content-end">
-        <nav class="nav nav-pills">
-            {% for mode in modes %}
-            <a class="nav-link{{ mode.isActive ? ' active' }}" href="{{mode.url}}"><i class="{{mode.title}}"></i></a>
-            {% endfor %}
-        </nav>
-    </div>
-</form>
+    .search-header {
 
-{% for movie in movies %}
-{% else %}
-<div class="row justify-content-center">
-    <h2>Leider keine Filme mit {{search}} gefunden.</h2>
+    }
+    .search-body {
+        display: flex;
+        padding-top: 1rem;
+    }
+    .search-thumb {
+        width: 128px;
+    }
+    .search-thumb-row {
+
+    }
+    .search-year {
+
+    }
+    .movie-description {
+
+    }
+    .movie-sub {
+        padding-top: 1rem;
+        display: flex;
+        justify-content: space-between;
+    }
+    .movie-details {
+        padding-left: 1rem;
+    }
+</style>
+<div id="search">
+    <div class="search-container">
+        <input class="search-input" placeholder="Suche nach Titel, Themen oder Schlagwörtern" spellcheck="false" autocomplete="off" @input="onSearch" v-model="search">
+        <span class="search-info" v-text="searchInfo"></span>
+        <div class="search-hit" v-for="movie in movies">
+            <div class="search-header">
+                <h2 v-text="movie.title"></h2>
+            </div>
+            <div class="search-body">
+                <div class="search-thumb-row">
+                    <img class="search-thumb" :src="movie.cover_url"/>
+                    <div class="movie-sub">
+                        <span class="search-year" v-text="movie.year"></span>
+                        <span class="movie-rating" v-text="movie.rating"></span>
+                    </div>
+                </div>
+                <div class="movie-details">
+                    <h3 v-text="movie.subtitle"></h3>
+                    <div class="movie-description" v-text="movie.description"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-{% endfor %}
-
-<div class="movie-list">
-    {% partial __SELF__~"::movie-list" %}
-</div>
-
-{% if movies.lastPage > 1 %}
-<nav aria-label="...">
-    <ul class="pagination pagination-sm justify-content-center">
-        <li class="page-item{{movies.currentPage == 1 ? ' disabled'}}"><a class="page-link" href="{{ this.page.baseFileName|page}}?page={{movies.currentPage-1}}&search={{search}}&mode={{mode}}">Prev</a></li>
-
-        {% for page in 1..movies.lastPage %}
-        <li class="page-item{{ movies.currentPage == page ? ' active' : null }}">
-            <a class="page-link" href="{{ this.page.baseFileName|page}}?page={{page}}&search={{search}}&mode={{mode}}">{{ page }}</a>
-        </li>
-        {% endfor %}
-
-        <li class="page-item{{movies.lastPage == movies.currentPage ? ' disabled'}}"><a class="page-link" href="{{ this.page.baseFileName|page}}?page={{movies.currentPage+1}}&search={{search}}&mode={{mode}}">Next</a></li>
-    </ul>
-</nav>
-{% endif %}
+<script>
+    var FFTE = {
+        applicationId: "{{applicationId}}",
+        searchApiKey: "{{searchApiKey}}",
+        environment: "{{this.environment}}"
+    };
+</script>

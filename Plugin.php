@@ -34,16 +34,8 @@ class Plugin extends PluginBase
     public function register()
     {
         $this->registerConsoleCommand('movies.import', 'Ffte\Movies\Console\Import');
-        //$this->registerConsoleCommand('movies.clear', 'Ffte\Movies\Console\Clear');
         $this->registerConsoleCommand('movies:images', Images::class);
         $this->registerConsoleCommand('movies:reindex', Reindex::class);
-        /*
-        $this->app->singleton('twig', function() {
-            $twig = new \Twig_Environment(new \Twig_Loader_String());
-            $twig->addExtension(new TwigExtension());
-            return $twig;
-        });
-        */
     }
 
     /**
@@ -66,6 +58,13 @@ class Plugin extends PluginBase
         return [
             MovieSearch::class => 'movieSearch',
             MovieDetail::class => 'movieDetail',
+        ];
+    }
+
+    public function registerPageSnippets()
+    {
+        return [
+            MovieSearch::class => 'movieSearch',
         ];
     }
 

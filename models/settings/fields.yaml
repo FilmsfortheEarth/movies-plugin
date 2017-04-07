@@ -6,4 +6,5 @@ fields:
     label: Application ID
   admin_api_key:
     label: Admin API Key
-
+  search_api_key:
+    label: Search API Key
