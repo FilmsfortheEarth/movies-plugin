@@ -2,19 +2,17 @@
 
 
 use AlgoliaSearch\Laravel\AlgoliaServiceProvider;
-use Carbon\Carbon;
-use Exception;
 use Ffte\Movies\Components\MovieDetail;
 use Ffte\Movies\Components\MovieSearch;
 use Ffte\Movies\Console\Images;
 use Ffte\Movies\FormWidgets\Duration;
 use Ffte\Movies\FormWidgets\MLFileUpload;
 use Ffte\Movies\FormWidgets\MLMediaFinder;
+use Ffte\Movies\Models\Settings;
 use System\Classes\PluginBase;
 use App;
 use Cache;
 use Config;
-//use \System\Twig\Extension as TwigExtension;
 
 
 /**
@@ -34,7 +32,7 @@ class Plugin extends PluginBase
      */
     public function register()
     {
-        //$this->registerConsoleCommand('movies.import', 'Ffte\Movies\Console\Import');
+        $this->registerConsoleCommand('movies.import', 'Ffte\Movies\Console\Import');
         //$this->registerConsoleCommand('movies.clear', 'Ffte\Movies\Console\Clear');
         $this->registerConsoleCommand('movies:images', Images::class);
 
@@ -54,9 +52,12 @@ class Plugin extends PluginBase
      */
     public function boot()
     {
-        //App::register(AlgoliaServiceProvider::class);
-        //Config::set('algolia.connections.main.id', 'MJO8ZVRUIE');
-        //Config::set('algolia.connections.main.key', '3a9df9523992e77a07065c67506ba788');
+        if (Settings::get('is_enabled')) {
+            App::register(AlgoliaServiceProvider::class);
+
+            Config::set('algolia.connections.main.id', Settings::get('application_id'));
+            Config::set('algolia.connections.main.key', Settings::get('admin_api_key'));
+        }
     }
 
     public function registerComponents()
@@ -99,6 +100,20 @@ class Plugin extends PluginBase
             Duration::class => 'duration',
             MLFileUpload::class => 'mlfileupload',
             MLMediaFinder::class => 'mlmediafinder',
+        ];
+    }
+
+    public function registerSettings()
+    {
+        return [
+            'ffte' => [
+                'label'       => 'Algolia Settings',
+                'description' => 'Algolia Search Settings',
+                'category'    => 'FFTE',
+                'icon'        => 'icon-search',
+                'class'       => Settings::class,
+                'order'       => 500,
+            ]
         ];
     }
 }

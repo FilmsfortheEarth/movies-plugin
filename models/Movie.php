@@ -1,6 +1,8 @@
 <?php namespace Ffte\Movies\Models;
 
 
+use AlgoliaSearch\Laravel\AlgoliaEloquentTrait;
+use Cms\Classes\MediaLibrary;
 use October\Rain\Database\Model;
 
 /**
@@ -9,6 +11,35 @@ use October\Rain\Database\Model;
 class Movie extends Model
 {
     use \October\Rain\Database\Traits\Validation;
+    use AlgoliaEloquentTrait;
+
+    /*
+     * Algolia Search
+     */
+    public function getAlgoliaRecord()
+    {
+        // build the average rating
+        $rating = (
+            $this->stars_contents +
+            $this->stars_entertainment +
+            $this->stars_quality +
+            $this->stars_momentum +
+            $this->stars_craftsmanship) / 5;
+
+        return [
+            'id' => $this->id,
+            'title' => $this->title,
+            'subtitle' => $this->subtitle,
+            'year' => intval($this->year),
+            'cover_url' => MediaLibrary::url($this->cover_url),
+            'tags' => $this->tags->pluck('name')->toArray(),
+            'categories' => $this->categories->pluck('name')->toArray(),
+            'availabilities' => $this->availabilities->pluck('name')->toArray(),
+            'rating' => $rating,
+            'age_recommendation' => $this->age_recommendation
+        ];
+    }
+    public static $perEnvironment = true;
 
 
     public $rules = [

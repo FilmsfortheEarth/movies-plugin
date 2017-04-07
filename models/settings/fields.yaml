@@ -1,0 +1,9 @@
+fields:
+  is_enabled:
+    label: Enabled
+    type: switch
+  application_id:
+    label: Application ID
+  admin_api_key:
+    label: Admin API Key
+
