@@ -1,6 +1,6 @@
 <?php namespace Ffte\Movies\Models;
 
-//use AlgoliaSearch\Laravel\AlgoliaEloquentTrait;
+
 use October\Rain\Database\Model;
 
 /**
@@ -10,26 +10,9 @@ class Movie extends Model
 {
     use \October\Rain\Database\Traits\Validation;
 
-    /**
-     * Algolia
-     */
-    /*
-    use AlgoliaEloquentTrait;
-    public static $perEnvironment = true;
-    public function getAlgoliaRecord()
-    {
-        return [
-            'id' => $this->id,
-            'title' => $this->title,
-            'title_en' => $this->lang('en')->title,
-            'title_fr' => $this->lang('fr')->title,
-        ];
-    }
-    */
 
     public $rules = [
         'title' => 'required',
-        //'original_title' => 'required'
     ];
 
     public $implement = [
