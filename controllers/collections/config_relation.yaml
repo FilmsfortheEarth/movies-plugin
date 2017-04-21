@@ -9,7 +9,7 @@ movies:
           label: Tip
         pivot[description]:
           label: Description
-    toolbarButtons: add|remove
+    toolbarButtons: add|delete|remove
   manage:
     list: $/ffte/movies/models/movie/columns.yaml
     showCheckboxes: true
@@ -36,7 +36,7 @@ clips:
           label: Tip
         pivot[description]:
           label: Description
-    toolbarButtons: add|remove
+    toolbarButtons: create|add|delete|remove
   manage:
     list: $/ffte/movies/models/clip/columns.yaml
     form: $/ffte/movies/models/clip/fields.yaml

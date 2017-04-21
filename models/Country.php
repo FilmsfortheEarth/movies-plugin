@@ -43,10 +43,12 @@ class Country extends Model
     public $hasOne = [];
     public $hasMany = [];
     public $belongsTo = [];
-    public $belongsToMany = [];
+    public $belongsToMany = [
+        'movies' => [Movie::class, 'table' => 'ffte_movies_movie_country'],
+    ];
     public $morphTo = [];
     public $morphOne = [];
-    public $morphMany = [];
+    public $morphToMany = [];
     public $attachOne = [];
     public $attachMany = [];
 }

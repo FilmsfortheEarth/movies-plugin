@@ -4,3 +4,29 @@ fields:
         span: full
         oc.commentPosition: ''
         type: text
+    movies_audio:
+        label: Movies (Audio)
+        span: full
+        type: taglist
+        mode: relation
+        nameFrom: title
+        customTags: false
+    movies_subtitle:
+        label: Movies (Subtitle)
+        span: full
+        type: taglist
+        mode: relation
+        nameFrom: title
+        customTags: false
+    clips_audio:
+        label: Clips (Audio)
+        span: full
+        type: taglist
+        mode: relation
+        customTags: false
+    clips_subtitle:
+        label: Clips (Subtitle)
+        span: full
+        type: taglist
+        mode: relation
+        customTags: false

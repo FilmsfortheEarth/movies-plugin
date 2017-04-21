@@ -4,3 +4,10 @@ fields:
         oc.commentPosition: ''
         span: full
         type: text
+    movies:
+        label: Movies
+        span: full
+        type: taglist
+        mode: relation
+        nameFrom: title
+        customTags: false
