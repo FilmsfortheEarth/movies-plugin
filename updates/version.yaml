@@ -73,3 +73,6 @@
 1.1.3:
     - 'Seed Attachment Types'
     - seed_attachment_types.php
+1.1.4:
+    - 'added search tags to movie'
+    - builder_table_update_ffte_movies_movies_2.php

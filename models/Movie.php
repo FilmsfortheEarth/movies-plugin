@@ -37,7 +37,8 @@ class Movie extends Model
             'categories' => $this->categories->pluck('name')->toArray(),
             'availabilities' => $this->availabilities->pluck('name')->toArray(),
             'rating' => $rating,
-            'age_recommendation' => $this->age_recommendation
+            'age_recommendation' => $this->age_recommendation,
+            'search_tags' => $this->search_tags
         ];
     }
     public static $perEnvironment = true;
@@ -47,6 +48,7 @@ class Movie extends Model
             'subtitle',
             'description',
             'categories',
+            'search_tags',
             'tags'
         ],
         'customRanking' => [
@@ -67,7 +69,7 @@ class Movie extends Model
     public $translatable = [
         ['title', 'index' => true], 'subtitle', 'description', 'notes',
         'jury_rating', 'other_rating', 'technical_info', 'org_links',
-        'seo_title', 'seo_description', 'seo_keywords'
+        'seo_title', 'seo_description', 'seo_keywords', 'search_tags'
     ];
 
     public $jsonable = [];

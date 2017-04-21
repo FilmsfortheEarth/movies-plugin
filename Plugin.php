@@ -6,6 +6,7 @@ use Ffte\Movies\Components\MovieDetail;
 use Ffte\Movies\Components\MovieSearch;
 use Ffte\Movies\Console\Images;
 use Ffte\Movies\Console\Reindex;
+use Ffte\Movies\Console\TranslateImages;
 use Ffte\Movies\FormWidgets\Duration;
 use Ffte\Movies\FormWidgets\MLFileUpload;
 use Ffte\Movies\FormWidgets\MLMediaFinder;
@@ -36,6 +37,7 @@ class Plugin extends PluginBase
         $this->registerConsoleCommand('movies.import', 'Ffte\Movies\Console\Import');
         $this->registerConsoleCommand('movies:images', Images::class);
         $this->registerConsoleCommand('movies:reindex', Reindex::class);
+        $this->registerConsoleCommand('movies:trans', TranslateImages::class);
     }
 
     /**

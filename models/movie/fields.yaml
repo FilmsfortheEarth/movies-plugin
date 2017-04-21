@@ -238,3 +238,7 @@ tabs:
             label: 'SEO Keywords'
             type: text
             tab: SEO
+        search_tags:
+            label: 'Search Tags'
+            type: text
+            tab: SEO
