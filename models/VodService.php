@@ -1,12 +1,21 @@
 <?php namespace Ffte\Movies\Models;
 
 use Model;
+use RainLab\Translate\Behaviors\TranslatableModel;
 
 /**
  * VodService Model
  */
 class VodService extends Model
 {
+    public $implement = [
+        TranslatableModel::class
+    ];
+
+    public $translatable = [
+        'url'
+    ];
+
     /**
      * @var string The database table used by the model.
      */
