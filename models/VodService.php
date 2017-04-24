@@ -1,5 +1,6 @@
 <?php namespace Ffte\Movies\Models;
 
+use Ffte\Movies\Classes\SaveTranslationHack;
 use Model;
 use RainLab\Translate\Behaviors\TranslatableModel;
 
@@ -8,6 +9,8 @@ use RainLab\Translate\Behaviors\TranslatableModel;
  */
 class VodService extends Model
 {
+    use SaveTranslationHack;
+
     public $implement = [
         TranslatableModel::class
     ];
