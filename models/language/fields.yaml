@@ -23,10 +23,12 @@ fields:
         span: full
         type: taglist
         mode: relation
+        nameFrom: title
         customTags: false
     clips_subtitle:
         label: Clips (Subtitle)
         span: full
         type: taglist
         mode: relation
+        nameFrom: title
         customTags: false

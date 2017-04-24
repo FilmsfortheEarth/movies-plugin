@@ -40,8 +40,8 @@ class Language extends Model
     public $belongsToMany = [
         'movies_audio' => [Movie::class, 'table' => 'ffte_movies_movie_language_audio'],
         'movies_subtitle' => [Movie::class, 'table' => 'ffte_movies_movie_language_subtitle'],
-        'clips_audio' => [Language::class, 'table' => 'ffte_movies_clip_language_audio'],
-        'clips_subtitle' => [Language::class, 'table' => 'ffte_movies_clip_language_subtitle'],
+        'clips_audio' => [Clip::class, 'table' => 'ffte_movies_clip_language_audio'],
+        'clips_subtitle' => [Clip::class, 'table' => 'ffte_movies_clip_language_subtitle'],
     ];
 
     public $morphToMany = [

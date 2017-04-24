@@ -45,6 +45,7 @@ class Country extends Model
     public $belongsTo = [];
     public $belongsToMany = [
         'movies' => [Movie::class, 'table' => 'ffte_movies_movie_country'],
+        'movies_location' => [Movie::class, 'table' => 'ffte_movies_movie_shooting_location'],
     ];
     public $morphTo = [];
     public $morphOne = [];

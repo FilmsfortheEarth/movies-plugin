@@ -11,3 +11,10 @@ fields:
         mode: relation
         nameFrom: title
         customTags: false
+    movies_location:
+        label: Movies (Shooting Location)
+        span: full
+        type: taglist
+        mode: relation
+        nameFrom: title
+        customTags: false
