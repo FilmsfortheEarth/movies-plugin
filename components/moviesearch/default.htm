@@ -1,87 +1,24 @@
-<style>
-    .search-container {
-        display: flex;
-        flex-direction: column;
-    }
-    .search-input {
-        width: 100%;
-        border-style: none;
-        height: 3rem;
-        padding-left: 1.5rem;
-        border-radius: 1.5rem;
-    }
-    .search-info {
-        padding-left: 1rem;
-    }
-    .search-input:focus {
-        outline: none;
-    }
-    .search-hit {
-        display: flex;
-        flex-direction: column;
-        padding: 1rem;
-        transition: background-color 0.25s;
-    }
-    .search-hit:hover {
-        background-color: #212121;
-    }
-
-    .search-header {
-
-    }
-    .search-body {
-        display: flex;
-        padding-top: 1rem;
-    }
-    .search-thumb {
-        width: 128px;
-    }
-    .search-thumb-row {
-
-    }
-    .search-year {
-
-    }
-    .movie-description {
-
-    }
-    .movie-sub {
-        padding-top: 1rem;
-        display: flex;
-        justify-content: space-between;
-    }
-    .movie-details {
-        padding-left: 1rem;
-    }
-</style>
-<div id="search">
-    <div class="search-container">
-        <input class="search-input" placeholder="Suche nach Titel, Themen oder Schlagwörtern" spellcheck="false" autocomplete="off" @input="onSearch" v-model="search">
-        <span class="search-info" v-text="searchInfo"></span>
-        <div class="search-hit" v-for="movie in movies">
-            <div class="search-header">
-                <h2 v-text="movie.title"></h2>
-            </div>
-            <div class="search-body">
-                <div class="search-thumb-row">
-                    <img class="search-thumb" :src="movie.cover_url"/>
-                    <div class="movie-sub">
-                        <span class="search-year" v-text="movie.year"></span>
-                        <span class="movie-rating" v-text="movie.rating"></span>
-                    </div>
-                </div>
-                <div class="movie-details">
-                    <h3 v-text="movie.subtitle"></h3>
-                    <div class="movie-description" v-text="movie.description"></div>
-                </div>
-            </div>
-        </div>
-    </div>
+<form>
+    <input class="form-control" placeholder="Titel, Thema oder Schlagwort" type="text"
+           value="{{ query }}" name="query">
+</form>
+<div class="search-result">
+    <p>
+        {{ movies.total }} Filme gefunden
+    </p>
+    {% for movie in movies %}
+    <p>
+    <h2>{{ movie.title }}
+        <small class="hidden-xs">{{ movie.subtitle }}</small>
+    </h2>
+    <img width="120px" src="{{ movie.cover_url|media }}" alt="">
+    <span>{{ movie.year }}</span>
+    <p>{{ movie.rating }}</p>
+    </p>
+    {% else %}
+    <p>
+    <h2>Leider nichts zum Begriff "{{ query }}" gefunden</h2>
+    </p>
+    {% endfor %}
+    {{ movies.render()|raw }}
 </div>
-<script>
-    var FFTE = {
-        applicationId: "{{applicationId}}",
-        searchApiKey: "{{searchApiKey}}",
-        environment: "{{this.environment}}"
-    };
-</script>
