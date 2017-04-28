@@ -3,7 +3,6 @@
 use Cms\Classes\ComponentBase;
 use Ffte\Movies\Models\Movie;
 use Input;
-use App;
 use Request;
 use DB;
 
@@ -11,8 +10,9 @@ class MovieSearch extends ComponentBase
 {
     public $movies;
 
-    public function onRun()
+    function onRun()
     {
+
         $this->page['query'] = $query = Request::query('query');
         $format = Request::query('format');
 
@@ -21,20 +21,16 @@ class MovieSearch extends ComponentBase
             ->orderBy('rating', 'DESC')
             ->orderBy('year', 'DESC')
             ->orderBy('title', 'ASC')
-            ->paginate(20)
-            ->appends(['query' => $query, 'format' => $format])
-        ;
+            ->paginate(20);
+
+        $queryString = array_except(Input::query(), $movies->getPageName());
+        $movies->appends($queryString);
 
         $this->movies = $this->page['movies'] = $movies;
 
         if($format == 'json') {
             return $movies;
         }
-    }
-
-    public function onRender()
-    {
-
     }
 
     public function componentDetails()

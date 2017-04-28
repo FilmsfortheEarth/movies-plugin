@@ -1,3 +1,4 @@
+
 <style>
     .search-thumb {
         width: 128px;
@@ -37,6 +38,10 @@
                 </div>
             </div>
         </div>
+        {% else %}
+        <p>
+        <h2>Leider nichts zum Begriff "{{ query }}" gefunden</h2>
+        </p>
         {% endfor %}
         {{ movies.render()|raw }}
     </div>
