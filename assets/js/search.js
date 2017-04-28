@@ -3,8 +3,9 @@ new Vue({
     el: '#search',
     data: {
         search: '',
+        result: {},
         movies: [],
-        info: {}
+        page: 0
     },
     computed: {
         searchInfo: function() {
@@ -13,13 +14,15 @@ new Vue({
     },
     methods: {
         onSearch: function() {
-            this.index.search(this.search, function(error, result) {
-                this.movies = result.hits;
-                this.info = {
-                    hits: result.nbHits,
-                    time: result.processingTimeMS
-                };
+            this.index.search(this.search, { page: this.page }, function(error, result) {
+                this.result = result;
+                this.movies.push.apply(this.movies, this.result.hits);
+                console.log(result);
             }.bind(this));
+        },
+        loadMore: function() {
+            this.page = this.result.page + 1;
+            this.onSearch();
         }
     },
     created: function() {

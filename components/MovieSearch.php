@@ -1,35 +1,47 @@
 <?php namespace Ffte\Movies\Components;
 
 use Cms\Classes\ComponentBase;
-use Cms\Classes\Page;
-use Ffte\Movies\Classes\Link;
-use Ffte\Movies\Models\Availability;
-use \ffte\movies\models\Movie;
-use Debugbar;
-use Ffte\Movies\Models\Settings;
+use Ffte\Movies\Models\Movie;
 use Input;
+use App;
+use Request;
+use DB;
 
 class MovieSearch extends ComponentBase
 {
+    public $movies;
 
     public function onRun()
     {
-        $this->addJs('http://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js');
-        $this->addJs('assets/js/vue.js');
-        $this->addJs('assets/js/search.js');
+        $this->page['query'] = $query = Request::query('query');
+        $format = Request::query('format');
+
+        $movies = Movie::with('tags', 'categories')->search($query)
+            ->select(DB::raw('*, (stars_contents + stars_entertainment + stars_quality + stars_momentum + stars_craftsmanship) / 5 as rating'))
+            ->orderBy('rating', 'DESC')
+            ->orderBy('year', 'DESC')
+            ->orderBy('title', 'ASC')
+            ->paginate(20)
+            ->appends(['query' => $query, 'format' => $format])
+        ;
+
+        $this->movies = $this->page['movies'] = $movies;
+
+        if($format == 'json') {
+            return $movies;
+        }
     }
 
     public function onRender()
     {
-        $this->page['applicationId'] = Settings::get('application_id');
-        $this->page['searchApiKey'] = Settings::get('search_api_key');
+
     }
 
     public function componentDetails()
     {
         return [
             'name'        => 'Movie Search Component',
-            'description' => 'Algolia Movie Search Component'
+            'description' => 'Movie Search Component'
         ];
     }
 

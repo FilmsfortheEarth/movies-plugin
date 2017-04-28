@@ -1,7 +1,5 @@
 <?php namespace Ffte\Movies;
 
-
-use AlgoliaSearch\Laravel\AlgoliaServiceProvider;
 use Ffte\Movies\Components\MovieDetail;
 use Ffte\Movies\Components\MovieSearch;
 use Ffte\Movies\Console\Images;
@@ -47,12 +45,7 @@ class Plugin extends PluginBase
      */
     public function boot()
     {
-        if (Settings::get('is_enabled')) {
-            App::register(AlgoliaServiceProvider::class);
 
-            Config::set('algolia.connections.main.id', Settings::get('application_id'));
-            Config::set('algolia.connections.main.key', Settings::get('admin_api_key'));
-        }
     }
 
     public function registerComponents()
@@ -108,14 +101,7 @@ class Plugin extends PluginBase
     public function registerSettings()
     {
         return [
-            'ffte' => [
-                'label'       => 'Algolia Settings',
-                'description' => 'Algolia Search Settings',
-                'category'    => 'FFTE',
-                'icon'        => 'icon-search',
-                'class'       => Settings::class,
-                'order'       => 500,
-            ]
+
         ];
     }
 }

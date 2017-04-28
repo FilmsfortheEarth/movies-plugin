@@ -1,87 +1,43 @@
 <style>
-    .search-container {
-        display: flex;
-        flex-direction: column;
-    }
-    .search-input {
-        width: 100%;
-        border-style: none;
-        height: 3rem;
-        padding-left: 1.5rem;
-        border-radius: 1.5rem;
-    }
-    .search-info {
-        padding-left: 1rem;
-    }
-    .search-input:focus {
-        outline: none;
-    }
-    .search-hit {
-        display: flex;
-        flex-direction: column;
-        padding: 1rem;
-        transition: background-color 0.25s;
-    }
-    .search-hit:hover {
-        background-color: #212121;
-    }
-
-    .search-header {
-
-    }
-    .search-body {
-        display: flex;
-        padding-top: 1rem;
-    }
     .search-thumb {
         width: 128px;
     }
-    .search-thumb-row {
-
-    }
-    .search-year {
-
-    }
-    .movie-description {
-
-    }
-    .movie-sub {
-        padding-top: 1rem;
-        display: flex;
-        justify-content: space-between;
-    }
-    .movie-details {
-        padding-left: 1rem;
-    }
 </style>
+
 <div id="search">
     <div class="search-container">
-        <input class="search-input" placeholder="Suche nach Titel, Themen oder Schlagwörtern" spellcheck="false" autocomplete="off" @input="onSearch" v-model="search">
-        <span class="search-info" v-text="searchInfo"></span>
-        <div class="search-hit" v-for="movie in movies">
+        <form>
+            <input value="{{ query }}" name="query" class="form-control" placeholder="Suche nach Titel, Themen oder Schlagwörtern" spellcheck="false" autocomplete="off" autofocus>
+        </form>
+
+        <span class="search-info">{{ movies.total }} {{ 'nav.films'|_ }}</span>
+        {% for movie in movies %}
+        <div class="search-hit">
             <div class="search-header">
-                <h2 v-text="movie.title"></h2>
+                <h2>{{ movie.title }} <small>{{ movie.subtitle }}</small></h2>
             </div>
             <div class="search-body">
                 <div class="search-thumb-row">
-                    <img class="search-thumb" :src="movie.cover_url"/>
+                    <img  class="search-thumb" src="{{ movie.cover_url|media }}"/>
                     <div class="movie-sub">
-                        <span class="search-year" v-text="movie.year"></span>
-                        <span class="movie-rating" v-text="movie.rating"></span>
+                        <span class="search-year">{{ movie.year }}</span>
+                        <span class="movie-rating">{{ movie.rating }}</span>
                     </div>
                 </div>
                 <div class="movie-details">
-                    <h3 v-text="movie.subtitle"></h3>
-                    <div class="movie-description" v-text="movie.description"></div>
+                    <div class="movie-description">{{ movie.description }}</div>
+                </div>
+                <div>
+                    {% for category in movie.categories %}
+                    <span class="label label-info">{{ category.name }}</span>
+                    {% endfor %}
+                    {% for tag in movie.tags %}
+                    <span class="label label-default">{{ tag.name }}</span>
+                    {% endfor %}
                 </div>
             </div>
         </div>
+        {% endfor %}
+        {{ movies.render()|raw }}
     </div>
 </div>
-<script>
-    var FFTE = {
-        applicationId: "{{applicationId}}",
-        searchApiKey: "{{searchApiKey}}",
-        environment: "{{this.environment}}"
-    };
-</script>

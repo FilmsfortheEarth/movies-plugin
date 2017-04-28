@@ -1,8 +1,5 @@
 <?php namespace Ffte\Movies\Models;
 
-
-use AlgoliaSearch\Laravel\AlgoliaEloquentTrait;
-use Cms\Classes\MediaLibrary;
 use October\Rain\Database\Model;
 
 /**
@@ -11,52 +8,20 @@ use October\Rain\Database\Model;
 class Movie extends Model
 {
     use \October\Rain\Database\Traits\Validation;
-    use AlgoliaEloquentTrait;
+    use \Ffte\Search\Classes\SearchTrait;
 
-    /*
-     * Algolia Search
-     */
-    public function getAlgoliaRecord()
+    public function getSearchIndex($locale)
     {
-        // build the average rating
-        $rating = (
-            $this->stars_contents +
-            $this->stars_entertainment +
-            $this->stars_quality +
-            $this->stars_momentum +
-            $this->stars_craftsmanship) / 5;
+        $this->translateContext($locale);
 
         return [
-            'id' => $this->id,
             'title' => $this->title,
             'subtitle' => $this->subtitle,
-            'description' => $this->description,
-            'year' => intval($this->year),
-            'cover_url' => url().MediaLibrary::url($this->cover_url),
-            'tags' => $this->tags->pluck('name')->toArray(),
-            'categories' => $this->categories->pluck('name')->toArray(),
-            'availabilities' => $this->availabilities->pluck('name')->toArray(),
-            'rating' => $rating,
-            'age_recommendation' => $this->age_recommendation,
+            'categories' => implode(',', $this->categories->map(function($e) use($locale) { return $e->lang($locale)->name; })->toArray()),
+            'tags' => implode(',', $this->tags->map(function($e) use($locale) { return $e->lang($locale)->name; })->toArray()),
             'search_tags' => $this->search_tags
         ];
     }
-    public static $perEnvironment = true;
-    public $algoliaSettings = [
-        'searchableAttributes' => [
-            'title',
-            'subtitle',
-            'description',
-            'categories',
-            'search_tags',
-            'tags'
-        ],
-        'customRanking' => [
-            'desc(rating)',
-            'desc(year)',
-        ],
-    ];
-
 
     public $rules = [
         'title' => 'required',
@@ -134,9 +99,4 @@ class Movie extends Model
         'images' => [File::class, 'delete' => true],
     ];
 
-    public function getCountriesAttribute()
-    {
-
-        return [];
-    }
 }

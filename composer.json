@@ -1,5 +1,0 @@
-{
-    "require": {
-        "algolia/algoliasearch-laravel": "^1.7"
-    }
-}
